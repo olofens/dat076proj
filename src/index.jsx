@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 class App extends React.Component {
     render() {
         return (
-            <div>My Flask React App!</div>
+            <div>Hello!</div>
         );
     }
 }
