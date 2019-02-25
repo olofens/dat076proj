@@ -1,0 +1,27 @@
+.headerContainer{
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px;
+    align-items: center;
+    grid-template-areas: 
+    "titleText titleText titleText titleText recordButton stopButton"
+}
+.titleText{
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    font-size: 40px;
+    padding: 80px 50px;
+    display: table-cell;
+    vertical-align: middle;
+    grid-area: titleText;
+}
+.recordButton{
+    display: table-cell;
+    vertical-align: middle;
+    grid-area: recordButton;
+}
+.stopButton{
+    display: table-cell;
+    vertical-align: middle;
+    grid-area: stopButton;
+}

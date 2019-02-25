@@ -1,3 +1,23 @@
 .container {
-    color:red;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 200px 1fr 1fr;
+    grid-template-rows: 100px 200px 200px;
+    grid-template-areas: 
+    "header header header"
+    "sidebar-1 content content"
+    "sidebar-1 content content"
+}
+
+.itemHeader{
+    grid-area: header;
+    background-color: green
+}
+.itemSidebar{
+    grid-area: sidebar-1;
+    background-color: greenyellow
+}
+.itemContent{
+    grid-area: content;
+    background-color: lightgreen
 }

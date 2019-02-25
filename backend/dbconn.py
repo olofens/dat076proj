@@ -34,5 +34,17 @@ def testQuery():
     print(rows)
     conn.close()
 
+def getTasks():
+    conn = getOpenConnection()
+    cur = conn.cursor()
+
+    cur.execute("SELECT * FROM tasks")
+    rows = cur.fetchall()
+    conn.close()
+
+    tasks = []
+
+    
+
 if (__name__ == '__main__'):
     main()
