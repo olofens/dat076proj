@@ -2,7 +2,7 @@
 
 import os
 from flask import Flask, render_template
-from dbconn import dbconn
+import dbconn
 app = Flask(__name__)
 
 
