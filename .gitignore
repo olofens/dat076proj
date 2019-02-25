@@ -4,6 +4,7 @@ static
 
 #config.json
 backend/config.json
+.vscode/
 
 ### Node ###
 # Logs
