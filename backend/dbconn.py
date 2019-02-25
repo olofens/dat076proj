@@ -43,8 +43,16 @@ def getTasks():
     conn.close()
 
     tasks = []
+    for r in rows:
+        tasks.append(r)
+    return tasks
 
     
+
+
+
+
+
 
 if (__name__ == '__main__'):
     main()
