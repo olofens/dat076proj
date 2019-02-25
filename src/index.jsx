@@ -7,9 +7,10 @@ import './test.css';
 class App extends React.Component {
     render() {
         return (
-            <div class="container">
-                <Header/>
-                <div>Hello123!</div>
+            <div className="container">
+                <div className="itemHeader"> <Header/> </div>
+                <div className="itemSidebar">This is a sidebar!</div>
+                <div className="itemContent"><Board/></div>
             </div>
             
         );
