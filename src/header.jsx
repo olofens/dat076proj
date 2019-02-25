@@ -1,0 +1,15 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                <div>This is our Header!</div>
+            </div>
+        );
+    }
+}
+
+export default Header;
