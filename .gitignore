@@ -2,6 +2,9 @@ tags
 static
 # Created by https://www.gitignore.io/api/node
 
+#config.json
+backend/config.json
+
 ### Node ###
 # Logs
 logs
