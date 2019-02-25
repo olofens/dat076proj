@@ -3,18 +3,32 @@ import ReactDOM from 'react-dom';
 
 
 class Board extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tasks: props.tasks,
+        };
+    }
+
     render() {
+        const rows = this.state.tasks.map((row, index) => {
+            return (
+                <tr key={index}>
+                    <td>
+                        {row.name}
+                        {row.job}
+                    </td>
+                </tr>
+            )
+        });
+
         return (
-            <div>
-                <p>This is our board!</p>
-                <ul>
-                    <li>Task 1</li>
-                    <li>Task 2</li>
-                    <li>Task 3</li>
-                    <li>Task 4</li>
-                </ul>
-            </div>
-        );
+        <table>
+            <tbody>
+                {rows}
+            </tbody>
+        </table>
+        )
     }
 }
 
