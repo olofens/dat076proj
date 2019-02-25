@@ -7,13 +7,33 @@ import './test.css';
 
 
 class App extends React.Component {
+
     render() {
+        const dummyList = [
+            {
+                'name': 'Charlie',
+                'job': 'Janitor'
+            },
+            {
+                'name': 'Mac',
+                'job': 'Bouncer'
+            },
+            {
+                'name': 'Dee',
+                'job': 'Aspring actress'
+            },
+            {
+                'name': 'Dennis',
+                'job': 'Bartender'
+            }
+        ];
+
         return (
             <div className="container">
                 <div className="itemHeader"> <Header/> </div>
                 <div className="itemSidebar1"><TaskList/></div>
                 <div className="itemSidebar2">Done tasks</div>
-                <div className="itemContent"><Board/></div>
+                <div className="itemContent"><Board tasks={dummyList}/></div>
             </div>
             
         );
