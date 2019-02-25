@@ -11,7 +11,8 @@ class App extends React.Component {
         return (
             <div className="container">
                 <div className="itemHeader"> <Header/> </div>
-                <div className="itemSidebar"><TaskList/></div>
+                <div className="itemSidebar1"><TaskList/></div>
+                <div className="itemSidebar2">Done tasks</div>
                 <div className="itemContent"><Board/></div>
             </div>
             
