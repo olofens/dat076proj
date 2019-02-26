@@ -9,9 +9,12 @@ class TaskList extends React.Component {
             'tasks': []
         }
     }
+    componentDidMount() {
+        this.fetchTasks();
+    }
 
     fetchTasks() {
-        fetch('http://localhost3000/tasks')
+        fetch('http://localhost:3000/tasks')
         .then(response => response.json())
         .then(response => this.setState({'tasks': response}));
         
@@ -23,8 +26,13 @@ class TaskList extends React.Component {
             <div>
                 <p>This is our Task List!</p>
                 <ul>
-                    {this.state.tasks.map(function(task, index) {
-                        return <h1>{task.description}</h1>
+                    {this.state.tasks.map(function(item,index) {
+                        return (
+                            <div key={index}>
+                                <h1>{item.name}</h1>
+                                <p>{item.description}</p>
+                            </div>
+                        )
                     }
                     )}
                 </ul>
