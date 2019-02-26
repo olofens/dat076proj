@@ -9,11 +9,12 @@ class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            todoTasks: [], 
+            todoTasks: [],
             doingTasks: []
         }
 
         this.todoTaskSelected = this.todoTaskSelected.bind(this);
+        this.doingTaskSelected = this.doingTaskSelected.bind(this);
         this.findIndex = this.findIndex.bind(this);
     }
 
@@ -24,48 +25,46 @@ class App extends React.Component {
     fetchTasks() {
         fetch('http://localhost:3000/tasks')
             .then(response => response.json())
-            .then(response => this.setState({todoTasks: response}));
+            .then(response => this.setState({ todoTasks: response }));
     }
 
     todoTaskSelected(id) {
-        
-        var arrayTodo = [...this.state.todoTasks]; // make seperate copy of state array
-        var index = this.findIndex(id);
-        var task = arrayTodo[index];
-        console.log("Removing this task from todo: ");
-        console.log(task);
-        if (index !== null) {
-            arrayTodo.splice(index, 1);
-            this.setState({todoTasks: arrayTodo});
-        }
-
-        this.setState({ doingTasks: this.state.doingTasks.concat([task])}, function() {
-            console.log("Index.jsx new state: " + JSON.stringify(this.state))
+        var index = this.findIndex(this.state.todoTasks, id);
+        var addition = this.state.todoTasks[index];
+        this.setState({
+            todoTasks: this.state.todoTasks.filter((_, i) => i !== index),
+            doingTasks: this.state.doingTasks.concat(addition)
         });
-
-
-        
-        
     }
 
-    findIndex(id) {
-        for (var i = 0; i < this.state.todoTasks.length; i++) {
-            if (this.state.todoTasks[i]["id"] === id) {
+    doingTaskSelected(id) {
+        var index = this.findIndex(this.state.doingTasks, id);
+        var addition = this.state.doingTasks[index];
+        this.setState({
+            doingTasks: this.state.doingTasks.filter((_, i) => i !== index),
+            todoTasks: this.state.todoTasks.concat(addition)
+        });
+    }
+
+    findIndex(array, id) {
+        console.log("given array " + JSON.stringify(array))
+        for (var i = 0; i < array.length; i++) {
+            if (array[i].id === id) {
                 return i;
             }
         }
         return null;
-    }    
+    }
 
     render() {
         return (
             <div className="container">
-                <div className="itemHeader"> <Header/> </div>
-                <div className="itemSidebar1"><TaskList tasks={this.state.todoTasks} action={this.todoTaskSelected}/></div>
+                <div className="itemHeader"> <Header /> </div>
+                <div className="itemSidebar1"><TaskList tasks={this.state.todoTasks} action={this.todoTaskSelected} /></div>
                 <div className="itemSidebar2">Done tasks</div>
-                <div className="itemContent"><Board tasks={this.state.doingTasks}/></div>
+                <div className="itemContent"><Board tasks={this.state.doingTasks} action={this.doingTaskSelected} /></div>
             </div>
-            
+
         );
     }
 }
