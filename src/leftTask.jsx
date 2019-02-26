@@ -9,20 +9,27 @@ class LeftTask extends React.Component {
             id: props.id,
             name: props.name,
             description: props.description,
-            estimatedTime: props.estimatedTime
+            estimatedTime: props.estimatedTime,
+            action: props.action
         }
 
         this.clicked = this.clicked.bind(this);
     }
     
     clicked() {
-        console.log("Clicked task select with name " + this.state.name)
+        console.log("Clicked task select with name " + this.state.name);
+        this.state.action("Child said hello!")
     }
 
     render() {
+
+        var tempStyle = {
+            "borderStyle": "solid"
+        };
+
         return (
             <div>
-                <table>
+                <table style={tempStyle}>
                     <tbody>
                         <tr>
                             <td>

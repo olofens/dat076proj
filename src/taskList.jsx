@@ -7,8 +7,11 @@ class TaskList extends React.Component {
     constructor() {
         super();
         this.state = {
-            'tasks': []
+            tasks: [], 
+            childClicks: 0
         }
+
+        this.childHandler = this.childHandler.bind(this);
     }
     componentDidMount() {
         this.fetchTasks();
@@ -17,7 +20,15 @@ class TaskList extends React.Component {
     fetchTasks() {
         fetch('http://localhost:3000/tasks')
             .then(response => response.json())
-            .then(response => this.setState({ 'tasks': response }));
+            .then(response => this.setState({ tasks: response }));
+    }
+
+    childHandler(dataFromChild) {
+        console.log(dataFromChild);
+        console.log("Previous state: " + this.state.childClicks);
+        this.setState({
+            childClicks: this.state.childClicks + 1
+        }, () => console.log("Updated parent state: " + this.state.childClicks));
     }
 
     render() {
@@ -32,11 +43,12 @@ class TaskList extends React.Component {
                                     id={item.id} 
                                     name={item.name} 
                                     description={item.description} 
-                                    estimatedTime={item.estimatedTime}/>
+                                    estimatedTime={item.estimatedTime}
+                                    action={this.childHandler}/>
                             </div>
                         )
+                    }, this)
                     }
-                    )}
                 </ul>
             </div>
         );
