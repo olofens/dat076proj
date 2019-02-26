@@ -40,12 +40,9 @@ def getTasks():
     cur = conn.cursor(cursor_factory=RealDictCursor)
 
     cur.execute("SELECT * FROM tasks")
-    rows = cur.fetchall()
+    tasks = cur.fetchall()
     conn.close()
 
-    tasks = []
-    for r in rows:
-        tasks.append(r)
     return tasks
 
     
