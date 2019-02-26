@@ -3,6 +3,7 @@ import urllib.parse as up
 import psycopg2
 import json
 from pypika import Query, Table, Field
+from psycopg2.extras import RealDictCursor
 
 def main():
     testQuery()
@@ -36,7 +37,7 @@ def testQuery():
 
 def getTasks():
     conn = getOpenConnection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
 
     cur.execute("SELECT * FROM tasks")
     rows = cur.fetchall()
