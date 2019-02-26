@@ -3,15 +3,30 @@ import ReactDOM from 'react-dom';
 
 
 class TaskList extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            'tasks': []
+        }
+    }
+
+    fetchTasks() {
+        fetch('http://localhost3000/tasks')
+        .then(response => response.json())
+        .then(response => this.setState({'tasks': response}));
+        
+
+    }
+
     render() {
         return (
             <div>
                 <p>This is our Task List!</p>
                 <ul>
-                    <li>Task 1</li>
-                    <li>Task 2</li>
-                    <li>Task 3</li>
-                    <li>Task 4</li>
+                    {this.state.tasks.map(function(task, index) {
+                        return <h1>{task.description}</h1>
+                    }
+                    )}
                 </ul>
             </div>
         );
