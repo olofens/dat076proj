@@ -15,8 +15,6 @@ class Board extends React.Component {
             return (
                 <tr key={index}>
                     <td>
-                        {row.name}
-                        {row.job}
                     </td>
                 </tr>
             )
