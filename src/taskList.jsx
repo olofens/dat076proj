@@ -6,15 +6,12 @@ import LeftTask from "./leftTask.jsx"
 class TaskList extends React.Component {
     constructor(props) {
         super(props);
-        this.childHandler = this.childHandler.bind(this);
+        this.childSelected = this.childSelected.bind(this);
     }
 
-    childHandler(dataFromChild) {
-        console.log(dataFromChild);
-        console.log("Previous state: " + JSON.stringify(this.state));
-        this.setState({
-            // something here
-        }, () => console.log("Updated parent state: " + JSON.stringify(this.state)));
+    childSelected(id) {
+        console.log(id + " clicked");
+        this.props.action(id);
     }
 
     render() {
@@ -30,7 +27,7 @@ class TaskList extends React.Component {
                                     name={item.name} 
                                     description={item.description} 
                                     estimatedTime={item.estimatedTime}
-                                    action={this.childHandler}/>
+                                    action={this.childSelected}/>
                             </div>
                         )
                     }, this)

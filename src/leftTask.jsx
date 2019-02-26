@@ -18,7 +18,7 @@ class LeftTask extends React.Component {
     
     clicked() {
         console.log("Clicked task select with name " + this.state.name);
-        this.state.action("Child said hello!")
+        this.state.action(this.state.id)
     }
 
     render() {
