@@ -5,13 +5,12 @@ import ReactDOM from 'react-dom';
 class Board extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            tasks: props.tasks,
-        };
     }
 
     render() {
-        const rows = this.state.tasks.map((row, index) => {
+        const rows = this.props.tasks.map((row, index) => {
+            console.log("Board now has these tasks: ");
+            console.log(row);
             return (
                 <tr key={index}>
                     <td>

@@ -32,6 +32,7 @@ class App extends React.Component {
         var arrayTodo = [...this.state.todoTasks]; // make seperate copy of state array
         var index = this.findIndex(id);
         var task = arrayTodo[index];
+        console.log("Removing this task from todo: ");
         console.log(task);
         if (index !== null) {
             arrayTodo.splice(index, 1);
@@ -39,7 +40,7 @@ class App extends React.Component {
         }
 
         this.setState({ doingTasks: this.state.doingTasks.concat([task])}, function() {
-            console.log(JSON.stringify(this.state))
+            console.log("Index.jsx new state: " + JSON.stringify(this.state))
         });
 
 
