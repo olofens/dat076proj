@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   fetchTasks() {
-    fetch("http://localhost:3000/tasks")
+    fetch("http://127.0.0.1:3000/tasks")
       .then(response => response.json())
       .then(response => this.setState({ todoTasks: response }));
   }
