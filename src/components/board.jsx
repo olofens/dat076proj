@@ -9,23 +9,27 @@ import MiddleTask from "./middleTask.jsx"
 class Board extends React.Component {
     constructor(props) {
         super(props);
-        this.childSelected = this.childSelected.bind(this);
+        this.backClick = this.backClick.bind(this);
+        this.forwardClick = this.forwardClick.bind(this);
     }
 
-    childSelected(task) {
+    backClick(task) {
         this.props.doingClickBack(task);
     }
 
+    forwardClick(task) {
+      this.props.doingClickForward(task);
+  }
+
     render() {
-        console.log("Board now has these tasks: ");
-        console.log(this.props.tasks);
         const rows = this.props.tasks.map((task, index) => {
             return (
                 <tr key={index}>
                     <td>
                         <MiddleTask 
                             task={task}
-                            action={this.childSelected}
+                            actionBack={this.backClick}
+                            actionForward={this.forwardClick}
                         />
                     </td>
                 </tr>

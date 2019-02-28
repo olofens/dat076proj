@@ -5,11 +5,16 @@ class MiddleTask extends React.Component {
     constructor(props) {
         super(props);
 
-        this.clicked = this.clicked.bind(this);
+        this.clickedBack = this.clickedBack.bind(this);
+        this.clickedForward = this.clickedForward.bind(this);
     }
     
-    clicked() {
-        this.props.action(this.props.task);
+    clickedBack() {
+        this.props.actionBack(this.props.task);
+    }
+
+    clickedForward() {
+      this.props.actionForward(this.props.task);
     }
 
     render() {
@@ -35,7 +40,8 @@ class MiddleTask extends React.Component {
                                 { this.props.task.description }
                             </td>
                             <td>
-                                <button onClick={this.clicked}>Select</button>
+                                <button onClick={this.clickedBack}>Pause</button>
+                                <button onClick={this.clickedForward}>Done</button>
                             </td>
                         </tr>
                     </tbody>

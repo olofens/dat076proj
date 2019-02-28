@@ -14,7 +14,6 @@ def tasks():
     myList = dbconn.getTasks()
     return jsonify(myList)
 
-
 @app.route("/add_task")
 def addTask():
     userId = request.form['userId']
@@ -23,10 +22,6 @@ def addTask():
     estimatedTime = request.form['estimatedTime']
 
     dbconn.createTask(userId,title,description,estimatedTime)
-
-
-
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=os.environ.get('PORT', 3000), debug=True)

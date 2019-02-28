@@ -19,6 +19,13 @@ export const doingClickForward = (task) => {
     }
 }
 
+export const doneClick = (task) => {
+    return {
+        type: 'DONE_CLICK',
+        payload: {task: task}
+    }
+}
+
 export const init = () => {
     return(dispatch) => {
         return fetch("http://127.0.0.1:3000/tasks").then(response => response.json()) .then((responseData) => {

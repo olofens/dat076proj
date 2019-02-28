@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
 import RightTask from "./rightTask.jsx";
+import {doneClick} from "../actions/index.js"
 
 class DoneList extends React.Component {
   constructor(props) {
@@ -8,9 +11,8 @@ class DoneList extends React.Component {
     this.childSelected = this.childSelected.bind(this);
   }
 
-  childSelected(id) {
-    console.log(id + " clicked");
-    this.props.action(id);
+  childSelected(task) {
+    this.props.doneClick(task);
   }
 
   render() {
@@ -18,14 +20,11 @@ class DoneList extends React.Component {
       <div>
         <p>This is our Done List!</p>
         <ul>
-          {this.props.tasks.map(function(item, index) {
+          {this.props.tasks.map(function(task, index) {
             return (
               <div key={index}>
                 <RightTask
-                  id={item.id}
-                  name={item.name}
-                  description={item.description}
-                  estimatedTime={item.estimatedTime}
+                  task={task}
                   action={this.childSelected}
                 />
               </div>
@@ -37,4 +36,14 @@ class DoneList extends React.Component {
   }
 }
 
-export default DoneList;
+function mapStateToProps(state) {
+  return {
+      tasks: state.doneTasks
+  }
+}
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({ doneClick: doneClick}, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(DoneList);

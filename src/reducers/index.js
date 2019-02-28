@@ -22,7 +22,13 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 doingTasks: state.doingTasks.filter((task) => task.id !== action.payload.task.id),
                 doneTasks: state.doneTasks.concat([action.payload.task])
-            })  
+            }) 
+            
+        case 'DONE_CLICK':
+            return Object.assign({}, state, {
+                doneTasks: state.doneTasks.filter((task) => task.id !== action.payload.task.id),
+                doingTasks: state.doingTasks.concat([action.payload.task])
+            })
 
         case 'INIT':
             return Object.assign({}, state, {
