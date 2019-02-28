@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
+import {bindActionCreators} from "redux";
+import {doingClickBack, doingClickForward} from "../actions/index.js"
 import MiddleTask from "./middleTask.jsx"
 
 
 class Board extends React.Component {
     constructor(props) {
         super(props);
-
         this.childSelected = this.childSelected.bind(this);
     }
 
-    childSelected(id) {
-        console.log(id + " clicked");
-        this.props.action(id);
+    childSelected(task) {
+        this.props.doingClickBack(task);
     }
 
     render() {
@@ -23,10 +24,7 @@ class Board extends React.Component {
                 <tr key={index}>
                     <td>
                         <MiddleTask 
-                            id={task.id} 
-                            name={task.name} 
-                            description={task.description} 
-                            estimatedTime={task.estimatedTime}
+                            task={task}
                             action={this.childSelected}
                         />
                     </td>
@@ -44,4 +42,17 @@ class Board extends React.Component {
     }
 }
 
-export default Board;
+function mapStateToProps(state) {
+    return {
+        tasks: state.doingTasks
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        doingClickBack: doingClickBack,
+        doingClickForward: doingClickForward
+    }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

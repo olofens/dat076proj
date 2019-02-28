@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-class LeftTask extends React.Component {
+class MiddleTask extends React.Component {
     constructor(props) {
         super(props);
 
@@ -10,8 +10,7 @@ class LeftTask extends React.Component {
     }
     
     clicked() {
-        console.log("Clicked task select with name " + this.props.name);
-        this.props.action(this.props.id)
+        this.props.action(this.props.task);
     }
 
     render() {
@@ -26,15 +25,15 @@ class LeftTask extends React.Component {
                     <tbody>
                         <tr>
                             <td>
-                                { this.props.name }
+                                { this.props.task.title }
                             </td>
                             <td>
-                                { this.props.id }
+                                { this.props.task.estimatedtime }
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                { this.props.description }
+                                { this.props.task.description }
                             </td>
                             <td>
                                 <button onClick={this.clicked}>Select</button>
@@ -47,4 +46,4 @@ class LeftTask extends React.Component {
     }
 }
 
-export default LeftTask;
+export default MiddleTask;
