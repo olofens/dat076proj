@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import LeftTask from "./leftTask.jsx"
+import LeftTask from "../components/leftTask.jsx"
 import { todoClick } from "../actions/index.js"
 
 class TaskList extends React.Component {

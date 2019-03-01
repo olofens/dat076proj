@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import RightTask from "./rightTask.jsx";
+import RightTask from "../components/rightTask.jsx";
 import {doneClick} from "../actions/index.js"
 
 class DoneList extends React.Component {

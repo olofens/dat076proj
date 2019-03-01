@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import {doingClickBack, doingClickForward} from "../actions/index.js"
-import MiddleTask from "./middleTask.jsx"
+import MiddleTask from "../components/middleTask.jsx"
 
 
 class Board extends React.Component {

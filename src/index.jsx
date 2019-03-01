@@ -4,7 +4,7 @@ import thunk from "redux-thunk";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import myApp from './reducers';
-import App from './components/app.jsx';
+import App from './containers/app.jsx';
 import { init } from "./actions/index.js"
 import { devToolsEnhancer, composeWithDevTools } from 'redux-devtools-extension';
 
