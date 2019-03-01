@@ -13,14 +13,9 @@ class LeftTask extends React.Component {
     }
 
     render() {
-
-        var tempStyle = {
-            "borderStyle": "solid"
-        };
-
         return (
             <div>
-                <table style={tempStyle}>
+                <table>
                     <tbody>
                         <tr>
                             <td>

@@ -19,10 +19,7 @@ class TaskList extends React.Component {
     taskList() {
         const items = this.props.tasks.map((task) =>
             <li key={task.id}>
-                <LeftTask
-                    task={task}
-                    action={this.childSelected}
-                />
+                <LeftTask task={task} action={this.childSelected} />
             </li>);
         return (<ul>{items}</ul>);
     }
@@ -30,7 +27,7 @@ class TaskList extends React.Component {
     render() {
         return (
             <div>
-                <p>This is our Task List!</p>
+                <h3>To do</h3>
                 {this.taskList()}
             </div>
         );
