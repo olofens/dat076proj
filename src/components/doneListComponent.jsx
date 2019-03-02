@@ -15,7 +15,7 @@ class DoneListComponent extends React.Component {
             <li key={task.id}>
                 <RightTask
                     task={task}
-                    click={this.props.click}
+                    action={this.props.click}
                 />
             </li>);
         return (<ul>{items}</ul>);
