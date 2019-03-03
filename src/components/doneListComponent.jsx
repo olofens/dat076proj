@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import RightTask from "../components/rightTask.jsx";
 import { doneClick } from "../actions/index.js"
+import "./column.css"
 
 class DoneListComponent extends React.Component {
     constructor(props) {
@@ -23,7 +24,8 @@ class DoneListComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="column">
+                <h3 className="title">Done</h3>
                 {this.taskList()}
             </div>
         );

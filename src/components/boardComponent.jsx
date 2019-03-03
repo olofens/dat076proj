@@ -25,7 +25,8 @@ class BoardComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="column">
+                <h3 className="title">Board</h3>
                 {this.taskList()}
             </div>
         );
