@@ -15,9 +15,9 @@ class App extends React.Component {
         return (
             <div className="container">
                 <div className="itemHeader"> <Header /> </div>
-                <div className="itemSidebar1 column"><TaskListContainer /></div>
-                <div className="itemSidebar2 column"><DoneListContainer /></div>
-                <div className="itemContent column"><BoardContainer /></div>
+                <div className="itemSidebar1"><TaskListContainer /></div>
+                <div className="itemSidebar2"><DoneListContainer /></div>
+                <div className="itemContent"><BoardContainer /></div>
             </div>
         );
     }

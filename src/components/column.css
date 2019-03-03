@@ -1,0 +1,27 @@
+.column {
+    border-style: solid;
+    border-color: black;
+    align-content: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    align-content: center;
+    display: inline-block;
+    margin: auto;
+}
+
+li {
+    display: inline-block;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.title {
+    font-size: 20pt;
+    border-bottom-style: solid;
+    border-color: gray;
+    text-align: center;
+    margin: 0;
+}

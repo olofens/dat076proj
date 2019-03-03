@@ -21,31 +21,3 @@
 .itemSidebar2{
     grid-area: sidebar-2;
 }
-
-.column {
-    background-color:red;
-}
-
-h3 {
-    text-align: center;
-    border-style: none none solid none;
-    border-bottom-color: gray;
-    border-bottom-width: 2px;
-    font-size: 20;
-    margin-top: 0;
-    margin-bottom:0;
-}
-
-ul {
-    list-style-type: none;
-    display: inline-block;
-    padding: 0px;
-}
-
-li {
-    display: inline-block;
-    border-style: solid;
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-}

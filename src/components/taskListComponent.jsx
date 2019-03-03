@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import LeftTask from "../components/leftTask.jsx"
+import "./column.css";
 
 class TaskListComponent extends React.Component {
     constructor(props) {
@@ -17,8 +18,8 @@ class TaskListComponent extends React.Component {
 
     render() {
         return (
-            <div>
-                <h3>To do</h3>
+            <div className="column">
+                <h3 className="title">To do</h3>
                 {this.taskList()}
             </div>
         );
