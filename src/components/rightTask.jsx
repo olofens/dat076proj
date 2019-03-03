@@ -12,27 +12,21 @@ class RightTask extends React.Component {
   }
 
   render() {
-    var tempStyle = {
-      borderStyle: "solid"
-    };
-
     return (
-      <div>
-        <table style={tempStyle}>
-          <tbody>
-            <tr>
-              <td>{this.props.task.title}</td>
-              <td>{this.props.task.id}</td>
-            </tr>
-            <tr>
-              <td>{this.props.task.description}</td>
-              <td>
-                <button onClick={this.clicked}>Select</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <table className="righttask">
+        <tbody>
+          <tr>
+            <td>{this.props.task.title}</td>
+            <td>{this.props.task.id}</td>
+          </tr>
+          <tr>
+            <td>{this.props.task.description}</td>
+            <td>
+              <button onClick={this.clicked}>Select</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     );
   }
 }
