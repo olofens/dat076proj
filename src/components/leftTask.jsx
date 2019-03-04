@@ -10,6 +10,8 @@ class LeftTask extends React.Component {
 
     clicked() {
         this.props.action(this.props.task)
+
+        
     }
 
     render() {
