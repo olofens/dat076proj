@@ -54,7 +54,7 @@ class MiddleTask extends React.Component {
             </td>
             <td>
               <button onClick={this.toggleTimer}>
-                {this.state.timerOn ? "Start Timer" : "Stop Timer"}
+                {this.state.timerOn ? "Stop Timer" : "Start Timer"}
               </button>
             </td>
             <td>Time: {this.state.time}</td>
