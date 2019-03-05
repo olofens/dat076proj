@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./righttask.css";
 
 class RightTask extends React.Component {
   constructor(props) {

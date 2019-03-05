@@ -12,12 +12,10 @@ class TaskList extends React.Component {
 
     render() {
         return (
-            <div>
-                <TaskListComponent 
-                    tasks={this.props.tasks} 
-                    click={this.props.todoClick}
-                />
-            </div>
+            <TaskListComponent
+                tasks={this.props.tasks}
+                click={this.props.todoClick}
+            />
         );
     }
 }
@@ -29,7 +27,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({ todoClick: todoClick}, dispatch)
+    return bindActionCreators({ todoClick: todoClick }, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(TaskList);

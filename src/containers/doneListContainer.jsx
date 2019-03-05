@@ -13,12 +13,10 @@ class DoneListContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <DoneListComponent 
-          tasks={this.props.tasks}
-          click={this.props.doneClick}
-        />
-      </div>
+      <DoneListComponent
+        tasks={this.props.tasks}
+        click={this.props.doneClick}
+      />
     );
   }
 }
