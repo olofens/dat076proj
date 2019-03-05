@@ -23,5 +23,18 @@ def addTask():
 
     dbconn.createTask(userId,title,description,estimatedTime)
 
+
+@app.route("/update_task")
+def updateTask():
+    taskId = request.form['id']
+    title = request.form['title']
+    description = request.form['description']
+    elapsedTime = request.form['elapsedTime']
+    estimatedTime = request.form['estimatedTime']
+    
+    dbconn.updateTask(taskId,title,description,elapsedTime, estimatedTime)
+
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=os.environ.get('PORT', 3000), debug=True)

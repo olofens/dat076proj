@@ -54,7 +54,14 @@ def createTask(userId, title, description, estimatedTime):
 
     conn.close()
     
+def updateTask(userId, title, description, elapsedTime, estimatedTime):
+    conn = getOpenConnection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
 
+    cur.execute("UPDATE tasks SET (title, description, elapsedTime, estimatedTime) = (%s,%s,%s,%s) WHERE userId = %s",
+    (title, description, elapsedTime, estimatedTime, userId))
+    
+    conn.close()
 
 
 
