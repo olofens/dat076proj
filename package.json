@@ -19,6 +19,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "dev-tools": "^0.1.6",
+    "prop-types": "^15.7.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^6.0.1",

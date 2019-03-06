@@ -1,7 +1,8 @@
 const initialState = {
     todoTasks: [],
     doingTasks: [],
-    doneTasks: []
+    doneTasks: [], 
+    heldTasks: []
 }
 
 export default (state = initialState, action) => {
@@ -35,6 +36,49 @@ export default (state = initialState, action) => {
                 todoTasks: action.todoTasks
             })
 
+        case 'DRAG': // not used atm
+            if (action.payload.column == "LEFT") {
+                return Object.assign({}, state, {
+                    heldTasks: state.todoTasks.filter((task) => task.id === parseInt(action.payload.id))
+                })
+            }
+
+            else if (action.payload.column == "MIDDLE") {
+                return Object.assign({}, state, {
+                    heldTasks: state.doingTasks.filter((task) => task.id === parseInt(action.payload.id))
+                })
+            }
+
+            else if (action.payload.column == "RIGHT") {
+                return Object.assign({}, state, {
+                    heldTasks: state.doneTasks.filter((task) => task.id === parseInt(action.payload.id))
+                })
+            }
+        
+        case 'DROP':
+            if (action.payload.columnFrom == action.payload.columnTo) {
+                break;
+            } 
+
+            console.log("DROP RUNNING");
+            console.log("colfrom: " + action.payload.columnFrom);
+            console.log("colto: " + action.payload.columnTo);
+
+            var fromCol = getArray(action.payload.columnFrom, state);
+            var toCol = getArray(action.payload.columnTo, state);
+
+            console.log(fromCol);
+            console.log(toCol);
+
+            var movedTask = fromCol.filter((task) => task.id === parseInt(action.payload.id));
+
+            console.log(fromCol);
+
+            return Object.assign({}, state, {
+                [action.payload.columnFrom]: fromCol.filter((task) => task.id !== parseInt(action.payload.id)),
+                [action.payload.columnTo]: toCol.concat(movedTask)
+            })
+            
         default:
             return state
     }
@@ -43,14 +87,15 @@ export default (state = initialState, action) => {
 
 
 
-function getArray(name) {
+function getArray(name, state) {
     switch (name) {
         case 'todoTasks':
-            return initialState.todoTasks
+            console.log("hello");
+            return state.todoTasks
         case 'doingTasks':
-            return initialState.doingTasks
+            return state.doingTasks
         case 'doneTasks':
-            return initialState.doneTasks
+            return state.doneTasks
         default:
             return null
     }

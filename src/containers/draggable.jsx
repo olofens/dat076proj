@@ -1,13 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
+import { dragTask } from "../actions/index.js"
 
-export default class Draggable extends React.Component {
-
-    drag = (event) => {
-        event.dataTransfer.setData("transfer", event.target.id);
+class Draggable extends React.Component {
+    constructor(props) {
+        super(props);
     }
 
-    noAllowDrop = (event) => {
+    drag(event) {
+        var column = getColumnName(event.target);
+        event.dataTransfer.setData("transfer", JSON.stringify({id: event.target.id, column: column}));
+        console.log("dragging from: " + column);
+    }
+
+    noAllowDrop(event) {
         event.stopPropagation();
     }
 
@@ -20,8 +28,25 @@ export default class Draggable extends React.Component {
     }
 }
 
-Draggable.propTypes = {
-    id: PropTypes.string,
-    style: PropTypes.object, 
-    children: PropTypes.node
+function getColumnName(x) {
+    while (x = x.parentNode) {
+        if (x.id == "drop1") return "todoTasks";
+        else if(x.id == "drop2") return "doingTasks";
+        else if(x.id == "drop3") return "doneTasks";
+    }
+    console.log("Something went wrong in getColumnName, droppable");
+    return "NONE";
 }
+
+Draggable.propTypes = {
+    id: PropTypes.number,
+    style: PropTypes.object, 
+    children: PropTypes.node,
+    dragTask: PropTypes.func
+}
+
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({ dragTask: dragTask }, dispatch)
+}
+
+export default connect(null, matchDispatchToProps)(Draggable);

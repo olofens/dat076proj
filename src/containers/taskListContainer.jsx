@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { todoClick } from "../actions/index.js"
 import TaskListComponent from '../components/taskListComponent.jsx';
+import Droppable from "./droppable.jsx"
 
 class TaskList extends React.Component {
     constructor(props) {
@@ -12,10 +13,12 @@ class TaskList extends React.Component {
 
     render() {
         return (
-            <TaskListComponent
+            <Droppable id="drop1">
+                <TaskListComponent
                 tasks={this.props.tasks}
                 click={this.props.todoClick}
-            />
+                />
+            </Droppable>
         );
     }
 }
