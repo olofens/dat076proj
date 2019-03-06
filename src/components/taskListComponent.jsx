@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import LeftTask from "../components/leftTask.jsx"
 import "./column.css";
 import Draggable from "../containers/draggable.jsx"
+import Droppable from "../containers/droppable.jsx"
 import { strict } from 'assert';
 
 class TaskListComponent extends React.Component {
@@ -24,9 +25,12 @@ class TaskListComponent extends React.Component {
     render() {
         return (
             <div className="column">
-                <h3 className="title">To do</h3>
-                {this.taskList()}
+                <Droppable id="drop1">
+                    <h3 className="title">To do</h3>
+                    {this.taskList()}
+                </Droppable>
             </div>
+
         );
     }
 }

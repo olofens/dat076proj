@@ -13,12 +13,12 @@ class TaskList extends React.Component {
 
     render() {
         return (
-            <Droppable id="drop1">
+            
                 <TaskListComponent
                 tasks={this.props.tasks}
                 click={this.props.todoClick}
                 />
-            </Droppable>
+            
         );
     }
 }

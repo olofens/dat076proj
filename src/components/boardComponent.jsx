@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { doingClickBack, doingClickForward } from "../actions/index.js"
-import MiddleTask from "../components/middleTask.jsx"
-import Draggable from "../containers/draggable.jsx"
+import { doingClickBack, doingClickForward } from "../actions/index.js";
+import MiddleTask from "../components/middleTask.jsx";
+import Draggable from "../containers/draggable.jsx";
+import Droppable from "../containers/droppable.jsx";
 
 class BoardComponent extends React.Component {
     constructor(props) {
@@ -28,8 +29,10 @@ class BoardComponent extends React.Component {
     render() {
         return (
             <div className="column">
-                <h3 className="title">Board</h3>
-                {this.taskList()}
+                <Droppable id="drop2">
+                    <h3 className="title">Board</h3>
+                    {this.taskList()}
+                </Droppable>
             </div>
         );
     }

@@ -27,7 +27,7 @@ class Droppable extends React.Component {
 
     render() {
         return (
-            <div id={this.props.id} onDrop={this.drop} onDragOver={this.allowDrop} style={this.props.style}>
+            <div id={this.props.id} onDrop={this.drop} onDragOver={this.allowDrop} style={{"height" : "100%"}}>
                 {this.props.children}
             </div>
         );
@@ -45,8 +45,7 @@ function getColumnName(x) {
 }
 
 Droppable.propTypes = {
-    id: PropTypes.string,
-    style: PropTypes.object, 
+    id: PropTypes.string, 
     children: PropTypes.node,
     dropTask: PropTypes.func
 }

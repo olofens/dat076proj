@@ -14,12 +14,10 @@ class DoneListContainer extends React.Component {
 
     render() {
         return (
-            <Droppable id="drop3">
-                <DoneListComponent
-                    tasks={this.props.tasks}
-                    click={this.props.doneClick}
-                />
-            </Droppable>
+            <DoneListComponent
+                tasks={this.props.tasks}
+                click={this.props.doneClick}
+            />
         );
     }
 }

@@ -13,13 +13,11 @@ class BoardContainer extends React.Component {
 
     render() {
         return (
-            <Droppable id="drop2">
-                <BoardComponent
-                    tasks={this.props.tasks}
-                    forwardClick={this.props.doingClickForward}
-                    backClick={this.props.doingClickBack}
-                />
-            </Droppable>
+            <BoardComponent
+                tasks={this.props.tasks}
+                forwardClick={this.props.doingClickForward}
+                backClick={this.props.doingClickBack}
+            />
         );
     }
 }
