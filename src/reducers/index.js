@@ -56,10 +56,6 @@ export default (state = initialState, action) => {
             }
 
         case 'DROP':
-            if (action.payload.columnFrom == action.payload.columnTo) {
-                break;
-            }
-
             var fromCol = getArray(action.payload.columnFrom, state);
             var toCol = getArray(action.payload.columnTo, state);
             var movedTask = fromCol.filter((task) => task.id === parseInt(action.payload.id));

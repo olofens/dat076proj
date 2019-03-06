@@ -18,7 +18,9 @@ class Droppable extends React.Component {
         var ontoColumn = getColumnName(event.target);
         
         // 'this' isn't recognized in this function. Assigning this to self in the constructor fixed it. 
-        self.props.dropTask(id, fromColumn, ontoColumn);
+        if (fromColumn !== ontoColumn) {
+            self.props.dropTask(id, fromColumn, ontoColumn);
+        }
     }
 
     allowDrop(event) {
