@@ -13,11 +13,26 @@ class MiddleTask extends React.Component {
     this.toggleTimer = this.toggleTimer.bind(this);
   }
 
+  updateElapsedTime() {
+    const toggledTime = this.state.time + this.props.task.elapsedtime;
+    //Replace console log with database call?
+    console.log(
+      "IMAGINARY DATABASE CALL: UPDATE ELAPSEDTIME WITH: + ",
+      toggledTime
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   clickedBack() {
+    this.updateElapsedTime();
     this.props.actionBack(this.props.task);
   }
 
   clickedForward() {
+    this.updateElapsedTime();
     this.props.actionForward(this.props.task);
   }
 
