@@ -19,9 +19,12 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "dev-tools": "^0.1.6",
+    "formik": "^1.5.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-modal": "^3.8.1",
     "react-redux": "^6.0.1",
+    "react-responsive-modal": "^3.6.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"

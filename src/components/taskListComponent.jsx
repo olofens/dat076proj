@@ -6,6 +6,8 @@ import "./column.css";
 class TaskListComponent extends React.Component {
     constructor(props) {
         super(props);
+        
+
     }
 
     taskList() {
@@ -16,11 +18,16 @@ class TaskListComponent extends React.Component {
         return (<ul>{items}</ul>);
     }
 
+   
+
     render() {
         return (
             <div className="column">
                 <h3 className="title">To do</h3>
                 {this.taskList()}
+                <button type="button" onClick={this.props.showModal}>
+                    Create New Task
+                </button>
             </div>
         );
     }

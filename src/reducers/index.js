@@ -1,7 +1,8 @@
 const initialState = {
     todoTasks: [],
     doingTasks: [],
-    doneTasks: []
+    doneTasks: [],
+    modalIsOpen: false
 }
 
 export default (state = initialState, action) => {
@@ -30,10 +31,22 @@ export default (state = initialState, action) => {
                 doingTasks: state.doingTasks.concat([action.payload.task])
             })
 
+        case 'SHOW_MODAL':
+            return Object.assign({}, state, {
+                modalIsOpen : true
+        })
+
+        case 'HIDE_MODAL':
+            return Object.assign({}, state, {
+                modalIsOpen : false
+        })
+
         case 'INIT':
             return Object.assign({}, state, {
                 todoTasks: action.todoTasks
             })
+
+        
 
         default:
             return state
