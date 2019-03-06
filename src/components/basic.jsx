@@ -9,9 +9,9 @@ const Basic = () => (
     <h2>Add New Task</h2>
     <Formik
         initialValues={{
-           first_name: '',
-           email_address: '',
-           gender: ''
+            title: '',
+           description: '',
+           estimatedTime: ''
         }}
         validate={(values) => {
           let errors = [];
@@ -22,15 +22,32 @@ const Basic = () => (
              //check if my values have errors
              return errors;
         }}
-        onSubmit={this}
+        onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              console.log(JSON.stringify(values, null, 2));
+              fetch("http://127.0.0.1:3000/add_task", {
+  method: "post",
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+
+  //make sure to serialize your JSON body
+  body: JSON.stringify(values, null, 2)
+})
+
+              setSubmitting(false);
+            }, 500);
+          }}
+
         render={formProps => {
           return(
             <Form>
                 <p>
-                    <Field 
+                <Field 
                  type="text" 
-                 name="first_name" 
-                 placeholder="First Name" 
+                 name="title" 
+                 placeholder="Title" 
                /> 
                <ErrorMessage name="first_name" />
                 </p>
@@ -38,30 +55,25 @@ const Basic = () => (
                 <p>
                 <Field 
                   type="text" 
-                  name="email" 
-                  placeholder="Email address" 
+                  name="estimatedTime" 
+                  placeholder="Estimated Time" 
 			         	/> 
-                <ErrorMessage name="email" />
+                <ErrorMessage name="estimated_time" />
                 </p>
 
                 <p>
-                <Field
-                  name="gender" 
-                  component="select" 
-                  placeholder="Your Gender">   
-                     <option value="male">Male</option>
-                     <option value="female">Female</option>
-                </Field>
+                <Field component="textarea"
+                  type="text" 
+                  name="description" 
+                  placeholder="Task Description" 
+			         	/> 
+                <ErrorMessage name="estimated_time" />
                 </p>
 		
-		<ErrorMessage name="gender" />
-        
-        
         <Button 
         variant="primary"
-        type="submit" 
-        disabled={formProps.isSubmitting}>
-        Create1
+        type="submit" >
+        Add Task
         </Button>
                  
                 
@@ -71,5 +83,8 @@ const Basic = () => (
      />
   </div>
 );
+
+
+
 
 export default Basic;

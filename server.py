@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
 import os
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request, json
 import dbconn
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -14,14 +15,23 @@ def tasks():
     myList = dbconn.getTasks()
     return jsonify(myList)
 
-@app.route("/add_task")
+@app.route("/add_task", methods=['GET', 'POST'])
 def addTask():
-    userId = request.form['userId']
-    title = request.form['title']
-    description = request.form['description']
-    estimatedTime = request.form['estimatedTime']
+    
+    req_data = request.get_json()
 
-    dbconn.createTask(userId,title,description,estimatedTime)
+   
+
+    print(json.dumps(req_data))
+
+    title = req_data['title']
+    description = req_data['description']
+    estimatedTime = req_data['estimatedTime']
+
+
+    dbconn.createTask("Erik",title,description,estimatedTime)
+
+    return 'OK'
 
 
 @app.route("/update_task")
