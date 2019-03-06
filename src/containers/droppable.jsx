@@ -13,14 +13,12 @@ class Droppable extends React.Component {
     drop(event) {
         event.preventDefault();
         const data = JSON.parse(event.dataTransfer.getData("transfer"));
-        console.log("data: below");
-        console.log(data.column);
         var id = data.id;
         var fromColumn = data.column;
         var ontoColumn = getColumnName(event.target);
-        console.log("dropping onto: " + ontoColumn);
+        
+        // 'this' isn't recognized in this function. Assigning this to self in the constructor fixed it. 
         self.props.dropTask(id, fromColumn, ontoColumn);
-
     }
 
     allowDrop(event) {

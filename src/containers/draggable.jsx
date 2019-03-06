@@ -12,7 +12,6 @@ class Draggable extends React.Component {
     drag(event) {
         var column = getColumnName(event.target);
         event.dataTransfer.setData("transfer", JSON.stringify({id: event.target.id, column: column}));
-        console.log("dragging from: " + column);
     }
 
     noAllowDrop(event) {

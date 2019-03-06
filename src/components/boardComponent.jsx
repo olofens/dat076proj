@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { doingClickBack, doingClickForward } from "../actions/index.js"
 import MiddleTask from "../components/middleTask.jsx"
-
+import Draggable from "../containers/draggable.jsx"
 
 class BoardComponent extends React.Component {
     constructor(props) {
@@ -13,13 +13,15 @@ class BoardComponent extends React.Component {
 
     taskList() {
         var items = this.props.tasks.map((task) =>
-            <li key={task.id}>
-                <MiddleTask
-                    task={task}
-                    actionBack={this.props.backClick}
-                    actionForward={this.props.forwardClick}
-                />
-            </li>);
+            <Draggable id={task.id} key={task.id}>
+                <li>
+                    <MiddleTask
+                        task={task}
+                        actionBack={this.props.backClick}
+                        actionForward={this.props.forwardClick}
+                    />
+                </li>
+            </Draggable>);
         return (<ul>{items}</ul>);
     }
 

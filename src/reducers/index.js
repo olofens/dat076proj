@@ -1,7 +1,7 @@
 const initialState = {
     todoTasks: [],
     doingTasks: [],
-    doneTasks: [], 
+    doneTasks: [],
     heldTasks: []
 }
 
@@ -23,8 +23,8 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 doingTasks: state.doingTasks.filter((task) => task.id !== action.payload.task.id),
                 doneTasks: state.doneTasks.concat([action.payload.task])
-            }) 
-            
+            })
+
         case 'DONE_CLICK':
             return Object.assign({}, state, {
                 doneTasks: state.doneTasks.filter((task) => task.id !== action.payload.task.id),
@@ -54,31 +54,21 @@ export default (state = initialState, action) => {
                     heldTasks: state.doneTasks.filter((task) => task.id === parseInt(action.payload.id))
                 })
             }
-        
+
         case 'DROP':
             if (action.payload.columnFrom == action.payload.columnTo) {
                 break;
-            } 
-
-            console.log("DROP RUNNING");
-            console.log("colfrom: " + action.payload.columnFrom);
-            console.log("colto: " + action.payload.columnTo);
+            }
 
             var fromCol = getArray(action.payload.columnFrom, state);
             var toCol = getArray(action.payload.columnTo, state);
-
-            console.log(fromCol);
-            console.log(toCol);
-
             var movedTask = fromCol.filter((task) => task.id === parseInt(action.payload.id));
-
-            console.log(fromCol);
 
             return Object.assign({}, state, {
                 [action.payload.columnFrom]: fromCol.filter((task) => task.id !== parseInt(action.payload.id)),
                 [action.payload.columnTo]: toCol.concat(movedTask)
             })
-            
+
         default:
             return state
     }
