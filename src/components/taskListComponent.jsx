@@ -9,6 +9,8 @@ import { strict } from 'assert';
 class TaskListComponent extends React.Component {
     constructor(props) {
         super(props);
+        
+
     }
 
     taskList() {
@@ -22,6 +24,8 @@ class TaskListComponent extends React.Component {
         return (<ul>{items}</ul>);
     }
 
+   
+
     render() {
         return (
             <div className="column">
@@ -29,6 +33,9 @@ class TaskListComponent extends React.Component {
                     <h3 className="title">To do</h3>
                     {this.taskList()}
                 </Droppable>
+                <button type="button" onClick={this.props.showModal}>
+                    Create New Task
+                </button>
             </div>
 
         );
