@@ -1,8 +1,17 @@
 // Render Prop
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import Button from 'react-bootstrap/Button';
+import * as Yup from 'yup';
 
+
+const addTaskSchema = Yup.object().shape({
+  title: Yup.string()
+    .required('Required'),
+  description: Yup.string() 
+    .required('Required'),
+  estimatedTime: Yup.string()
+    .required('Required'),
+});
 
 const addTaskForm = () => (
   <div>
@@ -13,15 +22,7 @@ const addTaskForm = () => (
            description: '',
            estimatedTime: ''
         }}
-        validate={(values) => {
-          let errors = [];
-      
-          if(!values.email)
-             errors.email = "Email Address Required";
-              
-             //check if my values have errors
-             return errors;
-        }}
+        validationSchema={addTaskSchema}
         onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               console.log(JSON.stringify(values, null, 2));
@@ -49,7 +50,7 @@ const addTaskForm = () => (
                  name="title" 
                  placeholder="Title" 
                /> 
-               <ErrorMessage name="first_name" />
+               <ErrorMessage name="title" />
                 </p>
             
                 <p>
@@ -58,7 +59,7 @@ const addTaskForm = () => (
                   name="estimatedTime" 
                   placeholder="Estimated Time" 
 			         	/> 
-                <ErrorMessage name="estimated_time" />
+                <ErrorMessage name="estimatedTime" />
                 </p>
 
                 <p>
@@ -67,13 +68,13 @@ const addTaskForm = () => (
                   name="description" 
                   placeholder="Task Description" 
 			         	/> 
-                <ErrorMessage name="estimated_time" />
+                <ErrorMessage name="description" />
                 </p>
 		
-        <Button 
+        <button 
         type="submit" >
         Add Task
-        </Button>
+        </button>
                  
               </Form>
            );
