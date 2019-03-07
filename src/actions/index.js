@@ -41,3 +41,18 @@ export const updateTasks = (data) => {
         todoTasks: data
     }
 }
+
+export const dragTask = (id, column) => {
+    console.log("drag");
+    return {
+        type: "DRAG",
+        payload: {id: id, column: column}
+    }
+}
+
+export const dropTask = (id, columnFrom, columnTo) => {
+    return {
+        type: "DROP", 
+        payload: {id: id, columnFrom: columnFrom, columnTo:columnTo}
+    }
+}

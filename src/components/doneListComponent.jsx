@@ -3,8 +3,10 @@ import ReactDOM from "react-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import RightTask from "../components/rightTask.jsx";
-import { doneClick } from "../actions/index.js"
-import "./column.css"
+import { doneClick } from "../actions/index.js";
+import Draggable from "../containers/draggable.jsx";
+import Droppable from "../containers/droppable.jsx";
+import "./column.css";
 
 class DoneListComponent extends React.Component {
     constructor(props) {
@@ -13,20 +15,24 @@ class DoneListComponent extends React.Component {
 
     taskList() {
         var items = this.props.tasks.map((task) =>
-            <li key={task.id}>
-                <RightTask
-                    task={task}
-                    action={this.props.click}
-                />
-            </li>);
+            <Draggable id={task.id} key={task.id}>
+                <li>
+                    <RightTask
+                        task={task}
+                        action={this.props.click}
+                    />
+                </li>
+            </Draggable>);
         return (<ul>{items}</ul>);
     }
 
     render() {
         return (
             <div className="column">
-                <h3 className="title">Done</h3>
-                {this.taskList()}
+                <Droppable id="drop3">
+                    <h3 className="title">Done</h3>
+                    {this.taskList()}
+                </Droppable>
             </div>
         );
     }

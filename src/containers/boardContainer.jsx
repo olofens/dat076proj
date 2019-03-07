@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { doingClickBack, doingClickForward } from "../actions/index.js"
 import BoardComponent from "../components/boardComponent.jsx"
+import Droppable from "./droppable.jsx"
 
 class BoardContainer extends React.Component {
     constructor(props) {
@@ -12,11 +13,11 @@ class BoardContainer extends React.Component {
 
     render() {
         return (
-            <BoardComponent 
+            <BoardComponent
                 tasks={this.props.tasks}
                 forwardClick={this.props.doingClickForward}
                 backClick={this.props.doingClickBack}
-             />
+            />
         );
     }
 }

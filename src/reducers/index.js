@@ -1,7 +1,8 @@
 const initialState = {
     todoTasks: [],
     doingTasks: [],
-    doneTasks: []
+    doneTasks: [],
+    heldTasks: []
 }
 
 export default (state = initialState, action) => {
@@ -22,8 +23,8 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 doingTasks: state.doingTasks.filter((task) => task.id !== action.payload.task.id),
                 doneTasks: state.doneTasks.concat([action.payload.task])
-            }) 
-            
+            })
+
         case 'DONE_CLICK':
             return Object.assign({}, state, {
                 doneTasks: state.doneTasks.filter((task) => task.id !== action.payload.task.id),
@@ -35,6 +36,35 @@ export default (state = initialState, action) => {
                 todoTasks: action.todoTasks
             })
 
+        case 'DRAG': // not used atm
+            if (action.payload.column == "LEFT") {
+                return Object.assign({}, state, {
+                    heldTasks: state.todoTasks.filter((task) => task.id === parseInt(action.payload.id))
+                })
+            }
+
+            else if (action.payload.column == "MIDDLE") {
+                return Object.assign({}, state, {
+                    heldTasks: state.doingTasks.filter((task) => task.id === parseInt(action.payload.id))
+                })
+            }
+
+            else if (action.payload.column == "RIGHT") {
+                return Object.assign({}, state, {
+                    heldTasks: state.doneTasks.filter((task) => task.id === parseInt(action.payload.id))
+                })
+            }
+
+        case 'DROP':
+            var fromCol = getArray(action.payload.columnFrom, state);
+            var toCol = getArray(action.payload.columnTo, state);
+            var movedTask = fromCol.filter((task) => task.id === parseInt(action.payload.id));
+
+            return Object.assign({}, state, {
+                [action.payload.columnFrom]: fromCol.filter((task) => task.id !== parseInt(action.payload.id)),
+                [action.payload.columnTo]: toCol.concat(movedTask)
+            })
+
         default:
             return state
     }
@@ -43,14 +73,15 @@ export default (state = initialState, action) => {
 
 
 
-function getArray(name) {
+function getArray(name, state) {
     switch (name) {
         case 'todoTasks':
-            return initialState.todoTasks
+            console.log("hello");
+            return state.todoTasks
         case 'doingTasks':
-            return initialState.doingTasks
+            return state.doingTasks
         case 'doneTasks':
-            return initialState.doneTasks
+            return state.doneTasks
         default:
             return null
     }
