@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Button from 'react-bootstrap/Button';
 
 
-const Basic = () => (
+const addTaskForm = () => (
   <div>
     <h2>Add New Task</h2>
     <Formik
@@ -71,12 +71,10 @@ const Basic = () => (
                 </p>
 		
         <Button 
-        variant="primary"
         type="submit" >
         Add Task
         </Button>
                  
-                
               </Form>
            );
         }}
@@ -87,4 +85,4 @@ const Basic = () => (
 
 
 
-export default Basic;
+export default addTaskForm;

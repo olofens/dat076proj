@@ -20,17 +20,15 @@ def addTask():
     
     req_data = request.get_json()
 
-   
-
     print(json.dumps(req_data))
 
     title = req_data['title']
     description = req_data['description']
     estimatedTime = req_data['estimatedTime']
 
-
     dbconn.createTask("Erik",title,description,estimatedTime)
 
+    #For testing purposes
     return 'OK'
 
 

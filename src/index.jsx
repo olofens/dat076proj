@@ -8,6 +8,7 @@ import App from './containers/app.jsx';
 import { init } from "./actions/index.js"
 import { devToolsEnhancer, composeWithDevTools } from 'redux-devtools-extension';
 
+
 let store = createStore(myApp, composeWithDevTools(applyMiddleware(thunk)));
 store.dispatch(init());
 

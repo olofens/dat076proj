@@ -3,17 +3,18 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { showModal, hideModal } from "../actions/index.js"
-//import ModalComponent from '../components/modalComponent.jsx';
-//import Modal from 'react-modal';
-//import Modal from 'react-bootstrap/Modal'
+
 import Modal from 'react-responsive-modal';
-import Basic1 from '../components/basic.jsx'
-//import "../components/basic1helper.css"
+//import Modal from 'react-bootstrap/Modal';
+//import Button from 'react-bootstrap/Button';
+//import 'bootstrap/dist/css/bootstrap.css';
+
+import AddTaskForm from '../components/addTaskForm.jsx'
 
 
 
 
-
+//Fix better styling!
 const customStyles = {
     content : {
       top                   : '50%',
@@ -43,11 +44,12 @@ class ModalContainer extends React.Component {
           onClose={this.props.hideModal}
           center
           focusTrapped
-          style={customStyles}
+          //style={customStyles}
         >
-          <Basic1/>
+          <AddTaskForm/>
         </Modal>
             
+           
         );
     }
 }

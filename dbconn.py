@@ -49,7 +49,6 @@ def getTasks():
 def createTask(userId, title, description, estimatedTime):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
-    print(userId + " " + title + " " +  description + " " +  estimatedTime)
 
     cur.execute("INSERT INTO tasks(userId,title,description,estimatedTime) VALUES (%s,%s,%s,%s);", (userId, title, description, estimatedTime))
 
