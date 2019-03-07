@@ -26,6 +26,22 @@ export const doneClick = (task) => {
     }
 }
 
+export const showModal = () => {
+    return {
+        type: 'SHOW_MODAL'
+        
+    }
+}
+
+export const hideModal = () => {
+    return {
+        type: 'HIDE_MODAL'
+        
+    }
+}
+
+
+
 export const init = () => {
     return(dispatch) => {
         return fetch("http://127.0.0.1:3000/tasks").then(response => response.json()) .then((responseData) => {
