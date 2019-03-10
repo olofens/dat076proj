@@ -10,6 +10,7 @@
   border-radius: 5px;
   background-color: lightgrey;
   border-color: gray;
+  opacity: 0.5;
 }
 .titleText {
   font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic,
