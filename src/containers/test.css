@@ -1,23 +1,23 @@
 .container {
-    display: grid;
-    grid-gap: 15px;
-    grid-template-columns: 200px 1fr 200px;
-    grid-template-rows: 100px 200px 200px;
-    grid-template-areas: 
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: 100px 1fr 1fr;
+  grid-template-areas:
     "header header header"
     "sidebar-1 content sidebar-2"
-    "sidebar-1 content sidebar-2"
+    "sidebar-1 content sidebar-2";
 }
 
-.itemHeader{
-    grid-area: header;
+.itemHeader {
+  grid-area: header;
 }
-.itemSidebar1{
-    grid-area: sidebar-1;
+.itemSidebar1 {
+  grid-area: sidebar-1;
 }
-.itemContent{
-    grid-area: content;
+.itemContent {
+  grid-area: content;
 }
-.itemSidebar2{
-    grid-area: sidebar-2;
+.itemSidebar2 {
+  grid-area: sidebar-2;
 }
