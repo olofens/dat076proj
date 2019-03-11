@@ -1,11 +1,11 @@
 .column {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: lightgrey;
-    border-radius: 5px;
-    border-style: none;
-    border-color: black;
-    align-content: center;
-    height: 90%;
+  font-family: Arial, Helvetica, sans-serif;
+  background: rgb(211, 211, 211, 0.5);
+  border-radius: 5px;
+  border-style: none;
+  border-color: black;
+  align-content: center;
+  height: 90%;
 }
 
 ul {
@@ -20,19 +20,19 @@ ul {
 }
 
 li {
-    background-color: white;
-    border-radius: 7px;
-    margin-top: 10px;
-    margin-left: 5%;
-    margin-right: 5%;
-    padding: 5px;
+  background-color: rgb(172, 167, 167);
+  border-radius: 7px;
+  margin-top: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 5px;
 }
 
 .title {
-    font-size: 20pt;
-    border-bottom-style: solid;
-    border-color: gray;
-    text-align: center;
-    padding-top: 10px;
-    margin: 0px;
+  font-size: 20pt;
+  border-bottom-style: solid;
+  border-color: rgb(78, 77, 77);
+  text-align: center;
+  padding-top: 10px;
+  margin: 0px;
 }
