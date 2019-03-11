@@ -2,7 +2,7 @@
     display: grid;
     grid-gap: 15px;
     grid-template-columns: 200px 1fr 200px;
-    grid-template-rows: 100px 200px 200px;
+    grid-template-rows: 8% 35% 35%;
     grid-template-areas: 
     "header header header"
     "sidebar-1 content sidebar-2"
