@@ -1,0 +1,104 @@
+import {history} from "./../helpers/history.js"
+
+const initialState = {
+    todoTasks: [],
+    doingTasks: [],
+    doneTasks: [],
+    authenticated: false,
+    modalIsOpen: false
+}
+
+export default(state = initialState, action) => {
+    switch (action.type) {
+        case 'TODO_CLICK':
+            return Object.assign({}, state, {
+                todoTasks: state.todoTasks.filter((task) => task.id !== action.payload.task.id),
+                doingTasks: state.doingTasks.concat([action.payload.task])
+            })
+
+        case 'DOING_CLICK_BACK':
+            return Object.assign({}, state, {
+                doingTasks: state.doingTasks.filter((task) => task.id !== action.payload.task.id),
+                todoTasks: state.todoTasks.concat([action.payload.task])
+            })
+
+        case 'DOING_CLICK_FORWARD':
+            return Object.assign({}, state, {
+                doingTasks: state.doingTasks.filter((task) => task.id !== action.payload.task.id),
+                doneTasks: state.doneTasks.concat([action.payload.task])
+            })
+
+        case 'DONE_CLICK':
+            return Object.assign({}, state, {
+                doneTasks: state.doneTasks.filter((task) => task.id !== action.payload.task.id),
+                doingTasks: state.doingTasks.concat([action.payload.task])
+            })
+
+        case 'SHOW_MODAL':
+            return Object.assign({}, state, {
+                modalIsOpen : true
+        })
+
+        case 'HIDE_MODAL':
+            return Object.assign({}, state, {
+                modalIsOpen : false
+        })
+
+        case 'INIT':
+            return Object.assign({}, state, {
+                todoTasks: action.todoTasks
+            })
+
+        case 'DRAG': // not used atm
+            if (action.payload.column == "LEFT") {
+                return Object.assign({}, state, {
+                    heldTasks: state.todoTasks.filter((task) => task.id === parseInt(action.payload.id))
+                })
+            }
+
+            else if (action.payload.column == "MIDDLE") {
+                return Object.assign({}, state, {
+                    heldTasks: state.doingTasks.filter((task) => task.id === parseInt(action.payload.id))
+                })
+            }
+
+            else if (action.payload.column == "RIGHT") {
+                return Object.assign({}, state, {
+                    heldTasks: state.doneTasks.filter((task) => task.id === parseInt(action.payload.id))
+                })
+            }
+
+        case 'DROP':
+            var fromCol = getArray(action.payload.columnFrom, state);
+            var toCol = getArray(action.payload.columnTo, state);
+            var movedTask = fromCol.filter((task) => task.id === parseInt(action.payload.id));
+
+            return Object.assign({}, state, {
+                [action.payload.columnFrom]: fromCol.filter((task) => task.id !== parseInt(action.payload.id)),
+                [action.payload.columnTo]: toCol.concat(movedTask)
+            })
+
+        case "AUTH":
+            console.log("auth true");
+            return Object.assign({}, state, {
+                authenticated: true
+            })
+
+        default:
+            return state
+    }
+}
+
+function getArray(name, state) {
+    switch (name) {
+        case 'todoTasks':
+            console.log("hello");
+            return state.todoTasks
+        case 'doingTasks':
+            return state.doingTasks
+        case 'doneTasks':
+            return state.doneTasks
+        default:
+            return null
+    }
+}

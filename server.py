@@ -12,6 +12,11 @@ def tasks():
     myList = dbconn.getTasks()
     return jsonify(myList)
 
+@app.route("/api/auth", methods=['POST'])
+def auth():
+    print(json.dumps(request.get_json()))
+    return jsonify(["success"])
+
 
 @app.route("/add_task", methods=['GET', 'POST'])
 def addTask():
