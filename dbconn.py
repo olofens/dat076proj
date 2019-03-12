@@ -45,6 +45,24 @@ def getTasks():
 
     return tasks
 
+def getElapsedTimeWithID(idNum):
+    conn= getOpenConnection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+
+    cur.execute("SELECT * FROM tasks WHERE id={0}".format(idNum))
+    task = cur.fetchall()
+    #print("Task: ")
+    #print(task)
+    conn.close()
+    return task
+
+def updateTime(idNum, elapsedTime):
+    conn = getOpenConnection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    cur.execute("UPDATE tasks SET elapsedTime = {0} WHERE id = {1}".format(elapsedTime, idNum))
+
+    conn.commit()
+    conn.close()
 
 def createTask(userId, title, description, estimatedTime):
     conn = getOpenConnection()

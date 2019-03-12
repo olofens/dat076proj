@@ -12,6 +12,22 @@ def tasks():
     myList = dbconn.getTasks()
     return jsonify(myList)
 
+@app.route("/get_task", methods=['GET', 'POST'])
+def getTask():
+    searchword = request.args.get('id')
+
+    myTask = dbconn.getElapsedTimeWithID(searchword)
+    #print(json.dumps(myTask))
+
+    return jsonify(myTask)
+
+@app.route("/update_time", methods=['GET', 'POST'])
+def updateTime():
+    #print("Update time:")
+    idNum = request.args.get('id')
+    time = request.args.get('time')
+    dbconn.updateTime(idNum,time)
+    return 'OK'
 
 @app.route("/add_task", methods=['GET', 'POST'])
 def addTask():
