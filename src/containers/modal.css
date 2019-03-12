@@ -41,9 +41,7 @@
   
   input:focus {
     border-color: #007eff;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-      0 0 0 3px rgba(0, 126, 255, 0.1);
-    outline: none;
+        outline: none;
   }
   
   input.error {
@@ -77,6 +75,20 @@
     outline: none;
     -webkit-appearance: none;
   }
+
+  .modalButton:hover:enabled {
+    
+    background-color: rgb(17, 166, 240);
+    
+  }
+
+  .modalButton:focus {
+        border-color: #007eff;
+        box-shadow: 0 0 0 3px rgba(105, 220, 255, 0.8),
+    0 0 0 1.5px rgba(105, 220, 255, 0.8);
+      }
+      
+  
   
   .modalButton:disabled {
     opacity: .5;
