@@ -1,9 +1,17 @@
-export const todoClick = (task) => {
+export const startEditTask = () => {
     return {
-        type: 'TODO_CLICK',
-        payload: {task: task}
+        type: "START_EDIT_TASK",
     }
 }
+
+export const finishEditTask = (task, column) => {
+    return {
+        type: "FINISH_EDIT_TASK",
+        payload: {task: task, column: column}
+    }
+}
+
+
 
 export const doingClickBack = (task) => {
     return {

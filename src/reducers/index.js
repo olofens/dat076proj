@@ -3,16 +3,30 @@ const initialState = {
     doingTasks: [],
     doneTasks: [],
     heldTasks: [],
-    modalIsOpen: false
+    modalIsOpen: false, 
+    editModal: false
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case 'TODO_CLICK':
+        case "START_EDIT_TASK":
             return Object.assign({}, state, {
-                todoTasks: state.todoTasks.filter((task) => task.id !== action.payload.task.id),
-                doingTasks: state.doingTasks.concat([action.payload.task])
+                editModal: true
             })
+        
+        case "FINISH_EDIT_TASK":
+            // testing update. just setting description as of now.
+            action.payload.task.description = "EDITED";
+            
+            var col = getArray(action.payload.column, state);
+            
+            col[action.payload.task] = action.payload.task;
+            
+            return Object.assign({}, state, {
+                editModal: false,
+                [action.payload.column]: col
+            })
+
 
         case 'DOING_CLICK_BACK':
             return Object.assign({}, state, {

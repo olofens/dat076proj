@@ -17,7 +17,7 @@ class TaskListComponent extends React.Component {
         const items = this.props.tasks.map((task) =>
             <Draggable id={task.id} key={task.id}>
                 <li>
-                    <LeftTask task={task} action={this.props.click} />
+                    <LeftTask task={task} openEdit={this.props.openEdit} closeEdit={this.props.closeEdit} />
                 </li>
             </Draggable>);
 

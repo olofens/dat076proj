@@ -9,7 +9,7 @@ class LeftTask extends React.Component {
     }
 
     clicked() {
-        this.props.action(this.props.task)
+        this.props.closeEdit(this.props.task, "todoTasks");
     }
 
     render() {
@@ -29,7 +29,7 @@ class LeftTask extends React.Component {
                             {this.props.task.description}
                         </td>
                         <td>
-                            <button onClick={this.clicked}>Select</button>
+                            <button onClick={this.clicked}>Edit</button>
                         </td>
                     </tr>
                 </tbody>
