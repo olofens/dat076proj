@@ -9,13 +9,14 @@
 }
 
 ul {
-  list-style-type: none;
-  padding: 0;
-  align-content: center;
-  margin: auto;
-  font-size: 11pt;
-  padding-bottom: 10px;
-  height: 100%;
+    list-style-type: none;
+    align-content: center;
+    margin: 0px;
+    padding: 0px;
+    font-size: 11pt;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 93%;
 }
 
 li {
