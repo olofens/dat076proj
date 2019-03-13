@@ -103,28 +103,26 @@ export default (state = initialState, action) => {
 }
 
 
-
-
 function getArray(name, state) {
-    switch (name) {
-        case 'todoTasks':
-            console.log("hello");
-            return state.todoTasks
-        case 'doingTasks':
-            return state.doingTasks
-        case 'doneTasks':
-            return state.doneTasks
-        default:
-            return null
-    }
+  switch (name) {
+    case "todoTasks":
+      console.log("hello");
+      return state.todoTasks;
+    case "doingTasks":
+      return state.doingTasks;
+    case "doneTasks":
+      return state.doneTasks;
+    default:
+      return null;
+  }
 }
 
 function findIndex(array, id) {
-    console.log("given array " + JSON.stringify(array))
-    for (var i = 0; i < array.length; i++) {
-        if (array[i].id === id) {
-            return i;
-        }
+  console.log("given array " + JSON.stringify(array));
+  for (var i = 0; i < array.length; i++) {
+    if (array[i].id === id) {
+      return i;
     }
-    return null;
+  }
+  return null;
 }
