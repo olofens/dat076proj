@@ -5,18 +5,18 @@
   border-style: none;
   border-color: black;
   align-content: center;
-  height: 90%;
+  height: 75vh;
 }
 
 ul {
-    list-style-type: none;
-    align-content: center;
-    margin: 0px;
-    padding: 0px;
-    font-size: 11pt;
-    overflow: scroll;
-    overflow-x: hidden;
-    height: 93%;
+  list-style-type: none;
+  align-content: center;
+  margin: 0px;
+  padding: 0px;
+  font-size: 11pt;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 65vh;
 }
 
 li {

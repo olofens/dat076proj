@@ -13,12 +13,16 @@ html body {
     #0f0c29
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+.appTest {
+  height: 95vh;
+  width: 95vw;
+}
 
 .container {
   display: grid;
   grid-gap: 15px;
-  grid-template-columns: 200px 1fr 200px;
-  grid-template-rows: 100px 1fr 1fr;
+  grid-template-columns: 250px 1fr 250px;
+  grid-template-rows: 15vh 1fr 1fr;
   grid-template-areas:
     "header header header"
     "sidebar-1 content sidebar-2"
