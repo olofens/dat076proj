@@ -1,0 +1,10 @@
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    userID TEXT NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    elapsedTime INTEGER DEFAULT 0 NOT NULL,
+    estimatedTime INTEGER NOT NULL,
+    dateCreated timestamp DEFAULT localtimestamp(0) NOT NULL,
+    dateFinished TEXT DEFAULT NULL
+    );
