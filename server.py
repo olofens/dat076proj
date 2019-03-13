@@ -53,8 +53,19 @@ def addTask():
     # For testing purposes
     return 'OK'
 
+@app.route("/api/update_task", methods=["POST"])
+def apiUpdateTask():
+    req_data = request.get_json()
+    dbconn.updateTask(
+        req_data["id"],
+        req_data["title"],
+        req_data["description"],
+        req_data["elapsedtime"],
+        req_data["estimatedtime"]
+    )
+    return "OK"
 
-@app.route("/update_task")
+@app.route("/update_task", methods=["POST"])
 def updateTask():
     taskId = request.form['id']
     title = request.form['title']
