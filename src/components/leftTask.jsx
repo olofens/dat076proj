@@ -9,7 +9,7 @@ class LeftTask extends React.Component {
     }
 
     clicked() {
-        this.props.closeEdit(this.props.task, "todoTasks");
+        this.props.openEdit(this.props.task, "todoTasks");
     }
 
     render() {

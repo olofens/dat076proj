@@ -49,7 +49,9 @@ def getElapsedTimeWithID(idNum):
     conn= getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
 
-    cur.execute("SELECT * FROM tasks WHERE id={0}".format(idNum))
+
+    sqlQuery = "SELECT * FROM tasks WHERE id=%s"
+    cur.execute(sqlQuery, (idNum))
     task = cur.fetchall()
     #print("Task: ")
     #print(task)
@@ -59,7 +61,9 @@ def getElapsedTimeWithID(idNum):
 def updateTime(idNum, elapsedTime):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute("UPDATE tasks SET elapsedTime = {0} WHERE id = {1}".format(elapsedTime, idNum))
+
+    sqlQuery = "UPDATE tasks SET elapsedTime = %s WHERE id = %s"
+    cur.execute(sqlQuery, (elapsedTime, idNum))
 
     conn.commit()
     conn.close()
@@ -67,7 +71,9 @@ def updateTime(idNum, elapsedTime):
 def updateDatefinished(idNum, datefinished):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute("UPDATE tasks SET datefinished = '{1}' WHERE id = {0}".format(idNum, datefinished))
+
+    sqlQuery = "UPDATE tasks SET datefinished = '%s' WHERE id = %s"
+    cur.execute(sqlQuery, (datefinished, idNum))
 
     conn.commit()
     conn.close()
@@ -76,7 +82,8 @@ def createTask(userId, title, description, estimatedTime):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
 
-    cur.execute("INSERT INTO tasks(userId,title,description,estimatedTime) VALUES (%s,%s,%s,%s);", (userId, title, description, estimatedTime))
+    sqlQuery = "INSERT INTO tasks(userId,title,description,estimatedTime) VALUES (%s,%s,%s,%s)"
+    cur.execute(sqlQuery, (userId, title, description, estimatedTime))
 
     conn.commit()
 
@@ -86,8 +93,8 @@ def updateTask(userId, title, description, elapsedTime, estimatedTime):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
 
-    cur.execute("UPDATE tasks SET (title, description, elapsedTime, estimatedTime) = (%s,%s,%s,%s) WHERE userId = %s",
-    (title, description, elapsedTime, estimatedTime, userId))
+    sqlQuery = "UPDATE tasks SET (title, description, elapsedTime, estimatedTime) = (%s,%s,%s,%s) WHERE userId = %s"
+    cur.execute(sqlQuery, (title, description, elapsedTime, estimatedTime, userId))
     
     conn.close()
 

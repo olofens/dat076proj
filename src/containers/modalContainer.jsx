@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { showModal, hideModal } from "../actions/index.js"
+import { showModal, hideModal, init } from "../actions/index.js"
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import styles from './modalStyling.css'
@@ -42,8 +42,24 @@ const addTaskSchema = Yup.object().shape({
         
 });
 
-const AddTaskForm = () => (
-    <div>
+
+
+class ModalContainer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="modalApp">
+                <Modal
+                    open={this.props.modalIsOpen}
+                    onClose={this.props.hideModal}
+                    center
+                    focusTrapped
+                    styles={customStyles}
+                >
+                    <div>
         <h1>Add New Task</h1>
         <Formik
             initialValues={{
@@ -54,7 +70,7 @@ const AddTaskForm = () => (
             validationSchema={addTaskSchema}
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
-
+                    
                     console.log(JSON.stringify(values, null, 2));
                     fetch("http://127.0.0.1:3000/add_task", {
                         method: "post",
@@ -67,7 +83,10 @@ const AddTaskForm = () => (
                     //TODO
                     //this.props.hideModal
                     //Göm modal här, vet inte hur
+                    
+                    this.props.hideModal()
                     setSubmitting(false);
+                    
                 }, 500);
             }}
 
@@ -150,25 +169,6 @@ const AddTaskForm = () => (
             }}
         />
     </div>
-);
-
-
-class ModalContainer extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className="modalApp">
-                <Modal
-                    open={this.props.modalIsOpen}
-                    onClose={this.props.hideModal}
-                    center
-                    focusTrapped
-                    styles={customStyles}
-                >
-                    <AddTaskForm />
                 </Modal>
             </div>
         );
@@ -184,7 +184,8 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
         showModal: showModal,
-        hideModal: hideModal
+        hideModal: hideModal,
+        int: init,
     }, dispatch)
 }
 

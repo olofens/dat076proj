@@ -1,6 +1,7 @@
-export const startEditTask = () => {
+export const startEditTask = (task, column) => {
   return {
-    type: "START_EDIT_TASK"
+    type: "START_EDIT_TASK",
+    payload: { task: task, column: column }
   };
 };
 
@@ -22,6 +23,12 @@ export const doingClickForward = task => {
   return {
     type: "DOING_CLICK_FORWARD",
     payload: { task: task }
+  };
+};
+
+export const closeEditTask = () => {
+  return {
+    type: "CLOSE_EDIT_TASK"
   };
 };
 
