@@ -1,6 +1,7 @@
-export const startEditTask = () => {
+export const startEditTask = (task) => {
     return {
         type: "START_EDIT_TASK",
+        payload: {task: task}
     }
 }
 

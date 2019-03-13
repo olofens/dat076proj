@@ -1,8 +1,11 @@
+import { ENGINE_METHOD_NONE } from "constants";
+
 const initialState = {
     todoTasks: [],
     doingTasks: [],
     doneTasks: [],
     heldTasks: [],
+    editTask: null,
     modalIsOpen: false, 
     editModal: false
 }
@@ -10,6 +13,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case "START_EDIT_TASK":
+            console.log("start edit task");
             return Object.assign({}, state, {
                 editModal: true
             })
@@ -83,8 +87,7 @@ export default (state = initialState, action) => {
         case 'DROP':
             var fromCol = getArray(action.payload.columnFrom, state);
             var toCol = getArray(action.payload.columnTo, state);
-            var movedTask = fromCol.filter((task) => task.id === parseInt(action.payload.id));
-
+            var movedTask = fromCol.filter((task) => task.id === parseInt(action.payload.id)); 
             return Object.assign({}, state, {
                 [action.payload.columnFrom]: fromCol.filter((task) => task.id !== parseInt(action.payload.id)),
                 [action.payload.columnTo]: toCol.concat(movedTask)

@@ -6,6 +6,7 @@ import TaskListContainer from "./taskListContainer.jsx"
 import DoneListContainer from "./doneListContainer.jsx"
 import "./test.css"
 import ModalContainer from './modalContainer.jsx';
+import EditTaskModal from "./../modals/editTaskModal.jsx"
 
 class App extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class App extends React.Component {
                 <div className="itemSidebar2"><DoneListContainer /></div>
                 <div className="itemContent"><BoardContainer /></div>
                 <div className="modalContainer"><ModalContainer /></div>
+                <div className="modalContainer"><EditTaskModal/></div>
             </div>
         );
     }
