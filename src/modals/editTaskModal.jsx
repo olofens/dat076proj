@@ -54,11 +54,10 @@ function EditTaskForm(task, column, finishEditTask) {
                 }}
                 validationSchema={addTaskSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                    var newTask = Object.assign({}, task, {
-                        title: values.title,
-                        estimatedtime: values.estimatedTime,
-                        description: values.description
-                    });
+                    var newTask = task;
+                    newTask.title = values.title;
+                    newTask.description = values.description;
+                    newTask.estimatedtime = values.estimatedTime;
                     finishEditTask(newTask, column);
                 }}
 
