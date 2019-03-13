@@ -9,8 +9,6 @@ import { strict } from 'assert';
 class TaskListComponent extends React.Component {
     constructor(props) {
         super(props);
-        
-
     }
 
     taskList() {

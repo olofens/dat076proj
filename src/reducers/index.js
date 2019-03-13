@@ -1,36 +1,40 @@
-import { ENGINE_METHOD_NONE } from "constants";
-
 const initialState = {
     todoTasks: [],
     doingTasks: [],
     doneTasks: [],
     heldTasks: [],
-    editTask: null,
     modalIsOpen: false, 
-    editModal: false
+    editTask: {
+        title: "",
+        description: "",
+        elapsedtime: 0
+    },
+    editVisible: false,
+    editColumn: ""
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case "START_EDIT_TASK":
-            console.log("start edit task");
             return Object.assign({}, state, {
-                editModal: true
+                editTask: action.payload.task,
+                editVisible: true,
+                editColumn: action.payload.column
             })
         
         case "FINISH_EDIT_TASK":
-            // testing update. just setting description as of now.
-            action.payload.task.description = "EDITED";
-            
             var col = getArray(action.payload.column, state);
-            
-            col[action.payload.task] = action.payload.task;
+            var colWithoutEditedTask = col.filter((task) => task.id !== action.payload.task.id);
             
             return Object.assign({}, state, {
-                editModal: false,
-                [action.payload.column]: col
+                editVisible: false,
+                [action.payload.column]: colWithoutEditedTask.concat(action.payload.task)
             })
 
+        case "CLOSE_EDIT_TASK":
+            return Object.assign({}, state, {
+                editVisible: false
+            })
 
         case 'DOING_CLICK_BACK':
             return Object.assign({}, state, {

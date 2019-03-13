@@ -1,7 +1,7 @@
-export const startEditTask = (task) => {
+export const startEditTask = (task, column) => {
     return {
         type: "START_EDIT_TASK",
-        payload: {task: task}
+        payload: {task: task, column: column}
     }
 }
 
@@ -12,7 +12,11 @@ export const finishEditTask = (task, column) => {
     }
 }
 
-
+export const closeEditTask = () => {
+    return {
+        type: "CLOSE_EDIT_TASK"
+    }
+}
 
 export const doingClickBack = (task) => {
     return {
