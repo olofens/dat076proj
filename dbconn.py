@@ -93,8 +93,10 @@ def updateTask(userId, title, description, elapsedTime, estimatedTime):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
 
-    sqlQuery = "UPDATE tasks SET (title, description, elapsedTime, estimatedTime) = (%s,%s,%s,%s) WHERE userId = %s"
+    sqlQuery = "UPDATE tasks SET (title, description, elapsedTime, estimatedTime) = (%s,%s,%s,%s) WHERE id = %s"
     cur.execute(sqlQuery, (title, description, elapsedTime, estimatedTime, userId))
+
+    conn.commit()
     
     conn.close()
 

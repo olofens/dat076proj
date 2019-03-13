@@ -58,6 +58,14 @@ function EditTaskForm(task, column, finishEditTask) {
                     newTask.title = values.title;
                     newTask.description = values.description;
                     newTask.estimatedtime = values.estimatedTime;
+                    fetch("http://127.0.0.1:3000/api/update_task", {
+                        method: "post",
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(task)
+                    });
                     finishEditTask(newTask, column);
                 }}
 

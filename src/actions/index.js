@@ -51,17 +51,19 @@ export const hideModal = () => {
   };
 };
 
+
+
 export const init = () => {
   return dispatch => {
     return fetch("http://127.0.0.1:3000/tasks")
       .then(response => response.json())
       .then(responseData => {
-        dispatch(updateTasks(responseData));
+        dispatch(setTasks(responseData));
       });
   };
 };
 
-export const updateTasks = data => {
+export const setTasks = data => {
   console.log(data);
   const array1 = data;
   const todoArray = array1.filter(task => {
@@ -83,7 +85,6 @@ export const updateTasks = data => {
 };
 
 export const dragTask = (id, column) => {
-  console.log("drag");
   return {
     type: "DRAG",
     payload: { id: id, column: column }
