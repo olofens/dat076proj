@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./righttask.css";
-import { getSQLdate } from "./dateConverter.js";
+//import { getSQLdate } from "./dateConverter.js";
 
 class RightTask extends React.Component {
   constructor(props) {
