@@ -19,6 +19,12 @@ class RightTask extends React.Component {
         .toISOString()
         .slice(0, 19)
         .replace("T", " ");
+
+      fetch(
+        `http://127.0.0.1:3000/update_datefinished?datefinished=${
+          this.props.task.datefinished
+        }&id=${this.props.task.id}`
+      );
     }
     console.log(this.props);
   }

@@ -29,6 +29,14 @@ def updateTime():
     dbconn.updateTime(idNum,time)
     return 'OK'
 
+@app.route("/update_datefinished", methods=['GET', 'POST'])
+def updateDatefinished():
+    #print("Update time:")
+    idNum = request.args.get('id')
+    datefinished = request.args.get('datefinished')
+    dbconn.updateDatefinished(idNum, datefinished)
+    return 'OK'
+
 @app.route("/add_task", methods=['GET', 'POST'])
 def addTask():
 
@@ -55,6 +63,8 @@ def updateTask():
     estimatedTime = request.form['estimatedTime']
 
     dbconn.updateTask(taskId, title, description, elapsedTime, estimatedTime)
+
+    return 'OK'
 
 
 # Since we are using react-router in our front-end to handle routing, we only want to open up
