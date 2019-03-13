@@ -58,10 +58,10 @@ export const updateTasks = data => {
   console.log(data);
   const array1 = data;
   const todoArray = array1.filter(task => {
-    return task.datefinished === null;
+    return task.datefinished === null || task.datefinished === "null";
   });
   const doneArray = array1.filter(task => {
-    return task.datefinished !== null;
+    return task.datefinished !== null && task.datefinished !== "null";
   });
   console.log("Todoarray: ");
   console.log(todoArray);
