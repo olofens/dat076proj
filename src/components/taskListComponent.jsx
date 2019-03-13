@@ -46,9 +46,7 @@ class TaskListComponent extends React.Component {
                 </h3>
                     {this.taskList()}
                 </Droppable>
-                <button type="button" onClick={this.props.showModal}>
-                    Create New Task
-                </button>
+            
             </div>
 
         );
