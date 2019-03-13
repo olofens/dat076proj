@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./righttask.css";
+import { getSQLdate } from "./dateConverter.js";
 
 class RightTask extends React.Component {
   constructor(props) {
@@ -10,6 +11,16 @@ class RightTask extends React.Component {
 
   clicked() {
     this.props.action(this.props.task);
+  }
+
+  componentWillMount() {
+    if (this.props.task.datefinished === null) {
+      this.props.task.datefinished = new Date()
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " ");
+    }
+    console.log(this.props);
   }
 
   render() {
