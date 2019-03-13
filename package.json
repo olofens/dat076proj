@@ -17,6 +17,8 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "babel-polyfill": "^6.26.0",
     "dev-tools": "^0.1.6",
     "formik": "^1.5.1",

@@ -5,6 +5,9 @@ import "./column.css";
 import Draggable from "../containers/draggable.jsx"
 import Droppable from "../containers/droppable.jsx"
 import { strict } from 'assert';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+
 
 class TaskListComponent extends React.Component {
     constructor(props) {
@@ -22,13 +25,25 @@ class TaskListComponent extends React.Component {
         return (<ul>{items}</ul>);
     }
 
-   
+
 
     render() {
         return (
             <div className="column">
                 <Droppable id="drop1">
-                    <h3 className="title">To do</h3>
+                    
+                <h3 className="title">
+                        <div id="centered">
+                            To do
+                        </div>
+                        <div id="floating">
+                            <div id="sidebar">
+                            <Fab size="small" color="primary" aria-label="Add" onClick={this.props.showModal} >
+                                <AddIcon />
+                            </Fab>
+                            </div>
+                        </div>
+                </h3>
                     {this.taskList()}
                 </Droppable>
                 <button type="button" onClick={this.props.showModal}>

@@ -80,10 +80,7 @@ class ModalContainer extends React.Component {
                         },
                         body: JSON.stringify(values, null, 2)
                     })
-                    //TODO
-                    //this.props.hideModal
-                    //Göm modal här, vet inte hur
-                    
+                  
                     this.props.hideModal()
                     setSubmitting(false);
                     

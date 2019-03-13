@@ -33,6 +33,31 @@ li {
   border-bottom-style: solid;
   border-color: rgb(78, 77, 77);
   text-align: center;
-  padding-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 8px;
   margin: 0px;
+  
 }
+#wrapper { 
+  text-align: center 
+}
+
+#centered {
+   display: inline-block; 
+  }
+#floating { 
+  position: relative; 
+  display: inline-block; 
+  width: 0; 
+  height: 0; 
+  vertical-align: top 
+}
+#sidebar { 
+  display: inline-block; 
+  position: absolute; 
+  width: 100px;
+
+  
+  }
+
+
