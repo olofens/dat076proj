@@ -79,7 +79,8 @@ def apiUpdateTask():
         req_data["title"],
         req_data["description"],
         req_data["elapsedtime"],
-        req_data["estimatedtime"]
+        req_data["estimatedtime"],
+        req_data["datefinished"]
     )
     return "OK"
 
