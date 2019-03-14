@@ -51,7 +51,7 @@ def getElapsedTimeWithID(idNum):
 
 
     sqlQuery = "SELECT * FROM tasks WHERE id=%s"
-    cur.execute(sqlQuery, (idNum))
+    cur.execute(sqlQuery, [idNum])
     task = cur.fetchall()
     #print("Task: ")
     #print(task)

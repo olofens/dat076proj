@@ -21,6 +21,18 @@ def getTask():
 
     return jsonify(myTask)
 
+@app.route("/get_task_time", methods=['GET', 'POST'])
+def getTaskTime():
+    req_data = request.get_json()
+
+    print(json.dumps(req_data))
+
+    idNum = req_data['id']
+    myTask = dbconn.getElapsedTimeWithID(idNum)
+    #print(json.dumps(myTask))
+
+    return jsonify(myTask)
+
 @app.route("/update_time", methods=['GET', 'POST'])
 def updateTime():
     #print("Update time:")

@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import styled from 'styled-components'
-import { Edit } from "styled-icons/boxicons-solid/Edit"
-import {Delete} from "styled-icons/material/Delete";
-import "./middletask.css"
+import styled from "styled-components";
+import { Edit } from "styled-icons/boxicons-solid/Edit";
+import { Delete } from "styled-icons/material/Delete";
+import "./middletask.css";
 
 class MiddleTask extends React.Component {
   constructor(props) {
@@ -30,20 +30,41 @@ class MiddleTask extends React.Component {
 
   componentDidMount() {
     const that = this;
-    fetch(`http://127.0.0.1:3000/get_task?id=${this.props.task.id}`)
-      .then(function(response) {
-        return response.json();
+    setTimeout(() => {
+      const tempTask = this.props.task;
+      console.log(JSON.stringify(tempTask, null, 2));
+      fetch("http://127.0.0.1:3000/get_task_time", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(tempTask, null, 2)
       })
-      .then(function(data) {
-        const items = data;
-        that.setState({ time: items[0].elapsedtime });
-      });
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          const items = data;
+          that.setState({ time: items[0].elapsedtime });
+        });
+    }, 500);
+
+    // const that = this;
+    // fetch(`http://127.0.0.1:3000/get_task?id=${this.props.task.id}`)
+    //   .then(function(response) {
+    //     return response.json();
+    //   })
+    //   .then(function(data) {
+    //     const items = data;
+    //     that.setState({ time: items[0].elapsedtime });
+    //   });
   }
 
   componentWillUnmount() {
     this.updateElapsedTime();
     clearInterval(this.timer);
-  } 
+  }
 
   toggleTimer() {
     console.log("Timer: ", this.state.timerOn);
@@ -77,8 +98,12 @@ class MiddleTask extends React.Component {
           <tr>
             <td>{this.props.task.title}</td>
             <td>{this.props.task.estimatedtime}</td>
-            <td></td>
-            <td className="buttontd"><button className="transbutton" onClick={this.edit}><Edit size={20} /></button></td>
+            <td />
+            <td className="buttontd">
+              <button className="transbutton" onClick={this.edit}>
+                <Edit size={20} />
+              </button>
+            </td>
           </tr>
           <tr>
             <td>{this.props.task.description}</td>
@@ -88,7 +113,11 @@ class MiddleTask extends React.Component {
               </button>
             </td>
             <td>Time: {this.state.time}</td>
-            <td className="buttontd"><button className="transbutton" onClick={this.delete}><Delete size={20} /></button></td>
+            <td className="buttontd">
+              <button className="transbutton" onClick={this.delete}>
+                <Delete size={20} />
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
