@@ -26,7 +26,7 @@ class RightTask extends React.Component {
   }
 
   componentWillMount() {
-    if (this.props.task.datefinished === null) {
+    if (this.props.task.datefinished === (null || "null")) {
       this.props.task.datefinished = new Date()
         .toISOString()
         .slice(0, 19)
