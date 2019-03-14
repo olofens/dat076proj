@@ -20,12 +20,23 @@ class MiddleTask extends React.Component {
   updateElapsedTime() {
     const toggledTime = this.state.time;
     //Replace console log with database call?
+    this.props.task.elapsedtime = toggledTime;
+    const tempTask = this.props.task;
 
-    fetch(
-      `http://127.0.0.1:3000/update_time?id=${
-        this.props.task.id
-      }&time=${toggledTime}`
-    );
+    fetch("http://127.0.0.1:3000/api/update_task", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(tempTask)
+    });
+
+    // fetch(
+    //   `http://127.0.0.1:3000/update_time?id=${
+    //     this.props.task.id
+    //   }&time=${toggledTime}`
+    // );
   }
 
   componentDidMount() {
