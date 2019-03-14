@@ -44,7 +44,12 @@ export default (state = initialState, action) => {
                 editVisible: false
             });
 
-        case "DOING_CLICK_BACK":
+        case "ADD_TASK":
+            return Object.assign({}, state, {
+                todoTasks: state.todoTasks.concat([action.payload.task])
+            })
+
+        /*case "DOING_CLICK_BACK":
             return Object.assign({}, state, {
                 doingTasks: state.doingTasks.filter(
                     task => task.id !== action.payload.task.id
@@ -66,7 +71,7 @@ export default (state = initialState, action) => {
                     task => task.id !== action.payload.task.id
                 ),
                 doingTasks: state.doingTasks.concat([action.payload.task])
-            });
+            });*/
 
         case "SHOW_MODAL":
             return Object.assign({}, state, {
@@ -128,10 +133,6 @@ export default (state = initialState, action) => {
     }
 };
 
-function isMyTask(element, task) {
-    return 
-}
-
 function getArray(name, state) {
     switch (name) {
         case "todoTasks":
@@ -144,14 +145,4 @@ function getArray(name, state) {
         default:
             return null;
     }
-}
-
-function findIndex(array, id) {
-    console.log("given array " + JSON.stringify(array));
-    for (var i = 0; i < array.length; i++) {
-        if (array[i].id === id) {
-            return i;
-        }
-    }
-    return null;
 }

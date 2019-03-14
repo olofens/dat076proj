@@ -46,10 +46,10 @@ def addTask():
     description = req_data['description']
     estimatedTime = req_data['estimatedTime']
 
-    dbconn.createTask("Erik", title, description, estimatedTime)
+    resp = dbconn.createTask("Erik", title, description, estimatedTime)
 
     # For testing purposes
-    return 'OK'
+    return jsonify(resp)
 
 @app.route("/api/delete_task")
 def apiDeleteTask():

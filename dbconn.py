@@ -55,10 +55,12 @@ def getElapsedTimeWithID(idNum):
 def createTask(userId, title, description, estimatedTime):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
-    sqlQuery = "INSERT INTO tasks(userId,title,description,estimatedTime) VALUES (%s,%s,%s,%s)"
+    sqlQuery = "INSERT INTO tasks(userId,title,description,estimatedTime) VALUES (%s,%s,%s,%s) RETURNING *"
     cur.execute(sqlQuery, [userId, title, description, estimatedTime])
+    myResponse = cur.fetchone()
     conn.commit()
     conn.close()
+    return myResponse
     
 def updateTask(userId, title, description, elapsedTime, estimatedTime, datefinished):
     conn = getOpenConnection()
@@ -66,6 +68,7 @@ def updateTask(userId, title, description, elapsedTime, estimatedTime, datefinis
     sqlQuery = "UPDATE tasks SET (title, description, elapsedTime, estimatedTime, datefinished) = (%s,%s,%s,%s,%s) WHERE id = %s"
     cur.execute(sqlQuery, [title, description, elapsedTime, estimatedTime, datefinished, userId])
     conn.commit()
+    
     conn.close()
 
 def updateTaskFin(userId, datefinished):

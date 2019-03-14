@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { showModal, hideModal } from "../actions/index.js"
+import { showModal, hideModal, addTask } from "../actions/index.js"
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import styles from './modalStyling.css'
@@ -42,7 +42,7 @@ const addTaskSchema = Yup.object().shape({
 
 });
 
-const AddTaskForm = (hideModal) => (
+const AddTaskForm = (hideModal, addTask) => (
     <div>
         <h1>Add New Task</h1>
         <Formik
@@ -63,11 +63,12 @@ const AddTaskForm = (hideModal) => (
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(values, null, 2)
-                    })
-                    //TODO
-                    //this.props.hideModal
-                    //Göm modal här, vet inte hur
-                    hideModal()
+                    }).then(response => response.json())
+                        .then(responseData => {
+                            addTask(responseData);
+                        });
+
+                    hideModal();
                     setSubmitting(false);
                 }, 500);
             }}
@@ -169,7 +170,7 @@ class AddTaskModal extends React.Component {
                     focusTrapped
                     styles={customStyles}
                 >
-                    {AddTaskForm(this.props.hideModal)}
+                    {AddTaskForm(this.props.hideModal, this.props.addTask)}
 
                 </Modal>
             </div>
@@ -185,6 +186,7 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
+        addTask: addTask,
         showModal: showModal,
         hideModal: hideModal
     }, dispatch)

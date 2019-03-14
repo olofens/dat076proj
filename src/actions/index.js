@@ -6,6 +6,13 @@ export const deleteTask = (task, column) => {
   }
 }
 
+export const addTask = (task) => {
+  return {
+    type: "ADD_TASK",
+    payload: {task: task}
+  }
+}
+
 export const startEditTask = (task, column) => {
   return {
     type: "START_EDIT_TASK",
