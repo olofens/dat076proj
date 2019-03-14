@@ -10,13 +10,23 @@ class RightTask extends React.Component {
   }
 
   clicked() {
-    this.props.task.datefinished = null;
-    fetch(
-      `http://127.0.0.1:3000/update_datefinished?datefinished=${
-        this.props.task.datefinished
-      }&id=${this.props.task.id}`
-    );
     console.log(this.props.task.datefinished);
+    this.props.task.datefinished = null;
+    const tempTask = this.props.task;
+    fetch("http://127.0.0.1:3000/api/update_task", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(tempTask)
+    });
+
+    // fetch(
+    //   `http://127.0.0.1:3000/update_datefinished?datefinished=${
+    //     this.props.task.datefinished
+    //   }&id=${this.props.task.id}`
+    // );
     this.props.action(this.props.task);
   }
 
