@@ -20,6 +20,8 @@ class DoneListComponent extends React.Component {
                     <RightTask
                         task={task}
                         action={this.props.click}
+                        startEditTask={this.props.startEditTask}
+                        deleteTask={this.props.deleteTask}
                     />
                 </li>
             </Draggable>);

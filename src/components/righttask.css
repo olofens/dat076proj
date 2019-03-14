@@ -4,3 +4,14 @@
     margin-right: 0%;
     align-content: center;
 }
+
+.transbutton {
+    background-color: transparent;
+    border:none;
+    cursor: pointer;
+    outline: none;
+}
+
+.buttontd {
+    text-align: right;
+}

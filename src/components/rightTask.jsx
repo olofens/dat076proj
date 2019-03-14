@@ -1,12 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./righttask.css";
-//import { getSQLdate } from "./dateConverter.js";
+import styled from "styled-components";
+import { Edit } from "styled-icons/boxicons-solid/Edit";
+import { Delete } from "styled-icons/material/Delete";
 
 class RightTask extends React.Component {
   constructor(props) {
     super(props);
     this.clicked = this.clicked.bind(this);
+    this.edit = this.edit.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   clicked() {
@@ -23,6 +27,14 @@ class RightTask extends React.Component {
     });
 
     this.props.action(this.props.task);
+  }
+
+  edit() {
+    this.props.startEditTask(this.props.task, "doneTasks");
+  }
+
+  delete() {
+    this.props.deleteTask(this.props.task, "doneTasks");
   }
 
   componentWillMount() {
@@ -52,11 +64,19 @@ class RightTask extends React.Component {
           <tr>
             <td>{this.props.task.title}</td>
             <td>{this.props.task.id}</td>
+            <td className="buttontd">
+              <button className="transbutton" onClick={this.edit}>
+                <Edit size={20} />
+              </button>
+            </td>
           </tr>
           <tr>
             <td>{this.props.task.description}</td>
-            <td>
-              <button onClick={this.clicked}>Select</button>
+            <td></td>
+            <td className="buttontd">
+              <button className="transbutton" onClick={this.delete}>
+                <Delete size={20} />
+              </button>
             </td>
           </tr>
         </tbody>

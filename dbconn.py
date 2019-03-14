@@ -64,7 +64,7 @@ def createTask(userId, title, description, estimatedTime):
     cur = conn.cursor(cursor_factory=RealDictCursor)
 
     sqlQuery = "INSERT INTO tasks(userId,title,description,estimatedTime) VALUES (%s,%s,%s,%s)"
-    cur.execute(sqlQuery, (userId, title, description, estimatedTime))
+    cur.execute(sqlQuery, [userId, title, description, estimatedTime])
 
     conn.commit()
 
@@ -75,7 +75,7 @@ def updateTask(userId, title, description, elapsedTime, estimatedTime, datefinis
     cur = conn.cursor(cursor_factory=RealDictCursor)
 
     sqlQuery = "UPDATE tasks SET (title, description, elapsedTime, estimatedTime, datefinished) = (%s,%s,%s,%s,%s) WHERE id = %s"
-    cur.execute(sqlQuery, (title, description, elapsedTime, estimatedTime, datefinished, userId))
+    cur.execute(sqlQuery, [title, description, elapsedTime, estimatedTime, datefinished, userId])
 
     conn.commit()
     
@@ -84,8 +84,8 @@ def updateTask(userId, title, description, elapsedTime, estimatedTime, datefinis
 def deleteTask(taskId):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
-    sqlQuery = "DELETE FROM tasks WHERE id = %s"
-    cur.execute(sqlQuery, (taskId))
+    sqlQuery = """DELETE FROM tasks WHERE id = %s"""
+    cur.execute(sqlQuery, [taskId])
     conn.commit()
     conn.close()
 
