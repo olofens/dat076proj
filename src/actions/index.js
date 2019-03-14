@@ -1,3 +1,10 @@
+export const deleteTask = (task, column) => {
+  return {
+    type: "DELETE_TASK",
+    payload: {task: task, column: column}
+  }
+}
+
 export const startEditTask = (task, column) => {
   return {
     type: "START_EDIT_TASK",

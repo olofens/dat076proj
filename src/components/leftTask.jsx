@@ -17,7 +17,7 @@ class LeftTask extends React.Component {
     }
 
     delete() {
-
+        this.props.deleteTask(this.props.task, "todoTasks");
     }
 
 

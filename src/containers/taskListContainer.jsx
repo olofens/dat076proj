@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { showModal, hideModal, startEditTask, finishEditTask } from "../actions/index.js"
+import { showModal, hideModal, startEditTask, deleteTask } from "../actions/index.js"
 
 import TaskListComponent from '../components/taskListComponent.jsx';
 import Droppable from "./droppable.jsx"
@@ -17,8 +17,8 @@ class TaskList extends React.Component {
             
                 <TaskListComponent
                 tasks={this.props.tasks}
+                deleteTask={this.props.deleteTask}
                 openEdit={this.props.startEditTask}
-                closeEdit={this.props.finishEditTask}
                 showModal={this.props.showModal}
                 hideModal={this.props.hideModal}
                 modalIsOpen={this.props.modalIsOpen}
@@ -37,8 +37,8 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({ 
+        deleteTask: deleteTask,
         startEditTask: startEditTask,
-        finishEditTask: finishEditTask,
         showModal: showModal,
         hideModal: hideModal }, dispatch)
 }

@@ -33,6 +33,12 @@ export default (state = initialState, action) => {
                 [action.payload.column]: newCol
             })
 
+        case "DELETE_TASK":
+            var col = getArray(action.payload.column, state);
+            return Object.assign({}, state, {
+                [action.payload.column]: col.filter((task) => task.id !== action.payload.task.id)
+            })
+
         case "CLOSE_EDIT_TASK":
             return Object.assign({}, state, {
                 editVisible: false
