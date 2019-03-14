@@ -5,8 +5,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import myApp from './reducers';
 import App from './containers/app.jsx';
-import Login from "./containers/login.jsx";
-import Register from "./containers/register.jsx";
 import { init } from "./actions/index.js";
 import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
 import { devToolsEnhancer, composeWithDevTools } from 'redux-devtools-extension';
@@ -22,8 +20,6 @@ function render() {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={App} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/register" component={Register} />
                 </Switch>
             </BrowserRouter>
 
