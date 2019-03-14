@@ -19,7 +19,6 @@ class MiddleTask extends React.Component {
 
   updateElapsedTime() {
     const toggledTime = this.state.time;
-    //Replace console log with database call?
     this.props.task.elapsedtime = toggledTime;
     const tempTask = this.props.task;
 
@@ -31,12 +30,6 @@ class MiddleTask extends React.Component {
       },
       body: JSON.stringify(tempTask)
     });
-
-    // fetch(
-    //   `http://127.0.0.1:3000/update_time?id=${
-    //     this.props.task.id
-    //   }&time=${toggledTime}`
-    // );
   }
 
   componentDidMount() {
@@ -60,16 +53,6 @@ class MiddleTask extends React.Component {
           that.setState({ time: items[0].elapsedtime });
         });
     }, 500);
-
-    // const that = this;
-    // fetch(`http://127.0.0.1:3000/get_task?id=${this.props.task.id}`)
-    //   .then(function(response) {
-    //     return response.json();
-    //   })
-    //   .then(function(data) {
-    //     const items = data;
-    //     that.setState({ time: items[0].elapsedtime });
-    //   });
   }
 
   componentWillUnmount() {

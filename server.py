@@ -33,21 +33,7 @@ def getTaskTime():
 
     return jsonify(myTask)
 
-@app.route("/update_time", methods=['GET', 'POST'])
-def updateTime():
-    #print("Update time:")
-    idNum = request.args.get('id')
-    time = request.args.get('time')
-    dbconn.updateTime(idNum,time)
-    return 'OK'
 
-@app.route("/update_datefinished", methods=['GET', 'POST'])
-def updateDatefinished():
-    #print("Update time:")
-    idNum = request.args.get('id')
-    datefinished = request.args.get('datefinished')
-    dbconn.updateDatefinished(idNum, datefinished)
-    return 'OK'
 
 @app.route("/add_task", methods=['GET', 'POST'])
 def addTask():

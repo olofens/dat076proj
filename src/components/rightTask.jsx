@@ -22,11 +22,6 @@ class RightTask extends React.Component {
       body: JSON.stringify(tempTask)
     });
 
-    // fetch(
-    //   `http://127.0.0.1:3000/update_datefinished?datefinished=${
-    //     this.props.task.datefinished
-    //   }&id=${this.props.task.id}`
-    // );
     this.props.action(this.props.task);
   }
 
@@ -37,11 +32,6 @@ class RightTask extends React.Component {
         .slice(0, 19)
         .replace("T", " ");
 
-      // fetch(
-      //   `http://127.0.0.1:3000/update_datefinished?datefinished=${
-      //     this.props.task.datefinished
-      //   }&id=${this.props.task.id}`
-      // );
       const tempTask = this.props.task;
       fetch("http://127.0.0.1:3000/api/update_task", {
         method: "post",
