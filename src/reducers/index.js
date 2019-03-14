@@ -111,6 +111,11 @@ export default (state = initialState, action) => {
             var movedTask = fromCol.filter(
                 task => task.id === parseInt(action.payload.id)
             );
+            if (action.payload.columnTo === "doneTasks") {
+                movedTask[0].datefinished = action.payload.date;
+            } else {
+                movedTask[0].datefinished = null;
+            }
             return Object.assign({}, state, {
                 [action.payload.columnFrom]: fromCol.filter(
                     task => task.id !== parseInt(action.payload.id)

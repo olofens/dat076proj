@@ -57,6 +57,15 @@ def apiDeleteTask():
     dbconn.deleteTask(taskId)
     return "OK"
 
+@app.route("/api/update_task_fin", methods=["POST"])
+def apiUpdateTaskFin():
+    req_data = request.get_json()
+    dbconn.updateTaskFin(
+        req_data["id"],
+        req_data["datefinished"]
+    )
+    return "OK"
+
 @app.route("/api/update_task", methods=["POST"])
 def apiUpdateTask():
     req_data = request.get_json()
@@ -69,19 +78,6 @@ def apiUpdateTask():
         req_data["datefinished"]
     )
     return "OK"
-
-@app.route("/update_task", methods=["POST"])
-def updateTask():
-    taskId = request.form['id']
-    title = request.form['title']
-    description = request.form['description']
-    elapsedTime = request.form['elapsedTime']
-    estimatedTime = request.form['estimatedTime']
-
-    dbconn.updateTask(taskId, title, description, elapsedTime, estimatedTime)
-
-    return 'OK'
-
 
 # Since we are using react-router in our front-end to handle routing, we only want to open up
 # our index.html file and our API from the back-end. 

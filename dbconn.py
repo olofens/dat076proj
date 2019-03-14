@@ -29,7 +29,6 @@ def closeThisConnection(conn):
 def testQuery():
     conn = getOpenConnection()
     cur = conn.cursor()
-
     cur.execute("select * from erik")
     rows = cur.fetchall()
     print(rows)
@@ -38,23 +37,17 @@ def testQuery():
 def getTasks():
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
-
     cur.execute("SELECT * FROM tasks")
     tasks = cur.fetchall()
     conn.close()
-
     return tasks
 
 def getElapsedTimeWithID(idNum):
     conn= getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
-
-
     sqlQuery = "SELECT * FROM tasks WHERE id=%s"
     cur.execute(sqlQuery, [idNum])
     task = cur.fetchall()
-    #print("Task: ")
-    #print(task)
     conn.close()
     return task
 
@@ -62,23 +55,25 @@ def getElapsedTimeWithID(idNum):
 def createTask(userId, title, description, estimatedTime):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
-
     sqlQuery = "INSERT INTO tasks(userId,title,description,estimatedTime) VALUES (%s,%s,%s,%s)"
     cur.execute(sqlQuery, [userId, title, description, estimatedTime])
-
     conn.commit()
-
     conn.close()
     
 def updateTask(userId, title, description, elapsedTime, estimatedTime, datefinished):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
-
     sqlQuery = "UPDATE tasks SET (title, description, elapsedTime, estimatedTime, datefinished) = (%s,%s,%s,%s,%s) WHERE id = %s"
     cur.execute(sqlQuery, [title, description, elapsedTime, estimatedTime, datefinished, userId])
-
     conn.commit()
-    
+    conn.close()
+
+def updateTaskFin(userId, datefinished):
+    conn = getOpenConnection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    sqlQuery = "UPDATE tasks SET (datefinished) = ROW(%s) WHERE id = %s"
+    cur.execute(sqlQuery, [datefinished, userId])
+    conn.commit()
     conn.close()
 
 def deleteTask(taskId):
@@ -88,10 +83,6 @@ def deleteTask(taskId):
     cur.execute(sqlQuery, [taskId])
     conn.commit()
     conn.close()
-
-
-
-
 
 if (__name__ == '__main__'):
     main()

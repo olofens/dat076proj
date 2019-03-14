@@ -2,7 +2,7 @@ export const deleteTask = (task, column) => {
   fetch(`http://127.0.0.1:3000/api/delete_task?id=${task.id}`);
   return {
     type: "DELETE_TASK",
-    payload: {task: task, column: column}
+    payload: { task: task, column: column }
   }
 }
 
@@ -100,8 +100,31 @@ export const dragTask = (id, column) => {
 };
 
 export const dropTask = (id, columnFrom, columnTo) => {
+  var date = new Date()
+    .toISOString()
+    .slice(0, 19)
+    .replace("T", " ");
+  if (columnTo === "doneTasks") {
+    fetch("http://127.0.0.1:3000/api/update_task_fin", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ "id": id, "datefinished": date })
+    });
+  } else {
+    fetch("http://127.0.0.1:3000/api/update_task_fin", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ "id": id, "datefinished": null })
+    });
+  }
   return {
     type: "DROP",
-    payload: { id: id, columnFrom: columnFrom, columnTo: columnTo }
+    payload: { id: id, columnFrom: columnFrom, columnTo: columnTo, date: date }
   };
 };
