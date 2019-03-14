@@ -42,7 +42,7 @@ const addTaskSchema = Yup.object().shape({
 
 });
 
-const AddTaskForm = () => (
+const AddTaskForm = (hideModal) => (
     <div>
         <h1>Add New Task</h1>
         <Formik
@@ -67,6 +67,7 @@ const AddTaskForm = () => (
                     //TODO
                     //this.props.hideModal
                     //Göm modal här, vet inte hur
+                    hideModal()
                     setSubmitting(false);
                 }, 500);
             }}
@@ -168,7 +169,8 @@ class ModalContainer extends React.Component {
                     focusTrapped
                     styles={customStyles}
                 >
-                    <AddTaskForm />
+                    {AddTaskForm(this.props.hideModal)}
+
                 </Modal>
             </div>
         );
