@@ -1,18 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import "./lefttask.css";
+import styled from 'styled-components'
+import { Edit } from "styled-icons/boxicons-solid/Edit"
+import {Delete} from "styled-icons/material/Delete";
 
 class LeftTask extends React.Component {
     constructor(props) {
         super(props);
-        this.clicked = this.clicked.bind(this);
+        this.edit = this.edit.bind(this);
+        this.delete = this.delete.bind(this);
     }
 
-    clicked() {
+    edit() {
         this.props.openEdit(this.props.task, "todoTasks");
     }
 
+    delete() {
+
+    }
+
+
+
     render() {
+
+
         return (
             <table className="lefttask">
                 <tbody>
@@ -23,13 +35,23 @@ class LeftTask extends React.Component {
                         <td>
                             {this.props.task.estimatedtime}
                         </td>
+                        <td className="buttontd">
+                            <button onClick={this.edit}>
+                                <Edit size={20} />
+                            </button>
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             {this.props.task.description}
                         </td>
                         <td>
-                            <button onClick={this.clicked}>Edit</button>
+
+                        </td>
+                        <td className="buttontd">
+                            <button onClick={this.delete}>
+                                <Delete size={20} />
+                            </button>
                         </td>
                     </tr>
                 </tbody>
