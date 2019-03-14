@@ -53,6 +53,12 @@ def addTask():
     # For testing purposes
     return 'OK'
 
+@app.route("/api/delete_task")
+def apiDeleteTask():
+    taskId = request.args.get("id")
+    dbconn.deleteTask(taskId)
+    return "OK"
+
 @app.route("/api/update_task", methods=["POST"])
 def apiUpdateTask():
     req_data = request.get_json()

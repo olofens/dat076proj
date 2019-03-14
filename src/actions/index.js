@@ -1,4 +1,5 @@
 export const deleteTask = (task, column) => {
+  fetch(`http://127.0.0.1:3000/api/delete_task?id=${task.id}`);
   return {
     type: "DELETE_TASK",
     payload: {task: task, column: column}

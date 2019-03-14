@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { showModal, hideModal, init } from "../actions/index.js"
+import { showModal, hideModal } from "../actions/index.js"
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import styles from './modalStyling.css'
@@ -39,27 +39,11 @@ const addTaskSchema = Yup.object().shape({
         .required('Required')
         .positive('Time must be > 0')
         .integer('Time must be integer value'),
-        
+
 });
 
-
-
-class ModalContainer extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className="modalApp">
-                <Modal
-                    open={this.props.modalIsOpen}
-                    onClose={this.props.hideModal}
-                    center
-                    focusTrapped
-                    styles={customStyles}
-                >
-                    <div>
+const AddTaskForm = () => (
+    <div>
         <h1>Add New Task</h1>
         <Formik
             initialValues={{
@@ -70,7 +54,7 @@ class ModalContainer extends React.Component {
             validationSchema={addTaskSchema}
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
-                    
+
                     console.log(JSON.stringify(values, null, 2));
                     fetch("http://127.0.0.1:3000/add_task", {
                         method: "post",
@@ -80,10 +64,10 @@ class ModalContainer extends React.Component {
                         },
                         body: JSON.stringify(values, null, 2)
                     })
-                  
-                    this.props.hideModal()
+                    //TODO
+                    //this.props.hideModal
+                    //Göm modal här, vet inte hur
                     setSubmitting(false);
-                    
                 }, 500);
             }}
 
@@ -166,6 +150,25 @@ class ModalContainer extends React.Component {
             }}
         />
     </div>
+);
+
+
+class ModalContainer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="modalApp">
+                <Modal
+                    open={this.props.modalIsOpen}
+                    onClose={this.props.hideModal}
+                    center
+                    focusTrapped
+                    styles={customStyles}
+                >
+                    <AddTaskForm />
                 </Modal>
             </div>
         );
@@ -181,8 +184,7 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
         showModal: showModal,
-        hideModal: hideModal,
-        int: init,
+        hideModal: hideModal
     }, dispatch)
 }
 

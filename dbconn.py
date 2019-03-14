@@ -100,6 +100,14 @@ def updateTask(userId, title, description, elapsedTime, estimatedTime):
     
     conn.close()
 
+def deleteTask(taskId):
+    conn = getOpenConnection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    sqlQuery = "DELETE FROM tasks WHERE id = %s"
+    cur.execute(sqlQuery, (taskId))
+    conn.commit()
+    conn.close()
+
 
 
 

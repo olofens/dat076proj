@@ -20,8 +20,6 @@ class LeftTask extends React.Component {
         this.props.deleteTask(this.props.task, "todoTasks");
     }
 
-
-
     render() {
 
 
