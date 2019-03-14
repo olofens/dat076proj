@@ -12,7 +12,7 @@ def tasks():
     myList = dbconn.getTasks()
     return jsonify(myList)
 
-@app.route("/get_task", methods=['GET', 'POST'])
+@app.route("/get_task")
 def getTask():
     searchword = request.args.get('id')
 

@@ -18,8 +18,8 @@ class BoardComponent extends React.Component {
                 <li>
                     <MiddleTask
                         task={task}
-                        actionBack={this.props.backClick}
-                        actionForward={this.props.forwardClick}
+                        startEditTask={this.props.startEditTask}
+                        deleteTask={this.props.deleteTask}
                     />
                 </li>
             </Draggable>);

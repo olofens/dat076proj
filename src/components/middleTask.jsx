@@ -1,5 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import styled from 'styled-components'
+import { Edit } from "styled-icons/boxicons-solid/Edit"
+import {Delete} from "styled-icons/material/Delete";
+import "./middletask.css"
 
 class MiddleTask extends React.Component {
   constructor(props) {
@@ -8,8 +12,8 @@ class MiddleTask extends React.Component {
       time: 0,
       timerOn: false
     };
-    this.clickedBack = this.clickedBack.bind(this);
-    this.clickedForward = this.clickedForward.bind(this);
+    this.edit = this.edit.bind(this);
+    this.delete = this.delete.bind(this);
     this.toggleTimer = this.toggleTimer.bind(this);
   }
 
@@ -39,15 +43,7 @@ class MiddleTask extends React.Component {
   componentWillUnmount() {
     this.updateElapsedTime();
     clearInterval(this.timer);
-  }
-
-  clickedBack() {
-    this.props.actionBack(this.props.task);
-  }
-
-  clickedForward() {
-    this.props.actionForward(this.props.task);
-  }
+  } 
 
   toggleTimer() {
     console.log("Timer: ", this.state.timerOn);
@@ -66,26 +62,33 @@ class MiddleTask extends React.Component {
     }
   }
 
+  edit() {
+    this.props.startEditTask(this.props.task, "doingTasks");
+  }
+
+  delete() {
+    this.props.deleteTask(this.props.task, "doingTasks");
+  }
+
   render() {
     return (
-      <table className="middletask.css">
+      <table className="middletask">
         <tbody>
           <tr>
             <td>{this.props.task.title}</td>
             <td>{this.props.task.estimatedtime}</td>
+            <td></td>
+            <td className="buttontd"><button className="transbutton" onClick={this.edit}><Edit size={20} /></button></td>
           </tr>
           <tr>
             <td>{this.props.task.description}</td>
-            <td>
-              <button onClick={this.clickedBack}>Pause</button>
-              <button onClick={this.clickedForward}>Done</button>
-            </td>
             <td>
               <button onClick={this.toggleTimer}>
                 {this.state.timerOn ? "Stop Timer" : "Start Timer"}
               </button>
             </td>
             <td>Time: {this.state.time}</td>
+            <td className="buttontd"><button className="transbutton" onClick={this.delete}><Delete size={20} /></button></td>
           </tr>
         </tbody>
       </table>
