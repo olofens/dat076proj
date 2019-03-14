@@ -5,20 +5,10 @@ import { bindActionCreators } from "redux";
 import { startEditTask, finishEditTask, closeEditTask } from "../actions/index.js"
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import styles from './../containers/modalStyling.css'
-import './../containers/modal.css';
-
+import styles from './modalStyling.css'
+import './modal.css';
 import Modal from 'react-responsive-modal';
-//import Modal from 'react-bootstrap/Modal';
-//import Button from 'react-bootstrap/Button';
-//import 'bootstrap/dist/css/bootstrap.css';
 
-//import AddTaskForm from '../components/addTaskForm.jsx'
-
-
-
-
-//Fix better styling!
 const customStyles = {
     modal: {
         border: '1px solid #ccc', background: '#fff',
@@ -28,7 +18,6 @@ const customStyles = {
 
     }
 };
-
 
 const addTaskSchema = Yup.object().shape({
     title: Yup.string()

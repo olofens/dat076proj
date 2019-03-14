@@ -154,7 +154,7 @@ const AddTaskForm = (hideModal) => (
 );
 
 
-class ModalContainer extends React.Component {
+class AddTaskModal extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -190,4 +190,4 @@ function matchDispatchToProps(dispatch) {
     }, dispatch)
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(ModalContainer);
+export default connect(mapStateToProps, matchDispatchToProps)(AddTaskModal);

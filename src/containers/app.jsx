@@ -5,7 +5,7 @@ import BoardContainer from "./boardContainer.jsx";
 import TaskListContainer from "./taskListContainer.jsx";
 import DoneListContainer from "./doneListContainer.jsx";
 import "./test.css";
-import ModalContainer from "./modalContainer.jsx";
+import AddTaskModal from "./../modals/addTaskModal.jsx";
 import EditTaskModal from "./../modals/editTaskModal.jsx";
 
 class App extends React.Component {
@@ -33,7 +33,7 @@ class App extends React.Component {
         </div>
 
         <div className="modalContainer">
-          <ModalContainer />
+          <AddTaskModal />
         </div>
         <div className="modalContainer">
           <EditTaskModal />
