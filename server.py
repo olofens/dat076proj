@@ -14,23 +14,17 @@ def tasks():
 
 @app.route("/get_task")
 def getTask():
-    searchword = request.args.get('id')
-
-    myTask = dbconn.getElapsedTimeWithID(searchword)
-    #print(json.dumps(myTask))
-
+    req = request.get_json()
+    wantedId = req['id']
+    myTask = dbconn.getElapsedTimeWithID(wantedId)
     return jsonify(myTask)
 
 @app.route("/get_task_time", methods=['GET', 'POST'])
 def getTaskTime():
     req_data = request.get_json()
-
     print(json.dumps(req_data))
-
     idNum = req_data['id']
     myTask = dbconn.getElapsedTimeWithID(idNum)
-    #print(json.dumps(myTask))
-
     return jsonify(myTask)
 
 
@@ -51,9 +45,11 @@ def addTask():
     # For testing purposes
     return jsonify(resp)
 
-@app.route("/api/delete_task")
+@app.route("/api/delete_task", methods=["POST"])
 def apiDeleteTask():
-    taskId = request.args.get("id")
+    req_data = request.get_json()
+    taskId = req_data['id']
+    print(req_data)
     dbconn.deleteTask(taskId)
     return "OK"
 

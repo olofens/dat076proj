@@ -1,4 +1,4 @@
-test_name: Flask API testing
+test_name: Connect to the server (check that it responds OK)
 
 stages:
   - name: Make sure we have something here
@@ -12,11 +12,10 @@ stages:
 
 ---
 
-test_name: Add a task to get things started
+test_name: Add, get and delete a task
 
 stages: 
-  - name: Add task
-
+  - name: Add task to get things started
     request: 
       url: http://127.0.0.1:3000/add_task
       json:
@@ -26,14 +25,94 @@ stages:
       method: POST
       headers:
         content-type: application/json
-    
     response: 
       status_code: 200
+      headers: 
+        content-type: application/json
       body: 
         title: YAML testing
         description: YAML description
         estimatedtime: 120
+      save: 
+        body: 
+          added_id: id
 
+  - name: Get this same task
+    request: 
+      url: http://127.0.0.1:3000/get_task
+      json: 
+        id: "{added_id:d}"
+      method: GET
+      headers:
+        content-type: application/json
+    response: 
+      status_code: 200
+  
+  - name: Delete this task
+    request: 
+      url: http://127.0.0.1:3000/api/delete_task
+      json:
+        id: "{added_id:d}"
+      method: POST
+      headers:
+        content-type: application/json
+    response: 
+      status_code: 200
 
+---
 
-        
+test_name: Update a task
+
+stages: 
+  - name: Add task to get things started
+    request: 
+      url: http://127.0.0.1:3000/add_task
+      json:
+        title: YAML testing
+        description: YAML description
+        estimatedTime: 120
+      method: POST
+      headers:
+        content-type: application/json
+    response: 
+      status_code: 200
+      headers: 
+        content-type: application/json
+      body: 
+        title: YAML testing
+        description: YAML description
+        estimatedtime: 120
+      save: 
+        body: 
+          added_id: id
+  - name: Try to update this task
+    request: 
+      url: http://127.0.0.1:3000/api/update_task
+      json: 
+        id: "{added_id:d}"
+        title: Edited title
+        description: Edited description
+        elapsedtime: 1
+        estimatedtime: 1
+        datefinished: Some edited time
+      method: POST
+      headers: 
+        content-type: application/json
+    response: 
+      status_code: 200
+  - name: Get this task and check it
+    request: 
+      url: http://127.0.0.1:3000/get_task
+      json: 
+        id: "{added_id:d}"
+      method: GET
+      headers:
+        content-type: application/json
+    response: 
+      status_code: 200
+      body:
+        title: Edited title
+        description: Edited description
+        elapsedtime: 1
+        estimatedtime: 1
+        datefinished: Some edited time

@@ -47,7 +47,7 @@ def getElapsedTimeWithID(idNum):
     cur = conn.cursor(cursor_factory=RealDictCursor)
     sqlQuery = "SELECT * FROM tasks WHERE id=%s"
     cur.execute(sqlQuery, [idNum])
-    task = cur.fetchall()
+    task = cur.fetchall()[0]
     conn.close()
     return task
 
