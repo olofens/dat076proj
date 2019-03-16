@@ -116,3 +116,13 @@ stages:
         elapsedtime: 1
         estimatedtime: 1
         datefinished: Some edited time
+  - name: Delete this task
+    request: 
+      url: http://127.0.0.1:3000/api/delete_task
+      json:
+        id: "{added_id:d}"
+      method: POST
+      headers:
+        content-type: application/json
+    response: 
+      status_code: 200 
