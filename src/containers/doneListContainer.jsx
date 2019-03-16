@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import RightTask from "../components/rightTask.jsx";
-import { doneClick, startEditTask, deleteTask } from "../actions/index.js"
+import { startEditTask, deleteTask } from "../actions/index.js"
 import DoneListComponent from "../components/doneListComponent.jsx"
 import Droppable from "./droppable.jsx"
 
@@ -16,7 +16,6 @@ class DoneListContainer extends React.Component {
         return (
             <DoneListComponent
                 tasks={this.props.tasks}
-                click={this.props.doneClick}
                 startEditTask={this.props.startEditTask}
                 deleteTask={this.props.deleteTask}
             />
@@ -34,7 +33,6 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({ 
         startEditTask: startEditTask, 
         deleteTask: deleteTask,
-        doneClick: doneClick
     }, dispatch)
 }
 

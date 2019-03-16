@@ -8,25 +8,8 @@ import { Delete } from "styled-icons/material/Delete";
 class RightTask extends React.Component {
   constructor(props) {
     super(props);
-    this.clicked = this.clicked.bind(this);
     this.edit = this.edit.bind(this);
     this.delete = this.delete.bind(this);
-  }
-
-  clicked() {
-    console.log(this.props.task.datefinished);
-    this.props.task.datefinished = null;
-    const tempTask = this.props.task;
-    fetch("http://127.0.0.1:3000/api/update_task", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(tempTask)
-    });
-
-    this.props.action(this.props.task);
   }
 
   edit() {
