@@ -1,3 +1,5 @@
+import { returnStatement } from "@babel/types";
+
 const initialState = {
     todoTasks: [],
     doingTasks: [],
@@ -66,6 +68,7 @@ export default (state = initialState, action) => {
             });
 
         case "DROP":
+            if (action.payload.columnFrom === action.payload.columnTo) return state;
             var fromCol = getArray(action.payload.columnFrom, state);
             var toCol = getArray(action.payload.columnTo, state);
             var movedTask = fromCol.filter(

@@ -131,4 +131,62 @@ describe("reducers", () => {
             type: "HIDE_MODAL"
         })).toEqual(initialState)
     })
+
+    it("should handle dropping onto same column (no change)", () => {
+        const stateWithTask = Object.assign({}, initialState, {
+            todoTasks: initialState.todoTasks.concat([dummyTask])
+        });
+        const dummyColumnFrom = "todoTasks";
+        const dummyColumnTo = "todoTasks";
+        // null because we are dropping from a column in which tasks are not finished
+        // as in have no date here
+        const dummyDate = null;
+        // id columnFrom columnTo date
+        expect(reducer(stateWithTask, {
+            type: "DROP",
+            payload: {
+                id: dummyTask.id, 
+                columnFrom: dummyColumnFrom, 
+                columnTo: dummyColumnTo,
+                date: dummyDate
+            }
+        })).toEqual(stateWithTask)
+    })
+
+    it("should handle dropping from non-done to done column", () => {
+        const stateWithNonDoneTask = Object.assign({}, initialState, {
+            todoTasks: initialState.todoTasks.concat([dummyTask])
+        });
+        const stateWithDoneTask = Object.assign({}, initialState, {
+            doneTasks: initialState.doneTasks.concat([dummyTask])
+        });
+        expect(reducer(stateWithNonDoneTask, {
+            type: "DROP", 
+            payload: {
+                id: dummyTask.id,
+                columnFrom: "todoTasks", 
+                columnTo: "doneTasks",
+                date: null
+            }
+        })).toEqual(stateWithDoneTask)
+    })
+
+    it("should handle dropping from done to non-done column", () => {
+        const stateWithNonDoneTask = Object.assign({}, initialState, {
+            todoTasks: initialState.todoTasks.concat([dummyTask])
+        });
+        const stateWithDoneTask = Object.assign({}, initialState, {
+            doneTasks: initialState.doneTasks.concat([dummyTask])
+        });
+
+        expect(reducer(stateWithDoneTask, {
+            type: "DROP", 
+            payload: {
+                id: dummyTask.id,
+                columnFrom: "doneTasks", 
+                columnTo: "todoTasks",
+                date: null
+            }
+        })).toEqual(stateWithNonDoneTask)
+    })
 })
