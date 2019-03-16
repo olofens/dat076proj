@@ -17,6 +17,19 @@ function calcProg(elap, est) {
     }
 }
 
+function secondsToMS(sec) {
+    var min = Math.floor(sec / 60);
+    var seconds = sec - (min*60);
+    seconds = Math.round(seconds * 100) / 100;
+  
+    var result = (min < 10 ? "0" + min : min);
+    result += ":" + (seconds < 10 ? "0" + seconds : seconds);
+    console.log(result)
+  
+    return result;
+  
+  }
+
 class LeftTask extends React.Component {
     constructor(props) {
         super(props);
@@ -48,7 +61,7 @@ class LeftTask extends React.Component {
                             {this.props.task.title}
                         </td>
                         <td>
-                            {this.props.task.estimatedtime}
+                            {secondsToMS(this.props.task.estimatedtime)}
                         </td>
                         <td className="buttontd">
                             <button onClick={this.edit}>
