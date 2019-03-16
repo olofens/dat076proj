@@ -118,11 +118,11 @@ export const updateTime = (id, time) => {
       Accept: "application/json",
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ "id": id, "elapsedtime":time })
+    body: JSON.stringify({ "id": id, "elapsedtime": time })
   });
 
   return {
     type: "UPDATE_TIME",
-    payload: {id: id, time: time}
+    payload: { id: id, time: time }
   }
 }

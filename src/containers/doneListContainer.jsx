@@ -29,8 +29,8 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({ 
-        startEditTask: startEditTask, 
+    return bindActionCreators({
+        startEditTask: startEditTask,
         deleteTask: deleteTask,
     }, dispatch)
 }

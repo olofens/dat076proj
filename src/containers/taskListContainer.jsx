@@ -14,8 +14,8 @@ class TaskList extends React.Component {
 
     render() {
         return (
-            
-                <TaskListComponent
+
+            <TaskListComponent
                 tasks={this.props.tasks}
                 deleteTask={this.props.deleteTask}
                 openEdit={this.props.startEditTask}
@@ -36,11 +36,12 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({ 
+    return bindActionCreators({
         deleteTask: deleteTask,
         startEditTask: startEditTask,
         showModal: showModal,
-        hideModal: hideModal }, dispatch)
+        hideModal: hideModal
+    }, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(TaskList);

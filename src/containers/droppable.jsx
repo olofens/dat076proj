@@ -16,7 +16,7 @@ class Droppable extends React.Component {
         var id = data.id;
         var fromColumn = data.column;
         var ontoColumn = getColumnName(event.target);
-        
+
         // 'this' isn't recognized in this function. Assigning this to self in the constructor fixed it. 
         if (fromColumn !== ontoColumn) {
             self.props.dropTask(id, fromColumn, ontoColumn);
@@ -29,7 +29,7 @@ class Droppable extends React.Component {
 
     render() {
         return (
-            <div id={this.props.id} onDrop={this.drop} onDragOver={this.allowDrop} style={{"height" : "100%"}}>
+            <div id={this.props.id} onDrop={this.drop} onDragOver={this.allowDrop} style={{ "height": "100%" }}>
                 {this.props.children}
             </div>
         );
@@ -39,21 +39,21 @@ class Droppable extends React.Component {
 function getColumnName(x) {
     while (x = x.parentNode) {
         if (x.id == "drop1") return "todoTasks";
-        else if(x.id == "drop2") return "doingTasks";
-        else if(x.id == "drop3") return "doneTasks";
+        else if (x.id == "drop2") return "doingTasks";
+        else if (x.id == "drop3") return "doneTasks";
     }
     console.log("Something went wrong in getColumnName, droppable");
     return "NONE";
 }
 
 Droppable.propTypes = {
-    id: PropTypes.string, 
+    id: PropTypes.string,
     children: PropTypes.node,
     dropTask: PropTypes.func
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({dropTask: dropTask}, dispatch)
+    return bindActionCreators({ dropTask: dropTask }, dispatch)
 }
 
 export default connect(null, matchDispatchToProps)(Droppable);

@@ -19,11 +19,11 @@ class RightTaskContainer extends React.Component {
 
   render() {
     return (
-        <RightTaskComponent 
-            task={this.props.task}
-            edit={this.props.edit}
-            delete={this.props.delete}
-        />
+      <RightTaskComponent
+        task={this.props.task}
+        edit={this.props.edit}
+        delete={this.props.delete}
+      />
     );
   }
 }

@@ -85,7 +85,7 @@ export default (state = initialState, action) => {
                 ),
                 [action.payload.columnTo]: toCol.concat(movedTask)
             });
-        
+
         case "UPDATE_TIME":
             var col;
             var toChange;

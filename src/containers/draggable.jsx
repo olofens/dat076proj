@@ -11,7 +11,7 @@ class Draggable extends React.Component {
 
     drag(event) {
         var column = getColumnName(event.target);
-        event.dataTransfer.setData("transfer", JSON.stringify({id: event.target.id, column: column}));
+        event.dataTransfer.setData("transfer", JSON.stringify({ id: event.target.id, column: column }));
     }
 
     noAllowDrop(event) {
@@ -30,8 +30,8 @@ class Draggable extends React.Component {
 function getColumnName(x) {
     while (x = x.parentNode) {
         if (x.id == "drop1") return "todoTasks";
-        else if(x.id == "drop2") return "doingTasks";
-        else if(x.id == "drop3") return "doneTasks";
+        else if (x.id == "drop2") return "doingTasks";
+        else if (x.id == "drop3") return "doneTasks";
     }
     console.log("Something went wrong in getColumnName, droppable");
     return "NONE";
@@ -39,7 +39,7 @@ function getColumnName(x) {
 
 Draggable.propTypes = {
     id: PropTypes.number,
-    style: PropTypes.object, 
+    style: PropTypes.object,
     children: PropTypes.node,
     dragTask: PropTypes.func
 }

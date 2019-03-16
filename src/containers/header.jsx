@@ -12,15 +12,15 @@ class Header extends React.Component {
         return (
             <div className="headerContainer">
                 <div className="titleText">
-                <Stopwatch size={70} />
-                TylerTime
+                    <Stopwatch size={70} />
+                    TylerTime
                 </div>
                 <div>
-                    
+
                 </div>
                 <div className="extraSpace">
-                <StatsDots size={45} />
-                <InfoCircle size={55} />
+                    <StatsDots size={45} />
+                    <InfoCircle size={55} />
                 </div>
             </div>
         );
