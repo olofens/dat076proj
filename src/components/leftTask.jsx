@@ -7,8 +7,8 @@ import {Delete} from "styled-icons/material/Delete";
 import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
+//Calculate progress for progress bar
 function calcProg(elap, est) {
-   
     if(elap ==0 || est == 0){
         return 0;
     }
@@ -17,6 +17,7 @@ function calcProg(elap, est) {
     }
 }
 
+//Convert seconds to MM:SS
 function secondsToMS(sec) {
     var min = Math.floor(sec / 60);
     var seconds = sec - (min*60);
@@ -45,9 +46,6 @@ class LeftTask extends React.Component {
         this.props.deleteTask(this.props.task, "todoTasks");
     }
 
-    
-    
-    
     
     render() {
 

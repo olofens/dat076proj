@@ -7,6 +7,8 @@ import "./../components/middletask.css";
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 
+
+//Convert seconds to MM:SS
 function secondsToMS(sec) {
   var min = Math.floor(sec / 60);
   var seconds = sec - (min*60);
@@ -19,7 +21,7 @@ function secondsToMS(sec) {
   return result;
 
 }
-
+//Calculate progress for progress bar
 function calcProg(elap, est) {
    
   if(elap ==0 || est == 0){
