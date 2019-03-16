@@ -18,20 +18,24 @@ button {
 
 .titletd {
     font-weight: bold;
-    text-overflow: ellipsis;
+    white-space: nowrap;
     overflow: hidden;
-
-    max-width: 120px;
-
+    text-overflow: ellipsis;
+    width: 120px;
 }
 
 .desctd {
-    white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 120px;
-}
+    white-space: normal;
 
+    text-overflow: ellipsis;
+    width: 120px;
+    vertical-align: top;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+}
 .progressBar {
     width: 120px;
 }

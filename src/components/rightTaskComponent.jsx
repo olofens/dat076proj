@@ -15,8 +15,8 @@ class RightTaskComponent extends React.Component {
       <table className="righttask">
         <tbody>
           <tr>
-            <td>{this.props.task.title}</td>
-            <td>{this.props.task.id}</td>
+            <td className="titletd">{this.props.task.title}</td>
+            <td>#{this.props.task.id}</td>
             <td className="buttontd">
               <button className="transbutton" onClick={this.props.edit}>
                 <Edit size={20} />
@@ -24,7 +24,7 @@ class RightTaskComponent extends React.Component {
             </td>
           </tr>
           <tr>
-            <td>{this.props.task.description}</td>
+            <td className="desctd">{this.props.task.description}</td>
             <td></td>
             <td className="buttontd">
               <button className="transbutton" onClick={this.props.delete}>
