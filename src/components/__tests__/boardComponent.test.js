@@ -45,8 +45,8 @@ import BoardComponent from '../boardComponent.jsx';
 
 
 
-describe('render()', () => {
-  it('renders the component', () => {
+describe('boardComponent', () => {
+  it('matches the snapshot', () => {
       const component = shallow(<BoardComponent {...props}/>);
 
       expect(component).toMatchSnapshot();
