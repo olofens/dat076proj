@@ -4,6 +4,18 @@ import "./lefttask.css";
 import styled from 'styled-components'
 import { Edit } from "styled-icons/boxicons-solid/Edit"
 import {Delete} from "styled-icons/material/Delete";
+import { withStyles } from '@material-ui/core/styles';
+import LinearProgress from '@material-ui/core/LinearProgress';
+
+function calcProg(elap, est) {
+   
+    if(elap ==0 || est == 0){
+        return 0;
+    }
+    else{
+        return parseInt(elap/est*100)
+    }
+}
 
 class LeftTask extends React.Component {
     constructor(props) {
@@ -20,8 +32,11 @@ class LeftTask extends React.Component {
         this.props.deleteTask(this.props.task, "todoTasks");
     }
 
+    
+    
+    
+    
     render() {
-
 
         return (
             <table className="lefttask">
@@ -52,8 +67,13 @@ class LeftTask extends React.Component {
                             </button>
                         </td>
                     </tr>
+                    <tr className="progressBar">
+                        <LinearProgress variant="determinate" value={calcProg(this.props.task.elapsedtime,this.props.task.estimatedtime)} />
+                    </tr>
+  
                 </tbody>
             </table>
+            
         );
     }
 }
