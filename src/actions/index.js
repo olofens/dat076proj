@@ -27,28 +27,6 @@ export const finishEditTask = (task, column) => {
   };
 };
 
-/*export const doingClickBack = task => {
-  return {
-    type: "DOING_CLICK_BACK",
-    payload: { task: task }
-  };
-};
-
-export const doingClickForward = task => {
-  return {
-    type: "DOING_CLICK_FORWARD",
-    payload: { task: task }
-  };
-};
-
-export const doneClick = task => {
-  return {
-    type: "DONE_CLICK",
-    payload: { task: task }
-  };
-};
-*/
-
 export const closeEditTask = () => {
   return {
     type: "CLOSE_EDIT_TASK"
@@ -66,8 +44,6 @@ export const hideModal = () => {
     type: "HIDE_MODAL"
   };
 };
-
-
 
 export const init = () => {
   return dispatch => {
@@ -88,10 +64,6 @@ export const setTasks = data => {
   const doneArray = array1.filter(task => {
     return task.datefinished !== null && task.datefinished !== "null";
   });
-  console.log("Todoarray: ");
-  console.log(todoArray);
-  console.log("Donearray: ");
-  console.log(doneArray);
 
   return {
     type: "INIT",

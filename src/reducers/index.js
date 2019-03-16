@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
             newCol[index] = action.payload.task;
 
             return Object.assign({}, state, {
-                editVisible: false, 
+                editVisible: false,
                 [action.payload.column]: newCol
             })
 
@@ -48,30 +48,6 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 todoTasks: state.todoTasks.concat([action.payload.task])
             })
-
-        /*case "DOING_CLICK_BACK":
-            return Object.assign({}, state, {
-                doingTasks: state.doingTasks.filter(
-                    task => task.id !== action.payload.task.id
-                ),
-                todoTasks: state.todoTasks.concat([action.payload.task])
-            });
-
-        case "DOING_CLICK_FORWARD":
-            return Object.assign({}, state, {
-                doingTasks: state.doingTasks.filter(
-                    task => task.id !== action.payload.task.id
-                ),
-                doneTasks: state.doneTasks.concat([action.payload.task])
-            });
-
-        case "DONE_CLICK":
-            return Object.assign({}, state, {
-                doneTasks: state.doneTasks.filter(
-                    task => task.id !== action.payload.task.id
-                ),
-                doingTasks: state.doingTasks.concat([action.payload.task])
-            });*/
 
         case "SHOW_MODAL":
             return Object.assign({}, state, {
