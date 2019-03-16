@@ -25,9 +25,11 @@ const customStyles = {
 // to validate the input data
 const addTaskSchema = Yup.object().shape({
     title: Yup.string()
-        .required('Required'),
+        .required('Required')
+        .max(20),
     description: Yup.string()
-        .required('Required'),
+        .required('Required')
+        .max(150),
     estimatedTime: Yup.number()
         .required('Required')
         .positive('Time must be > 0')
@@ -120,7 +122,7 @@ const AddTaskForm = (hideModal, addTask) => (
             </label>
                         <input
                             id="estimatedTime"
-                            placeholder="Enter your estimatedTime"
+                            placeholder="Enter your estimated completion time (minutes)"
                             type="text"
                             value={values.estimatedTime}
                             onChange={handleChange}

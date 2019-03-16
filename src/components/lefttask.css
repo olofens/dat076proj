@@ -3,6 +3,8 @@
     margin-left: 0%;
     margin-right: 0%;
     align-content: center;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic,
+    "AppleGothic", sans-serif;
 }
 
 button {
@@ -34,7 +36,8 @@ button {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;  
+    -webkit-box-orient: vertical; 
+    
 }
 .progressBar {
     width: 120px;

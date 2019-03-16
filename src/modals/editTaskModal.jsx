@@ -23,9 +23,11 @@ const customStyles = {
 // to validate the input data
 const addTaskSchema = Yup.object().shape({
     title: Yup.string()
-        .required('Required'),
+        .required('Required')
+        .max(10),
     description: Yup.string()
-        .required('Required'),
+        .required('Required')
+        .max(150),
     estimatedTime: Yup.number()
         .required('Required')
         .positive('Time must be > 0')
