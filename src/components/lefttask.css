@@ -15,3 +15,14 @@ button {
 .buttontd {
     text-align: right;
 }
+
+.titletd {
+    font-weight: bold;
+}
+
+.desctd {
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
