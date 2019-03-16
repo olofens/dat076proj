@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import MiddleTask from '../middleTask.jsx';
-import jest from 'jest';
 
 
 const props = {
@@ -18,6 +17,8 @@ const props = {
       }
     };
 
+    
+
 describe('Test Timer button component', () => {
     it('renders Start Timer when timer is off', () => {
         const wrapper = mount(<MiddleTask {...props}/>);
@@ -27,19 +28,44 @@ describe('Test Timer button component', () => {
 
 
     });
-    it('renders Stop Timer when timer is on', () => {
+    it('renders Stop Timer when timer is on', ()  => {
+
+
         const wrapper = mount(<MiddleTask {...props}/>);
   
         const timerBtn = wrapper.find('button.timer');
         timerBtn.simulate('click');
 
-        //Give button enough time to update
-        setTimeout(()=>{
+        setTimeout(() => {
             const text = wrapper.find('button.timer').text();
-            expect(text).toEqual('Stop Timer');
-        }, 1000);
+            expect(text).toEqual('Stop Timer')
+          }, 1000)
+      
+
+    });
+});
+
+describe('Test timer data component', () => {
+    it('Rendered timer is 0', () => {
+        const wrapper = mount(<MiddleTask {...props}/>);
+  
+
+        const text = wrapper.find('td#timerLabel').text();
+        expect(text).toEqual('Time: 0');
 
 
     });
+
+    it('Rendered timer is not 0 after timer start', () => {
+        const wrapper = mount(<MiddleTask {...props}/>);
   
+        const timerBtn = wrapper.find('button.timer');
+        timerBtn.simulate('click');
+
+        setTimeout(() => {
+        const text = wrapper.find('td#timerLabel').text();
+        expect(text).not.toEqual('Time: 0');
+        }, 1000)
+    });
+
 });

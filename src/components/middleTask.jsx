@@ -106,7 +106,7 @@ class MiddleTask extends React.Component {
                 {this.state.timerOn ? "Stop Timer" : "Start Timer"}
               </button>
             </td>
-            <td>Time: {this.state.time}</td>
+            <td id="timerLabel">Time: {this.state.time}</td>
             <td className="buttontd">
               <button className="transbutton" onClick={this.delete}>
                 <Delete size={20} />
