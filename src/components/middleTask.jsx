@@ -62,8 +62,8 @@ class MiddleTask extends React.Component {
     return (
       <MiddleTaskComponent
         task={this.props.task}
-        edit={this.props.startEditTask}
-        delete={this.props.deleteTask}
+        startEditTask={this.props.startEditTask}
+        deleteTask={this.props.deleteTask}
       />
     );
   }
