@@ -110,3 +110,19 @@ export const dropTask = (id, columnFrom, columnTo) => {
     payload: { id: id, columnFrom: columnFrom, columnTo: columnTo, date: date }
   };
 };
+
+export const updateTime = (id, time) => {
+  fetch("http://127.0.0.1:3000/api/update_task_time", {
+    method: "post",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ "id": id, "elapsedtime":time })
+  });
+
+  return {
+    type: "UPDATE_TIME",
+    payload: {id: id, time: time}
+  }
+}

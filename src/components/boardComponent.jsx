@@ -20,6 +20,7 @@ class BoardComponent extends React.Component {
                         task={task}
                         startEditTask={this.props.startEditTask}
                         deleteTask={this.props.deleteTask}
+                        updateTime={this.props.updateTime}
                     />
                 </li>
             </Draggable>);

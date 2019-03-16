@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { startEditTask, deleteTask } from "../actions/index.js"
+import { startEditTask, deleteTask, updateTime } from "../actions/index.js"
 import BoardComponent from "../components/boardComponent.jsx"
 import Droppable from "./droppable.jsx"
 
@@ -17,6 +17,7 @@ class BoardContainer extends React.Component {
                 tasks={this.props.tasks}
                 startEditTask={this.props.startEditTask}
                 deleteTask={this.props.deleteTask}
+                updateTime={this.props.updateTime}
             />
         );
     }
@@ -30,6 +31,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
+        updateTime: updateTime,
         startEditTask: startEditTask,
         deleteTask: deleteTask
     }, dispatch)

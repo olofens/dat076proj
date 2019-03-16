@@ -9,72 +9,31 @@ class MiddleTask extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: 0,
+      time: props.task.elapsedtime,
       timerOn: false
     };
     this.edit = this.edit.bind(this);
     this.delete = this.delete.bind(this);
     this.toggleTimer = this.toggleTimer.bind(this);
   }
-  // Updates the time in the DB
-  updateElapsedTime() {
-    const toggledTime = this.state.time;
-    this.props.task.elapsedtime = toggledTime;
-    const tempTask = this.props.task;
-
-    fetch("http://127.0.0.1:3000/api/update_task", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(tempTask)
-    });
-  }
-
-  //Retrieves the timer value 
-  componentDidMount() {
-    const that = this;
-    setTimeout(() => {
-      const tempTask = this.props.task;
-      console.log(JSON.stringify(tempTask, null, 2));
-      fetch("http://127.0.0.1:3000/get_task_time", {
-        method: "post",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(tempTask, null, 2)
-      })
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(data) {
-          const items = data;
-          that.setState({ time: items[0].elapsedtime });
-        });
-    }, 500);
-  }
 
   componentWillUnmount() {
-    this.updateElapsedTime();
+    this.props.updateTime(this.props.task.id, this.state.time);
     clearInterval(this.timer);
   }
 
   //Timer logic
   //Updates the state
   toggleTimer() {
-    console.log("Timer: ", this.state.timerOn);
     if (!this.state.timerOn) {
       this.timer = setInterval(() => {
         this.setState({
           timerOn: true,
           time: this.state.time + 1
         });
-        console.log("counting to", this.state.time);
       }, 1000);
-      console.log("start");
     } else {
+      this.props.updateTime(this.props.task.id, this.state.time);
       this.setState({ timerOn: false });
       clearInterval(this.timer);
     }

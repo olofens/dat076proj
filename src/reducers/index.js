@@ -85,6 +85,23 @@ export default (state = initialState, action) => {
                 ),
                 [action.payload.columnTo]: toCol.concat(movedTask)
             });
+        
+        case "UPDATE_TIME":
+            var col;
+            var toChange;
+            if (state.todoTasks.some(task => task.id === action.payload.id)) {
+                col = state.todoTasks;
+                toChange = "todoTasks";
+            } else {
+                col = state.doingTasks;
+                toChange = "doingTasks";
+            }
+            var index = col.findIndex(task => task.id === action.payload.id);
+            col[index].elapsedtime = action.payload.time;
+
+            return Object.assign({}, state, {
+                [toChange]: col
+            })
 
         default:
             return state;
