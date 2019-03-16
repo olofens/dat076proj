@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import MiddleTask from '../middleTask.jsx';
+import MiddleTask from '../middleTaskComponent.jsx';
 
 
 const props = {
