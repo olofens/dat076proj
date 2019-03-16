@@ -37,3 +37,7 @@
   text-overflow: ellipsis;
   max-width: 120px;
 }
+
+.estimatedText {
+    text-align: right;
+}
