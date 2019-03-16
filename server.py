@@ -62,6 +62,15 @@ def apiUpdateTaskFin():
     )
     return "OK"
 
+@app.route("/api/update_task_time", methods=["POST"])
+def apiUpdateTaskTime():
+    req_data = request.get_json()
+    dbconn.updateTaskTime(
+        req_data["id"],
+        req_data["elapsedtime"]
+    )
+    return "OK"
+
 @app.route("/api/update_task", methods=["POST"])
 def apiUpdateTask():
     req_data = request.get_json()

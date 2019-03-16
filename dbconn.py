@@ -68,7 +68,6 @@ def updateTask(userId, title, description, elapsedTime, estimatedTime, datefinis
     sqlQuery = "UPDATE tasks SET (title, description, elapsedTime, estimatedTime, datefinished) = (%s,%s,%s,%s,%s) WHERE id = %s"
     cur.execute(sqlQuery, [title, description, elapsedTime, estimatedTime, datefinished, userId])
     conn.commit()
-    
     conn.close()
 
 def updateTaskFin(userId, datefinished):
@@ -76,6 +75,14 @@ def updateTaskFin(userId, datefinished):
     cur = conn.cursor(cursor_factory=RealDictCursor)
     sqlQuery = "UPDATE tasks SET (datefinished) = ROW(%s) WHERE id = %s"
     cur.execute(sqlQuery, [datefinished, userId])
+    conn.commit()
+    conn.close()
+
+def updateTaskTime(myId, elapsedtime):
+    conn = getOpenConnection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    sqlQuery = "UPDATE tasks SET (elapsedtime) = ROW(%s) WHERE id = %s"
+    cur.execute(sqlQuery, [elapsedtime, myId])
     conn.commit()
     conn.close()
 
