@@ -5,7 +5,6 @@ import { bindActionCreators } from "redux";
 import { startEditTask, finishEditTask, closeEditTask } from "../actions/index.js"
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import styles from './modalStyling.css'
 import './modal.css';
 import Modal from 'react-responsive-modal';
 

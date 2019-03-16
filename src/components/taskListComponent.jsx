@@ -7,6 +7,8 @@ import Droppable from "../containers/droppable.jsx"
 import { strict } from 'assert';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
+import { DocumentAdd } from "styled-icons/typicons/DocumentAdd";
+
 
 
 class TaskListComponent extends React.Component {
@@ -38,9 +40,9 @@ class TaskListComponent extends React.Component {
                         </div>
                         <div id="floating">
                             <div id="sidebar">
-                            <Fab size="small" color="primary" aria-label="Add" onClick={this.props.showModal} >
-                                <AddIcon />
-                            </Fab>
+                            <button className="transbutton" onClick={this.props.showModal}>
+                            <DocumentAdd size={45} />
+                            </button>
                             </div>
                         </div>
                 </h3>
