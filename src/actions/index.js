@@ -9,7 +9,7 @@ export const deleteTask = (task, column) => {
 export const addTask = (task) => {
   return {
     type: "ADD_TASK",
-    payload: {task: task}
+    payload: { task: task }
   }
 }
 
@@ -27,30 +27,9 @@ export const finishEditTask = (task, column) => {
   };
 };
 
-export const doingClickBack = task => {
-  return {
-    type: "DOING_CLICK_BACK",
-    payload: { task: task }
-  };
-};
-
-export const doingClickForward = task => {
-  return {
-    type: "DOING_CLICK_FORWARD",
-    payload: { task: task }
-  };
-};
-
 export const closeEditTask = () => {
   return {
     type: "CLOSE_EDIT_TASK"
-  };
-};
-
-export const doneClick = task => {
-  return {
-    type: "DONE_CLICK",
-    payload: { task: task }
   };
 };
 
@@ -65,8 +44,6 @@ export const hideModal = () => {
     type: "HIDE_MODAL"
   };
 };
-
-
 
 export const init = () => {
   return dispatch => {
@@ -87,10 +64,6 @@ export const setTasks = data => {
   const doneArray = array1.filter(task => {
     return task.datefinished !== null && task.datefinished !== "null";
   });
-  console.log("Todoarray: ");
-  console.log(todoArray);
-  console.log("Donearray: ");
-  console.log(doneArray);
 
   return {
     type: "INIT",
@@ -107,29 +80,24 @@ export const dragTask = (id, column) => {
 };
 
 export const dropTask = (id, columnFrom, columnTo) => {
-  var date = new Date()
-    .toISOString()
-    .slice(0, 19)
-    .replace("T", " ");
+  var date;
   if (columnTo === "doneTasks") {
-    fetch("http://127.0.0.1:3000/api/update_task_fin", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ "id": id, "datefinished": date })
-    });
+    date = new Date()
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " ");
   } else {
-    fetch("http://127.0.0.1:3000/api/update_task_fin", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ "id": id, "datefinished": null })
-    });
+    date = null;
   }
+  fetch("http://127.0.0.1:3000/api/update_task_fin", {
+    method: "post",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ "id": id, "datefinished": date })
+  });
+
   return {
     type: "DROP",
     payload: { id: id, columnFrom: columnFrom, columnTo: columnTo, date: date }
