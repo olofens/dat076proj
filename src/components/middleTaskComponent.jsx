@@ -44,7 +44,7 @@ class MiddleTaskComponent extends React.Component {
                 {this.props.timerOn ? "Stop Timer" : "Start Timer"}
               </button>
             </td>
-            <td id="timerLabel">{secondsToMS(this.state.time)}</td>
+            <td id="timerLabel">{secondsToMS(this.props.time)}</td>
             <td className="buttontd">
               <button className="transbutton" onClick={this.props.delete}>
                 <Delete size={20} />
