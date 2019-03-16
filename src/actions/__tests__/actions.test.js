@@ -92,4 +92,18 @@ describe("actions", () => {
         }
         expect(actions.dropTask(dummyId, dummyColFrom, dummyColTo, dummyDate)).toEqual(expectedAction)
     })
+
+    it("should create an action to drop a task onto a non-doneTasks column", () => {
+        const dummyDate = null;
+        const dummyColFrom = "doneTasks";
+        const dummyColTo = "todoTasks";
+        const dummyId = 1;
+        const expectedAction = {
+            type: "DROP",
+            payload: { id: dummyId, columnFrom: dummyColFrom, columnTo: dummyColTo, date: dummyDate }
+        }
+        expect(actions.dropTask(dummyId, dummyColFrom, dummyColTo, dummyDate)).toEqual(expectedAction)
+    })
+
+
 })

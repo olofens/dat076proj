@@ -9,7 +9,7 @@ export const deleteTask = (task, column) => {
 export const addTask = (task) => {
   return {
     type: "ADD_TASK",
-    payload: {task: task}
+    payload: { task: task }
   }
 }
 
@@ -108,29 +108,24 @@ export const dragTask = (id, column) => {
 };
 
 export const dropTask = (id, columnFrom, columnTo) => {
-  var date = new Date()
-    .toISOString()
-    .slice(0, 19)
-    .replace("T", " ");
+  var date;
   if (columnTo === "doneTasks") {
-    fetch("http://127.0.0.1:3000/api/update_task_fin", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ "id": id, "datefinished": date })
-    });
+    date = new Date()
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " ");
   } else {
-    fetch("http://127.0.0.1:3000/api/update_task_fin", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ "id": id, "datefinished": null })
-    });
+    date = null;
   }
+  fetch("http://127.0.0.1:3000/api/update_task_fin", {
+    method: "post",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ "id": id, "datefinished": date })
+  });
+
   return {
     type: "DROP",
     payload: { id: id, columnFrom: columnFrom, columnTo: columnTo, date: date }
