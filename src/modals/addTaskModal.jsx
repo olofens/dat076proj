@@ -5,17 +5,9 @@ import { bindActionCreators } from "redux";
 import { showModal, hideModal, addTask } from "../actions/index.js"
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import styles from './modalStyling.css'
 import './modal.css';
 
 import Modal from 'react-responsive-modal';
-//import Modal from 'react-bootstrap/Modal';
-//import Button from 'react-bootstrap/Button';
-//import 'bootstrap/dist/css/bootstrap.css';
-
-//import AddTaskForm from '../components/addTaskForm.jsx'
-
-
 
 // Custom Modal styling
 const customStyles = {

@@ -93,7 +93,7 @@ class MiddleTask extends React.Component {
       <table className="middletask">
         <tbody>
           <tr>
-            <td>{this.props.task.title}</td>
+            <td className="titletd">{this.props.task.title}</td>
             <td>{this.props.task.estimatedtime}</td>
             <td />
             <td className="buttontd">
@@ -103,7 +103,7 @@ class MiddleTask extends React.Component {
             </td>
           </tr>
           <tr>
-            <td>{this.props.task.description}</td>
+            <td className="desctd">{this.props.task.description}</td>
             <td>
               <button className="timer" onClick={this.toggleTimer}>
                 {this.state.timerOn ? "Stop Timer" : "Start Timer"}

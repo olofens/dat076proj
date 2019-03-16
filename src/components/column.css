@@ -27,6 +27,13 @@ li {
   margin-right: 5%;
   padding: 5px;
 }
+.transbutton {
+  background-color: transparent;
+  border:none;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 20px;
+}
 
 .title {
   font-size: 20pt;
@@ -56,6 +63,8 @@ li {
   display: inline-block; 
   position: absolute; 
   width: 100px;
+  height: 70px;
+  vertical-align: top 
 
   
   }

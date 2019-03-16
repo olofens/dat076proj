@@ -27,7 +27,7 @@ class LeftTask extends React.Component {
             <table className="lefttask">
                 <tbody>
                     <tr>
-                        <td>
+                        <td className="titletd">
                             {this.props.task.title}
                         </td>
                         <td>
@@ -40,7 +40,7 @@ class LeftTask extends React.Component {
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td className="desctd">
                             {this.props.task.description}
                         </td>
                         <td>
