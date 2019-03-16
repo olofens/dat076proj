@@ -17,8 +17,7 @@ import Modal from 'react-responsive-modal';
 
 
 
-
-//Fix better styling!
+// Custom Modal styling
 const customStyles = {
     modal: {
         border: '1px solid #ccc', background: '#fff',
@@ -29,7 +28,9 @@ const customStyles = {
     }
 };
 
-
+// Yup - Form validator framework
+// The validation scheme which is used in combination with Formik 
+// to validate the input data
 const addTaskSchema = Yup.object().shape({
     title: Yup.string()
         .required('Required'),
@@ -42,6 +43,9 @@ const addTaskSchema = Yup.object().shape({
 
 });
 
+// Formik - Form building framework
+// Allows us to easily get values from state, validate the inputs (with Yup) and 
+// submit data with ease
 const AddTaskForm = (hideModal, addTask) => (
     <div>
         <h1>Add New Task</h1>

@@ -17,7 +17,6 @@ const props = {
       }
     };
 
-    
 
 describe('Test Timer button component', () => {
     it('renders Start Timer when timer is off', () => {
@@ -36,6 +35,7 @@ describe('Test Timer button component', () => {
         const timerBtn = wrapper.find('button.timer');
         timerBtn.simulate('click');
 
+        //Add small artificial delay, rendering is slightly delayed because of backend calls 
         setTimeout(() => {
             const text = wrapper.find('button.timer').text();
             expect(text).toEqual('Stop Timer')

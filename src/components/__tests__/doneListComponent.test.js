@@ -43,10 +43,8 @@ import DoneListComponent from '../doneListComponent.jsx';
 
 
 
-
-
-describe('render()', () => {
-  it('renders the component', () => {
+describe('doneListComponent', () => {
+  it('matches the snapshot', () => {
       const component = shallow(<DoneListComponent {...props}/>);
 
       expect(component).toMatchSnapshot();

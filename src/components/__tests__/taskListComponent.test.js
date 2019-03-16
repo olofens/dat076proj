@@ -4,7 +4,7 @@ import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store'
 import TaskListComponent from '../taskListComponent.jsx';
 
-
+// Dummy task list 
   const props = {
     tasks: [
       {
@@ -40,9 +40,9 @@ import TaskListComponent from '../taskListComponent.jsx';
     ],
     
   };
-
-describe('render()', () => {
-  it('renders the component', () => {
+// Tests so that the TaskListComponent matches with a predefined snapshot
+describe('taskListComponent', () => {
+  it('matches the snapshot', () => {
       const component = shallow(<TaskListComponent {...props}/>);
 
       expect(component).toMatchSnapshot();
