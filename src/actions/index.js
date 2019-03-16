@@ -27,7 +27,7 @@ export const finishEditTask = (task, column) => {
   };
 };
 
-export const doingClickBack = task => {
+/*export const doingClickBack = task => {
   return {
     type: "DOING_CLICK_BACK",
     payload: { task: task }
@@ -41,16 +41,17 @@ export const doingClickForward = task => {
   };
 };
 
-export const closeEditTask = () => {
-  return {
-    type: "CLOSE_EDIT_TASK"
-  };
-};
-
 export const doneClick = task => {
   return {
     type: "DONE_CLICK",
     payload: { task: task }
+  };
+};
+*/
+
+export const closeEditTask = () => {
+  return {
+    type: "CLOSE_EDIT_TASK"
   };
 };
 
