@@ -65,27 +65,6 @@ export default (state = initialState, action) => {
                 doneTasks: action.doneTasks
             });
 
-        case "DRAG": // not used atm
-            if (action.payload.column == "LEFT") {
-                return Object.assign({}, state, {
-                    heldTasks: state.todoTasks.filter(
-                        task => task.id === parseInt(action.payload.id)
-                    )
-                });
-            } else if (action.payload.column == "MIDDLE") {
-                return Object.assign({}, state, {
-                    heldTasks: state.doingTasks.filter(
-                        task => task.id === parseInt(action.payload.id)
-                    )
-                });
-            } else if (action.payload.column == "RIGHT") {
-                return Object.assign({}, state, {
-                    heldTasks: state.doneTasks.filter(
-                        task => task.id === parseInt(action.payload.id)
-                    )
-                });
-            }
-
         case "DROP":
             var fromCol = getArray(action.payload.columnFrom, state);
             var toCol = getArray(action.payload.columnTo, state);

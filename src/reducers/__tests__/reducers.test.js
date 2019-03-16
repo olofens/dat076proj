@@ -75,11 +75,60 @@ describe("reducers", () => {
         const expectedState = Object.assign({}, stateWithStartEditAndTask, {
             editVisible: false,
             todoTasks: [dummyTaskWithChanges]
-        })
+        });
 
         expect(reducer(stateWithStartEditAndTask, {
             type: "FINISH_EDIT_TASK",
             payload: {task: dummyTaskWithChanges, column: dummyColumn}
         })).toEqual(expectedState)
+    })
+
+    it("should handle delete_task", () => {
+        const dummyColumn = "todoTasks";
+        const stateWithTask = Object.assign({}, initialState, {
+            todoTasks: initialState.todoTasks.concat([dummyTask])
+        });
+
+        expect(reducer(stateWithTask, {
+            type: "DELETE_TASK",
+            payload: {task: dummyTask, column: dummyColumn}
+        })).toEqual(initialState)
+    })
+
+    it("should handle close_edit_task", () => {
+        const stateWithEditOpened = Object.assign({}, initialState, {
+            editVisible: true
+        });
+        expect(reducer(stateWithEditOpened, {
+            type: "CLOSE_EDIT_TASK"
+        })).toEqual(initialState)
+    })
+
+    it("should handle add task", () => {
+        const stateWithAddedTask = Object.assign({}, initialState, {
+            todoTasks: initialState.todoTasks.concat([dummyTask])
+        });
+        expect(reducer(initialState, {
+            type: "ADD_TASK",
+            payload: {task: dummyTask}
+        })).toEqual(stateWithAddedTask)
+    })
+
+    it("should handle show_modal", () => {
+        const stateWithShowingModal = Object.assign({}, initialState, {
+            modalIsOpen: true
+        });
+        expect(reducer(initialState, {
+            type: "SHOW_MODAL"
+        })).toEqual(stateWithShowingModal)
+    })
+
+    it("should handle show_modal", () => {
+        const stateWithShowingModal = Object.assign({}, initialState, {
+            modalIsOpen: true
+        });
+        expect(reducer(stateWithShowingModal, {
+            type: "HIDE_MODAL"
+        })).toEqual(initialState)
     })
 })
