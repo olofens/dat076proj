@@ -41,10 +41,6 @@ import TaskListComponent from '../taskListComponent.jsx';
     
   };
 
-
-
-
-
 describe('render()', () => {
   it('renders the component', () => {
       const component = shallow(<TaskListComponent {...props}/>);

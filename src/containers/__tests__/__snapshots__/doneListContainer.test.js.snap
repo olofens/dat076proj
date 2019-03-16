@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`doneListContainer should render correctly in "debug" mode 1`] = `
-<doneListContainer
-  debug={true}
-/>
-`;
