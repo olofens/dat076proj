@@ -50,8 +50,7 @@ class MiddleTask extends React.Component {
           return response.json();
         })
         .then(function(data) {
-          const items = data;
-          that.setState({ time: items[0].elapsedtime });
+          that.setState({ time: data.elapsedtime });
         });
     }, 500);
   }
