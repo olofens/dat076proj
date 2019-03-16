@@ -1,0 +1,39 @@
+test_name: Flask API testing
+
+stages:
+  - name: Make sure we have something here
+
+    request:
+      url: http://127.0.0.1:3000
+      method: GET
+
+    response:
+      status_code: 200
+
+---
+
+test_name: Add a task to get things started
+
+stages: 
+  - name: Add task
+
+    request: 
+      url: http://127.0.0.1:3000/add_task
+      json:
+        title: YAML testing
+        description: YAML description
+        estimatedTime: 120
+      method: POST
+      headers:
+        content-type: application/json
+    
+    response: 
+      status_code: 200
+      body: 
+        title: YAML testing
+        description: YAML description
+        estimatedtime: 120
+
+
+
+        

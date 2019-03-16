@@ -12,7 +12,12 @@ class FlaskTestCase(unittest.TestCase):
     def test_tasks(self):
         tester = app.test_client(self)
         response = tester.get("/tasks", content_type="applications/json")
+        
         self.assertEqual(response.status_code, 200)
+
+    def test_addTask(self):
+        tester = app.test_client(self)
+        response = tester.get("/api/add_task")
 
 if (__name__ == '__main__'):
     unittest.main()
