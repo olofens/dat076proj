@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import RightTask from "../components/rightTask.jsx";
+import RightTaskContainer from "../containers/rightTaskContainer.jsx";
 import { doneClick } from "../actions/index.js";
 import Draggable from "../containers/draggable.jsx";
 import Droppable from "../containers/droppable.jsx";
@@ -17,7 +17,7 @@ class DoneListComponent extends React.Component {
         var items = this.props.tasks.map((task) =>
             <Draggable id={task.id} key={task.id}>
                 <li>
-                    <RightTask
+                    <RightTaskContainer
                         task={task}
                         startEditTask={this.props.startEditTask}
                         deleteTask={this.props.deleteTask}

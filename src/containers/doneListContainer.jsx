@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import RightTask from "../components/rightTask.jsx";
 import { startEditTask, deleteTask } from "../actions/index.js"
 import DoneListComponent from "../components/doneListComponent.jsx"
 import Droppable from "./droppable.jsx"

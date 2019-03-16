@@ -93,8 +93,8 @@ export default (state = initialState, action) => {
                 col = state.todoTasks;
                 toChange = "todoTasks";
             } else {
-                col = state.doingTasks;
-                toChange = "doingTasks";
+                col = state.doneTasks;
+                toChange = "doneTasks";
             }
             var index = col.findIndex(task => task.id === action.payload.id);
             col[index].elapsedtime = action.payload.time;
