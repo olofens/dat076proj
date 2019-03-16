@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
         case "FINISH_EDIT_TASK":
             var col = getArray(action.payload.column, state);
             var newCol = col.slice();
-            var index = newCol.findIndex(task => task === action.payload.task);
+            var index = newCol.findIndex(task => task.id === action.payload.task.id);
             newCol[index] = action.payload.task;
 
             return Object.assign({}, state, {
@@ -109,10 +109,10 @@ export default (state = initialState, action) => {
     }
 };
 
+// Export this function for testing purposes (see reducers.test.js)
 function getArray(name, state) {
     switch (name) {
         case "todoTasks":
-            console.log("hello");
             return state.todoTasks;
         case "doingTasks":
             return state.doingTasks;
