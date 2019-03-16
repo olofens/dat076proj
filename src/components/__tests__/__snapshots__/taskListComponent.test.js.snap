@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render() renders the component 1`] = `
+<div
+  className="column"
+>
+  <Connect(Droppable)
+    id="drop1"
+  >
+    <h3
+      className="title"
+    >
+      <div
+        id="centered"
+      >
+        To do
+      </div>
+      <div
+        id="floating"
+      >
+        <div
+          id="sidebar"
+        >
+          <WithStyles(Fab)
+            aria-label="Add"
+            color="primary"
+            size="small"
+          >
+            <pure(AddIcon) />
+          </WithStyles(Fab)>
+        </div>
+      </div>
+    </h3>
+    <ul>
+      <Connect(Draggable)
+        id={30}
+        key="30"
+      >
+        <li>
+          <LeftTask
+            task={
+              Object {
+                "datecreated": "Thu, 14 Mar 2019 18:40:07 GMT",
+                "datefinished": null,
+                "description": "Hi im gonna work",
+                "elapsedtime": 4,
+                "estimatedtime": 100,
+                "id": 30,
+                "title": "My Task!",
+                "userid": "Erik",
+              }
+            }
+          />
+        </li>
+      </Connect(Draggable)>
+      <Connect(Draggable)
+        id={7}
+        key="7"
+      >
+        <li>
+          <LeftTask
+            task={
+              Object {
+                "datecreated": "Wed, 13 Mar 2019 12:07:32 GMT",
+                "datefinished": null,
+                "description": "asd",
+                "elapsedtime": 0,
+                "estimatedtime": 1234,
+                "id": 7,
+                "title": "asd",
+                "userid": "Erik",
+              }
+            }
+          />
+        </li>
+      </Connect(Draggable)>
+      <Connect(Draggable)
+        id={28}
+        key="28"
+      >
+        <li>
+          <LeftTask
+            task={
+              Object {
+                "datecreated": "Thu, 14 Mar 2019 18:37:52 GMT",
+                "datefinished": "2019-03-15 15:21:17",
+                "description": "netaskerin",
+                "elapsedtime": 0,
+                "estimatedtime": 22,
+                "id": 28,
+                "title": "newtask",
+                "userid": "Erik",
+              }
+            }
+          />
+        </li>
+      </Connect(Draggable)>
+    </ul>
+  </Connect(Droppable)>
+</div>
+`;
