@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { Edit } from "styled-icons/boxicons-solid/Edit";
 import { Delete } from "styled-icons/material/Delete";
 import "./../components/middletask.css";
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 
 function secondsToMS(sec) {
   var min = Math.floor(sec / 60);
@@ -18,6 +20,15 @@ function secondsToMS(sec) {
 
 }
 
+function calcProg(elap, est) {
+   
+  if(elap ==0 || est == 0){
+      return 0;
+  }
+  else{
+      return parseInt(elap/est*100)
+  }
+}
 class MiddleTaskComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -25,6 +36,8 @@ class MiddleTaskComponent extends React.Component {
 
   render() {
     return (
+      <div>
+
       <table className="middletask">
         <tbody>
           <tr>
@@ -53,6 +66,10 @@ class MiddleTaskComponent extends React.Component {
           </tr>
         </tbody>
       </table>
+      <LinearProgress variant="determinate" value={calcProg(this.props.task.elapsedtime,this.props.task.estimatedtime)} />
+
+      </div>
+
     );
   }
 }

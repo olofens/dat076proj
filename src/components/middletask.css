@@ -41,3 +41,7 @@
 .estimatedText {
     text-align: right;
 }
+
+.progressBar {
+    width: 260px;
+}

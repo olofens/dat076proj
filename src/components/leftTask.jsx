@@ -39,6 +39,8 @@ class LeftTask extends React.Component {
     render() {
 
         return (
+            <div>
+
             <table className="lefttask">
                 <tbody>
                     <tr>
@@ -67,13 +69,14 @@ class LeftTask extends React.Component {
                             </button>
                         </td>
                     </tr>
-                    <tr className="progressBar">
-                        <LinearProgress variant="determinate" value={calcProg(this.props.task.elapsedtime,this.props.task.estimatedtime)} />
-                    </tr>
+                   
   
                 </tbody>
             </table>
-            
+            <LinearProgress variant="determinate" value={calcProg(this.props.task.elapsedtime,this.props.task.estimatedtime)} />
+
+            </div>
+
         );
     }
 }
