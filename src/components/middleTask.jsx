@@ -5,6 +5,20 @@ import { Edit } from "styled-icons/boxicons-solid/Edit";
 import { Delete } from "styled-icons/material/Delete";
 import "./middletask.css";
 
+
+function secondsToMS(sec) {
+  var min = Math.floor(sec / 60);
+  var seconds = sec - (min*60);
+  seconds = Math.round(seconds * 100) / 100;
+
+  var result = (min < 10 ? "0" + min : min);
+  result += ":" + (seconds < 10 ? "0" + seconds : seconds);
+  console.log(result)
+
+  return result;
+
+}
+
 class MiddleTask extends React.Component {
   constructor(props) {
     super(props);
@@ -60,6 +74,21 @@ class MiddleTask extends React.Component {
     clearInterval(this.timer);
   }
 
+  secondstoMS(sec) {
+    var min = Math.floor(sec / 60);
+    var seconds = sec - (min*60);
+    seconds = Math.round(seconds * 100) / 100;
+
+    var result = "-" + (min < 10 ? "0" + min : min);
+    result += "-" + (seconds < 10 ? "0" + seconds : seconds);
+    console.log(result)
+
+    return result;
+
+  }
+
+  
+
   //Timer logic
   //Updates the state
   toggleTimer() {
@@ -93,8 +122,8 @@ class MiddleTask extends React.Component {
         <tbody>
           <tr>
             <td className="titletd">{this.props.task.title}</td>
-            <td>{this.props.task.estimatedtime}</td>
-            <td />
+            <td className="estimatedText">Est.</td>
+            <td>{secondsToMS(this.props.task.estimatedtime)}</td>
             <td className="buttontd">
               <button className="transbutton" onClick={this.edit}>
                 <Edit size={20} />
@@ -108,7 +137,7 @@ class MiddleTask extends React.Component {
                 {this.state.timerOn ? "Stop Timer" : "Start Timer"}
               </button>
             </td>
-            <td id="timerLabel">Time: {this.state.time}</td>
+            <td id="timerLabel">{secondsToMS(this.state.time)}</td>
             <td className="buttontd">
               <button className="transbutton" onClick={this.delete}>
                 <Delete size={20} />
