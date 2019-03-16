@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store'
 import BoardComponent from '../boardComponent.jsx';

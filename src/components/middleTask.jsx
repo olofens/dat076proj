@@ -16,7 +16,7 @@ class MiddleTask extends React.Component {
     this.delete = this.delete.bind(this);
     this.toggleTimer = this.toggleTimer.bind(this);
   }
-
+  // Updates the time in the DB
   updateElapsedTime() {
     const toggledTime = this.state.time;
     this.props.task.elapsedtime = toggledTime;
@@ -32,6 +32,7 @@ class MiddleTask extends React.Component {
     });
   }
 
+  //Retrieves the timer value 
   componentDidMount() {
     const that = this;
     setTimeout(() => {
@@ -60,6 +61,8 @@ class MiddleTask extends React.Component {
     clearInterval(this.timer);
   }
 
+  //Timer logic
+  //Updates the state
   toggleTimer() {
     console.log("Timer: ", this.state.timerOn);
     if (!this.state.timerOn) {
