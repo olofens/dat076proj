@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Header from "./header.jsx";
+import HeaderComponent from "../components/header.jsx";
 import BoardContainer from "./boardContainer.jsx";
 import TaskListContainer from "./taskListContainer.jsx";
 import DoneListContainer from "./doneListContainer.jsx";
@@ -19,7 +19,8 @@ class App extends React.Component {
         <div className="container">
           <div className="itemHeader">
             {" "}
-            <Header />{" "}
+            <HeaderComponent />
+            {" "}
           </div>
           <div className="itemSidebar1">
             <TaskListContainer />
