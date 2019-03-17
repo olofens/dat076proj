@@ -6,6 +6,11 @@ import dbconn
 
 app = Flask(__name__)
 
+""" 
+The main router in our application. 
+Only one of these routes are for rendering the index.html, 
+all other routes are API endpoints.
+"""
 
 @app.route("/tasks")
 def tasks():
@@ -27,22 +32,14 @@ def getTaskTime():
     myTask = dbconn.getElapsedTimeWithID(idNum)
     return jsonify(myTask)
 
-
-
 @app.route("/add_task", methods=['GET', 'POST'])
 def addTask():
-
     req_data = request.get_json()
-
     print(json.dumps(req_data))
-
     title = req_data['title']
     description = req_data['description']
     estimatedTime = req_data['estimatedTime']
-
     resp = dbconn.createTask("Erik", title, description, estimatedTime)
-
-    # For testing purposes
     return jsonify(resp)
 
 @app.route("/api/delete_task", methods=["POST"])

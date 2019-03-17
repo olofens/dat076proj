@@ -9,7 +9,7 @@ def main():
     testQuery()
 
 def getOpenConnection():
-    with open('config.json') as f:
+    with open('backend/config.json') as f:
         data = json.load(f)
 
     up.uses_netloc.append("postgres")
@@ -34,6 +34,7 @@ def testQuery():
     print(rows)
     conn.close()
 
+# Get all tasks
 def getTasks():
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -42,6 +43,7 @@ def getTasks():
     conn.close()
     return tasks
 
+# Get a single task
 def getElapsedTimeWithID(idNum):
     conn= getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -50,7 +52,6 @@ def getElapsedTimeWithID(idNum):
     task = cur.fetchall()[0]
     conn.close()
     return task
-
 
 def createTask(userId, title, description, estimatedTime):
     conn = getOpenConnection()
@@ -70,6 +71,7 @@ def updateTask(userId, title, description, elapsedTime, estimatedTime, datefinis
     conn.commit()
     conn.close()
 
+#Update a task's datefinished attribute
 def updateTaskFin(userId, datefinished):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -78,6 +80,7 @@ def updateTaskFin(userId, datefinished):
     conn.commit()
     conn.close()
 
+# Update a task's elapsed time
 def updateTaskTime(myId, elapsedtime):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)

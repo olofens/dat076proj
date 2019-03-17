@@ -9,6 +9,7 @@ class Draggable extends React.Component {
         super(props);
     }
 
+    // Set the event data which is later used when this object is dropped.
     drag(event) {
         var column = getColumnName(event.target);
         event.dataTransfer.setData("transfer", JSON.stringify({ id: event.target.id, column: column }));
