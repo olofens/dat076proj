@@ -10,6 +10,7 @@ class Droppable extends React.Component {
         self = this;
     }
 
+    // Use data from this event to call appropriate actions in to update state
     drop(event) {
         event.preventDefault();
         const data = JSON.parse(event.dataTransfer.getData("transfer"));
@@ -27,6 +28,7 @@ class Droppable extends React.Component {
         event.preventDefault();
     }
 
+    // Pass in the required props and render all children of this component
     render() {
         return (
             <div id={this.props.id} onDrop={this.drop} onDragOver={this.allowDrop} style={{ "height": "100%" }}>
@@ -36,6 +38,7 @@ class Droppable extends React.Component {
     }
 }
 
+// drop1, 2, 3 in reference to the ids given when created these droppable instances
 function getColumnName(x) {
     while (x = x.parentNode) {
         if (x.id == "drop1") return "todoTasks";
