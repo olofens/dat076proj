@@ -105,7 +105,8 @@ describe('Test Timer button component', () => {
 
         const wrapper = mount(<MiddleTaskContainer {...props} />);
 
-        //Start timer
+        //Start timer which updates state
+        //setState will re-render the wrapper
         wrapper.setState({ timerOn: true })
 
         const text = wrapper.find('button.timer').text();
