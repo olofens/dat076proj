@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import MiddleTaskContainer from '../middleTaskContainer.jsx';
 
-
+//Dummy props
 const props = {
     task:
     {
@@ -21,7 +21,11 @@ const props = {
 describe('Progress bar testing', () => {
     it('should show correct value when elapsedTime and estTime both > 0', () => {
 
+        //Mount the MiddleTaskContainer
+        //Renders the component and its children
         const wrapper = mount(<MiddleTaskContainer {...props} />);
+
+        //Search for the progress bar component 
         const text = wrapper.find('WithStyles(LinearProgress)');
 
         expect(text.props()).toHaveProperty("value", 50);
@@ -59,7 +63,6 @@ describe('Test timer data component', () => {
     it('Rendered timer is 00:00 when elapsedTime = 0', () => {
         props.task.elapsedtime = 0;
         const wrapper = mount(<MiddleTaskContainer {...props} />);
-
 
         const text = wrapper.find('td#timerLabel').text();
         expect(text).toEqual('00:00');

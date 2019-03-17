@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import LeftTaskContainer from '../leftTaskContainer.jsx';
 
-
+//Dummy props
 const props = {
     task:
     {
@@ -54,7 +54,6 @@ describe('Progress bar testing', () => {
 
 
 });
-
 describe('Test EstimatedTime data component', () => {
     it('Rendered timer is 00:00 when estimatedTime = 0', () => {
         props.task.estimatedtime = 0;

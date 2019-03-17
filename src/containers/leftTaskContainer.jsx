@@ -21,7 +21,7 @@ class LeftTaskContainer extends React.Component {
         }
     }
 
-    //Convert seconds to MM:SS
+    //Convert seconds to MM:SS format
     secondsToMS(sec) {
         var min = Math.floor(sec / 60);
         var seconds = sec - (min * 60);
@@ -29,7 +29,6 @@ class LeftTaskContainer extends React.Component {
 
         var result = (min < 10 ? "0" + min : min);
         result += ":" + (seconds < 10 ? "0" + seconds : seconds);
-        console.log(result)
 
         return result;
     }
