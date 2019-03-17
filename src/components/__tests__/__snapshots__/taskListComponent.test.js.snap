@@ -37,7 +37,7 @@ exports[`taskListComponent matches the snapshot 1`] = `
         key="30"
       >
         <li>
-          <LeftTask
+          <LeftTaskContainer
             task={
               Object {
                 "datecreated": "Thu, 14 Mar 2019 18:40:07 GMT",
@@ -58,7 +58,7 @@ exports[`taskListComponent matches the snapshot 1`] = `
         key="7"
       >
         <li>
-          <LeftTask
+          <LeftTaskContainer
             task={
               Object {
                 "datecreated": "Wed, 13 Mar 2019 12:07:32 GMT",
@@ -79,7 +79,7 @@ exports[`taskListComponent matches the snapshot 1`] = `
         key="28"
       >
         <li>
-          <LeftTask
+          <LeftTaskContainer
             task={
               Object {
                 "datecreated": "Thu, 14 Mar 2019 18:37:52 GMT",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import MiddleTaskContainer from '../middleTaskContainer.jsx';
+import LeftTaskContainer from '../leftTaskContainer.jsx';
 
 
 const props = {
@@ -21,7 +21,7 @@ const props = {
 describe('Progress bar testing', () => {
     it('should show correct value when elapsedTime and estTime both > 0', () => {
 
-        const wrapper = mount(<MiddleTaskContainer {...props} />);
+        const wrapper = mount(<LeftTaskContainer {...props} />);
         const text = wrapper.find('WithStyles(LinearProgress)');
 
         expect(text.props()).toHaveProperty("value", 50);
@@ -33,7 +33,7 @@ describe('Progress bar testing', () => {
 
         props.task.estimatedtime = 0;
 
-        const wrapper = mount(<MiddleTaskContainer {...props} />);
+        const wrapper = mount(<LeftTaskContainer {...props} />);
         const text = wrapper.find('WithStyles(LinearProgress)');
 
         expect(text.props()).toHaveProperty("value", 0);
@@ -45,7 +45,7 @@ describe('Progress bar testing', () => {
 
         props.task.elapsedTime = 0;
 
-        const wrapper = mount(<MiddleTaskContainer {...props} />);
+        const wrapper = mount(<LeftTaskContainer {...props} />);
         const text = wrapper.find('WithStyles(LinearProgress)');
 
         expect(text.props()).toHaveProperty("value", 0);
@@ -55,10 +55,10 @@ describe('Progress bar testing', () => {
 
 });
 
-describe('Test timer data component', () => {
-    it('Rendered timer is 00:00 when elapsedTime = 0', () => {
-        props.task.elapsedtime = 0;
-        const wrapper = mount(<MiddleTaskContainer {...props} />);
+describe('Test EstimatedTime data component', () => {
+    it('Rendered timer is 00:00 when estimatedTime = 0', () => {
+        props.task.estimatedtime = 0;
+        const wrapper = mount(<LeftTaskContainer {...props} />);
 
 
         const text = wrapper.find('td#timerLabel').text();
@@ -67,18 +67,18 @@ describe('Test timer data component', () => {
 
     });
 
-    it('Rendered timer is 00:50 when elapsedTime = 50', () => {
-        props.task.elapsedtime = 50;
-        const wrapper = mount(<MiddleTaskContainer {...props} />);
-
+    it('Rendered timer is 00:50 when estimatedTime = 50', () => {
+        props.task.estimatedtime = 50;
+        const wrapper = mount(<LeftTaskContainer {...props} />);
+        console.log(wrapper.debug())
 
         const text = wrapper.find('td#timerLabel').text();
         expect(text).toEqual('00:50');
     });
 
-    it('Rendered timer is 01:01 when elapsedTime = 61', () => {
-        props.task.elapsedtime = 61;
-        const wrapper = mount(<MiddleTaskContainer {...props} />);
+    it('Rendered timer is 01:01 when estimatedTime = 61', () => {
+        props.task.estimatedtime = 61;
+        const wrapper = mount(<LeftTaskContainer {...props} />);
 
 
         const text = wrapper.find('td#timerLabel').text();
@@ -88,26 +88,3 @@ describe('Test timer data component', () => {
 });
 
 
-describe('Test Timer button component', () => {
-    it('renders Start Timer when timer is off', () => {
-
-        const wrapper = mount(<MiddleTaskContainer {...props} />);
-
-        const text = wrapper.find('button.timer').text();
-        expect(text).toEqual('Start Timer');
-
-
-    });
-    it('renders Stop Timer when timer is on', () => {
-
-        const wrapper = mount(<MiddleTaskContainer {...props} />);
-
-        //Start timer
-        wrapper.setState({ timerOn: true })
-
-        const text = wrapper.find('button.timer').text();
-        expect(text).toEqual('Stop Timer')
-
-
-    });
-});
