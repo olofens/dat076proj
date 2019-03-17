@@ -7,7 +7,7 @@ import { InfoCircle } from "styled-icons/boxicons-regular/InfoCircle"
 
 
 
-class Header extends React.Component {
+class HeaderComponent extends React.Component {
     render() {
         return (
             <div className="headerContainer">
@@ -27,4 +27,4 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+export default HeaderComponent;

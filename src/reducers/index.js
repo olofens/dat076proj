@@ -1,5 +1,3 @@
-import { returnStatement } from "@babel/types";
-
 const initialState = {
     todoTasks: [],
     doingTasks: [],
@@ -15,6 +13,9 @@ const initialState = {
     editColumn: ""
 };
 
+// State machine which returns a new updated state upon certain actions being called. 
+// These functions are directly tied to the actions declared in actions/index, so
+// any further explanations here will simply be about specific implementation. 
 export default (state = initialState, action) => {
     switch (action.type) {
         case "START_EDIT_TASK":
@@ -23,7 +24,8 @@ export default (state = initialState, action) => {
                 editVisible: true,
                 editColumn: action.payload.column
             });
-
+        
+        // Create a new array in order to ensure a proper re-render from React
         case "FINISH_EDIT_TASK":
             var col = getArray(action.payload.column, state);
             var newCol = col.slice();
@@ -67,6 +69,9 @@ export default (state = initialState, action) => {
                 doneTasks: action.doneTasks
             });
 
+        // If a task is dropped onto same column it came from, dont do anything
+        // Otherwise, get the moved task from the column it was dragged, 
+        // place it in the column which it was dropped on
         case "DROP":
             if (action.payload.columnFrom === action.payload.columnTo) return state;
             var fromCol = getArray(action.payload.columnFrom, state);
@@ -86,6 +91,8 @@ export default (state = initialState, action) => {
                 [action.payload.columnTo]: toCol.concat(movedTask)
             });
 
+        // Firstly check where the task to update resides. 
+        // When the column is found, get the task and update it.
         case "UPDATE_TIME":
             var col;
             var toChange;
@@ -111,7 +118,7 @@ export default (state = initialState, action) => {
     }
 };
 
-// Export this function for testing purposes (see reducers.test.js)
+// Helper-function to ease working with arrays in our state
 function getArray(name, state) {
     switch (name) {
         case "todoTasks":
