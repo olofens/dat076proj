@@ -1,8 +1,6 @@
 tags
 # Created by https://www.gitignore.io/api/node
 
-#config.json
-config.json
 .vscode/
 
 ### Node ###
