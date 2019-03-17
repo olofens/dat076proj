@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LeftTask from "../components/leftTask.jsx"
+import LeftTaskContainer from "../containers/leftTaskContainer.jsx"
 import "./column.css";
 import Draggable from "../containers/draggable.jsx"
 import Droppable from "../containers/droppable.jsx"
@@ -20,7 +20,7 @@ class TaskListComponent extends React.Component {
         const items = this.props.tasks.map((task) =>
             <Draggable id={task.id} key={task.id}>
                 <li>
-                    <LeftTask task={task} openEdit={this.props.openEdit} deleteTask={this.props.deleteTask} />
+                    <LeftTaskContainer task={task} openEdit={this.props.openEdit} deleteTask={this.props.deleteTask} />
                 </li>
             </Draggable>);
 

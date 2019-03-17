@@ -7,31 +7,7 @@ import { Delete } from "styled-icons/material/Delete";
 import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-//Calculate progress for progress bar
-function calcProg(elap, est) {
-    if (elap == 0 || est == 0) {
-        return 0;
-    }
-    else {
-        return parseInt(elap / est * 100)
-    }
-}
-
-//Convert seconds to MM:SS
-function secondsToMS(sec) {
-    var min = Math.floor(sec / 60);
-    var seconds = sec - (min * 60);
-    seconds = Math.round(seconds * 100) / 100;
-
-    var result = (min < 10 ? "0" + min : min);
-    result += ":" + (seconds < 10 ? "0" + seconds : seconds);
-    console.log(result)
-
-    return result;
-
-}
-
-class LeftTask extends React.Component {
+class LeftTaskComponent extends React.Component {
     constructor(props) {
         super(props);
         this.edit = this.edit.bind(this);
@@ -59,10 +35,10 @@ class LeftTask extends React.Component {
                                 {this.props.task.title}
                             </td>
                             <td>
-                                {secondsToMS(this.props.task.estimatedtime)}
+                                {this.props.estimatedtime}
                             </td>
                             <td className="buttontd">
-                                <button onClick={this.edit}>
+                                <button onClick={this.props.edit}>
                                     <Edit size={20} />
                                 </button>
                             </td>
@@ -75,7 +51,7 @@ class LeftTask extends React.Component {
 
                             </td>
                             <td className="buttontd">
-                                <button onClick={this.delete}>
+                                <button onClick={this.props.delete}>
                                     <Delete size={20} />
                                 </button>
                             </td>
@@ -84,7 +60,7 @@ class LeftTask extends React.Component {
 
                     </tbody>
                 </table>
-                <LinearProgress variant="determinate" value={calcProg(this.props.task.elapsedtime, this.props.task.estimatedtime)} />
+                <LinearProgress variant="determinate" value={this.props.progress} />
 
             </div>
 
@@ -94,4 +70,4 @@ class LeftTask extends React.Component {
 
 
 
-export default LeftTask;
+export default LeftTaskComponent;
