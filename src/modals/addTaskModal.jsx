@@ -34,7 +34,6 @@ const addTaskSchema = Yup.object().shape({
         .required('Required')
         .positive('Time must be > 0')
         .integer('Time must be integer value'),
-
 });
 
 // Formik - Form building framework
