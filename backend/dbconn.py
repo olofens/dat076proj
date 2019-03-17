@@ -34,7 +34,11 @@ def testQuery():
     print(rows)
     conn.close()
 
+<<<<<<< HEAD:backend/dbconn.py
 # Get all tasks
+=======
+#Returns all columns from tasks table
+>>>>>>> 2156829c08d86b310331d709fb5046dab9fec668:dbconn.py
 def getTasks():
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -43,7 +47,11 @@ def getTasks():
     conn.close()
     return tasks
 
+<<<<<<< HEAD:backend/dbconn.py
 # Get a single task
+=======
+#Return task with specified id
+>>>>>>> 2156829c08d86b310331d709fb5046dab9fec668:dbconn.py
 def getElapsedTimeWithID(idNum):
     conn= getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -53,6 +61,10 @@ def getElapsedTimeWithID(idNum):
     conn.close()
     return task
 
+<<<<<<< HEAD:backend/dbconn.py
+=======
+#Insert task into DB
+>>>>>>> 2156829c08d86b310331d709fb5046dab9fec668:dbconn.py
 def createTask(userId, title, description, estimatedTime):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -62,7 +74,8 @@ def createTask(userId, title, description, estimatedTime):
     conn.commit()
     conn.close()
     return myResponse
-    
+
+#Update task with specified ID
 def updateTask(userId, title, description, elapsedTime, estimatedTime, datefinished):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -71,7 +84,11 @@ def updateTask(userId, title, description, elapsedTime, estimatedTime, datefinis
     conn.commit()
     conn.close()
 
+<<<<<<< HEAD:backend/dbconn.py
 #Update a task's datefinished attribute
+=======
+#Update dateFinished in task with specified ID
+>>>>>>> 2156829c08d86b310331d709fb5046dab9fec668:dbconn.py
 def updateTaskFin(userId, datefinished):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -80,7 +97,11 @@ def updateTaskFin(userId, datefinished):
     conn.commit()
     conn.close()
 
+<<<<<<< HEAD:backend/dbconn.py
 # Update a task's elapsed time
+=======
+#Update elapsedTime in task with specified ID
+>>>>>>> 2156829c08d86b310331d709fb5046dab9fec668:dbconn.py
 def updateTaskTime(myId, elapsedtime):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -89,6 +110,7 @@ def updateTaskTime(myId, elapsedtime):
     conn.commit()
     conn.close()
 
+#Delete task with specified ID
 def deleteTask(taskId):
     conn = getOpenConnection()
     cur = conn.cursor(cursor_factory=RealDictCursor)

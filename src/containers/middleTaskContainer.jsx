@@ -21,7 +21,7 @@ class MiddleTaskContainer extends React.Component {
     this.props.updateTime(this.props.task.id, this.state.time);
     clearInterval(this.timer);
   }
-
+  //Convert seconds to MM:SS format
   secondsToMS(sec) {
     var min = Math.floor(sec / 60);
     var seconds = sec - (min * 60);

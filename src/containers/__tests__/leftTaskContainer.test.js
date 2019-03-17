@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import LeftTaskContainer from '../leftTaskContainer.jsx';
 
-
+//Dummy props
 const props = {
     task:
     {
@@ -23,7 +23,7 @@ describe('Progress bar testing', () => {
 
         const wrapper = mount(<LeftTaskContainer {...props} />);
         const text = wrapper.find('WithStyles(LinearProgress)');
-
+        //Elapsedtime / EstimatedTime * 100 = 50
         expect(text.props()).toHaveProperty("value", 50);
 
 
@@ -35,7 +35,7 @@ describe('Progress bar testing', () => {
 
         const wrapper = mount(<LeftTaskContainer {...props} />);
         const text = wrapper.find('WithStyles(LinearProgress)');
-
+        
         expect(text.props()).toHaveProperty("value", 0);
 
 
@@ -54,7 +54,6 @@ describe('Progress bar testing', () => {
 
 
 });
-
 describe('Test EstimatedTime data component', () => {
     it('Rendered timer is 00:00 when estimatedTime = 0', () => {
         props.task.estimatedtime = 0;
@@ -75,7 +74,7 @@ describe('Test EstimatedTime data component', () => {
         const text = wrapper.find('td#timerLabel').text();
         expect(text).toEqual('00:50');
     });
-
+    //Tests the second to MM:SS method
     it('Rendered timer is 01:01 when estimatedTime = 61', () => {
         props.task.estimatedtime = 61;
         const wrapper = mount(<LeftTaskContainer {...props} />);
