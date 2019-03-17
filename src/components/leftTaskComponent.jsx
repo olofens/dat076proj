@@ -34,7 +34,7 @@ class LeftTaskComponent extends React.Component {
                             <td className="titletd">
                                 {this.props.task.title}
                             </td>
-                            <td>
+                            <td id="timerLabel">
                                 {this.props.estimatedtime}
                             </td>
                             <td className="buttontd">
